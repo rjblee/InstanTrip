@@ -2,7 +2,7 @@
 
 1. From command line run `psql` to enter postgreSQL
 
-2. Run command `CREATE USER final WITH PASSWORD final;` to create user
+2. Run command `CREATE USER final WITH PASSWORD 'final';` to create user
 
 3. Run command `CREATE DATABASE final_project WITH OWNER = final;` to create database 'finalProject' with user 'final'
 
