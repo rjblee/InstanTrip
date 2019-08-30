@@ -1,0 +1,20 @@
+final-server/node_modules/
+final-server/.env
+
+
+
+# dependencies
+final-client/node_modules
+
+# testing
+final-client/coverage
+
+# production
+final-client/build
+
+# misc
+final-client/.DS_Store
+final-client/.env
+final-client/npm-debug.log*
+final-client/yarn-debug.log*
+final-client/yarn-error.log*
