@@ -2,9 +2,8 @@ import React from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './home'
-import City from './city'
+import City from './city/city'
 import ImageSearch from './imageSearch'
-
 
 export default function App() {
   return (
