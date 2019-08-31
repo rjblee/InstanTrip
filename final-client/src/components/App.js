@@ -1,16 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/App.css';
-import TopNavbar from './navbar'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from './home'
+import City from './city'
+import ImageSearch from './imageSearch'
 
 
 export default function App() {
   return (
-    <div className="App">
-      <TopNavbar/>
-      <div className="App-header">
-       
-        <h2>Welcome to React</h2>
-      </div>
-    </div>
+    <Router className="App">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">Travel</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <div className="nav-link"><Link to="/">Home</Link></div>
+            </li>
+            <li className="nav-item">
+              <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
+            </li>
+            <li className="nav-item">
+              <div className="nav-link"><Link to="/sampleCity">sample city page</Link></div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <Route path="/" exact component={Home} />
+      <Route path="/imageSearch" exact component={ImageSearch} />
+      <Route path="/sampleCity" exact component={City} />
+    </Router>
   );
 };
