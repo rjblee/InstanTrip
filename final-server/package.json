@@ -12,10 +12,14 @@
   "description": "",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
     "pg": "^7.12.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sync-request": "^6.1.0",
+    "then-request": "^6.0.2"
   }
 }

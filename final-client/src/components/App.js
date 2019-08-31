@@ -5,7 +5,6 @@ import Home from './home'
 import City from './city'
 import ImageSearch from './imageSearch'
 
-
 export default function App() {
   return (
     <Router className="App">
@@ -28,7 +27,6 @@ export default function App() {
           </ul>
         </div>
       </nav>
-
       <Route path="/" exact component={Home} />
       <Route path="/imageSearch" exact component={ImageSearch} />
       <Route path="/sampleCity" exact component={City} />
