@@ -1,10 +1,12 @@
 import React from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from './home'
-import City from './city'
-import ImageSearch from './imageSearch'
+import Home from './home';
+// import GoogleApiWrapper from './GoogleApiWrapper';
+import ImageSearch from './imageSearch';
+import test from './test';
 
+import Hey from './Hey';
 
 export default function App() {
   return (
@@ -28,10 +30,14 @@ export default function App() {
           </ul>
         </div>
       </nav>
-
+      
       <Route path="/" exact component={Home} />
       <Route path="/imageSearch" exact component={ImageSearch} />
-      <Route path="/sampleCity" exact component={City} />
+      {/* <Route path="/sampleCity" exact component={GoogleApiWrapper} /> */}
+      <Route path="/hey" exact component={Hey} />
+
+      <Route path="/test" exact component={test} />
+      
     </Router>
   );
 };
