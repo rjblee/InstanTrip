@@ -18,5 +18,7 @@ CREATE TABLE places (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR (255),
   location VARCHAR (255),
+  rating VARCHAR (255),
+  image VARCHAR(255),
   wishlist_id INTEGER REFERENCES wishlists(id) ON DELETE CASCADE
 );
