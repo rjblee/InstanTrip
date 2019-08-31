@@ -1,9 +1,4 @@
-import React from 'react';
-import '../styles/App.css';
-import TopNavbar from './navbar'
-
-
-export default function App() {
+export default function wishlist() {
   return (
     <div className="App">
       <TopNavbar/>
