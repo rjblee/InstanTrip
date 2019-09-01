@@ -70,7 +70,7 @@ const PlacesWithStandaloneSearchBox = compose(
   </div>
 ));
 
-ReactDOM.render(
-  <PlacesWithStandaloneSearchBox />,
-  document.getElementById("root")
-);
+// ReactDOM.render(
+//   <PlacesWithStandaloneSearchBox />,
+//   document.getElementById("root")
+// );

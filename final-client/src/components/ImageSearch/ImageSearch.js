@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
-import searchPlaces from '../helpers/searchPlaces'
+import searchPlaces from '../../helpers/searchPlaces'
 
-export default function Home() {
+export default function ImageSearch() {
   const [inputvalue, setInputvalue] = useState('')
 
   return(
