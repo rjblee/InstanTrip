@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import Home from './home';
 // import GoogleApiWrapper from './GoogleApiWrapper';
 import ImageSearch from './imageSearch';
@@ -32,7 +31,7 @@ export default function App() {
           </ul>
         </div>
       </nav>
-      
+
       <Route path="/" exact component={Home} />
       <Route path="/imageSearch" exact component={ImageSearch} />
       {/* <Route path="/sampleCity" exact component={GoogleApiWrapper} /> */}
