@@ -7,6 +7,8 @@ module.exports = () => {
   router.get("/", (req, res) => {
     res.send('hello world')
   });
+
+
   router.post("/searchPlaces", (req, res) => {
     const dataForSearch = {
       query: req.body.query,
@@ -18,6 +20,7 @@ module.exports = () => {
       dataForSearch.location= `${location.lat},${location.lng}`
       dataForSearch.radius= '10000'
     }
+    
     request(
       'POST',
       'https://maps.googleapis.com/maps/api/place/textsearch/json',
@@ -29,6 +32,7 @@ module.exports = () => {
         const endPlaces = []
         for (let place of placeArray) {
           let targetPlace = {}
+          targetPlace.name = place.name
           targetPlace.address = place.formatted_address
           targetPlace.lat = place.geometry.location.lat
           targetPlace.lng = place.geometry.location.lng
