@@ -14,5 +14,6 @@
         DB_USER=final
         DB_PASS=final
         DB_NAME=final_project
-        DB_PORT=5432`
+        DB_PORT=5432
+        PORT=8080`
    into .env under root directory
