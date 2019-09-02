@@ -18,9 +18,12 @@ export default function searchPlace(data) {
     data: qs.stringify(data),
     url: '/searchPlaces'
   }
-  axios(options).then(function(response) {
-    console.log(response.data)
-  });
+  return (
+    axios(options)
+  )
+  // axios(options).then(function(response) {
+  //   console.log(response.data)
+  // });
 
 
 }
