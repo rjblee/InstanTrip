@@ -24,6 +24,6 @@ CREATE TABLE places (
   lng VARCHAR(255),
   rating VARCHAR(255),
   picture VARCHAR(1000),
-  placeCode VARCHAR(255),
+  placeId VARCHAR(255),
   wishlist_id INTEGER REFERENCES wishlists(id) ON DELETE CASCADE
 );
