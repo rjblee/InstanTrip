@@ -2,15 +2,14 @@ import React from 'react';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './Home/Home';
-// import GoogleApiWrapper from './GoogleApiWrapper';
 import ImageSearch from './ImageSearch/ImageSearch';
-import test from './test';
+import GoogleMap from './GoogleMap';
 
-import Hey from './Hey';
 import City from './City/City'
 
 export default function App() {
   return (
+   
     <Router className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="#">Travel</a>
@@ -35,9 +34,7 @@ export default function App() {
       <Route path="/" exact component={Home} />
       <Route path="/imageSearch" exact component={ImageSearch} />
       <Route path="/sampleCity" exact component={City} />
-      <Route path="/hey" exact component={Hey} />
-
-      {/* <Route path="/test" exact component={test} /> */}
+       <Route path="/map" exact component={GoogleMap} /> 
       
     </Router>
   );
