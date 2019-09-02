@@ -1,9 +1,13 @@
 import React, {Fragment, useState} from 'react';
 import searchPlaces from '../../helpers/searchPlaces'
+import Place from './Place'
 
-export default function ImageSearch() {
+export default function ImageSearch(props) {
   const [inputvalue, setInputvalue] = useState('')
-
+  const [places, setplaces] = useState([])
+  const [cities, setcities] = useState(props.cities ||["list1", "list2", "list3"])
+  const user = props.user || {}
+  console.log(places)
   return(
   <Fragment>
     <p> here is the imageSearch page</p>
@@ -23,10 +27,24 @@ export default function ImageSearch() {
         className="btn btn-primary mb-2"
         onClick={() => {
           console.log(inputvalue)
-          searchPlaces({ 'query': inputvalue})
+          searchPlaces({ 'query': inputvalue}).then(function(response) {
+            console.log('here is places')
+            console.log(response.data)
+            setplaces(response.data)
+          })
         }}
       >Search</button>
     </div>
+
+
+    {places.map((place) => {
+      return <Place
+              place={place}
+              key={place.placeId}
+              cities={cities}
+              user={user}
+              />
+    })}
 
   </Fragment>
   )
