@@ -30,7 +30,9 @@ export default function Place(props) {
           }}
          >
            {props.cities.map( (item) => {
-            return <option>{item}</option>
+            return <option
+                    key={item.id}
+                    >{item.city}</option>
           })}
          </datalist>
 
