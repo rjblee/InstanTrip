@@ -15,6 +15,7 @@ export default function Logout(props) {
         props.setPassword('')
         props.setUserData([])
         props.setCities([])
+        props.setAlert('')
       }}
       >Logout</button>
     </Fragment>

@@ -33,6 +33,9 @@ export default function Login(props) {
           console.log(response)
           if (response.data.length) {
             props.setUser(response.data[0])
+            props.setAlert('')
+          } else {
+            props.setAlert('Wrong username or password')
           }
         })
       }}
