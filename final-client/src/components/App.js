@@ -17,12 +17,22 @@ export default function App() {
   const [password, setPassword] =useState('')
   const [user,setUser] = useState({name:'' , password:''})
   const [userdata, setUserData] = useState([])
+  const [cities, setCities] = useState([])
 
+  console.log(cities)
+  console.log(userdata)
   useEffect(() => {
     if (user.name) {
+      // get all user data from database 
       getUserData(user).then((response) => {
-        console.log('for user')
-        console.log(response)
+        //get cities 
+        const getUniqueCities = function (city, index, self) {
+          return self.indexOf(city) === index
+        }
+        setCities(response.data.map((place) => place.city).filter(getUniqueCities))
+        //store user data
+        setUserData(response.data)
+        console.log(response.data)
       })
     }
   },[user])
@@ -53,6 +63,7 @@ export default function App() {
                         setName={setName}
                         setPassword={setPassword}
                         setUserData={setUserData}
+                        setCities={setCities}
                       />
                       : 
                       <Login 
@@ -65,9 +76,11 @@ export default function App() {
                         />}
 
       </nav>
-      <Route path="/" exact component={Home} />
-      <Route path="/imageSearch" exact component={ImageSearch} />
-      <Route path="/sampleCity" exact component={City} />
+      <Route path="/" exact render={() => <Home/>} />
+      <Route path="/imageSearch" exact render={() => <ImageSearch
+                                                        cities={cities}
+      />}/>
+      <Route path="/sampleCity" exact render={() => <City/>} />
       <Route path="/map" exact component={GoogleMap} /> 
       
     </Router>
