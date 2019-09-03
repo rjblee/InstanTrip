@@ -99,7 +99,7 @@ module.exports = () => {
               JOIN places ON wishlists.id = places.wishlist_id
               Where users.name = $1`, [req.body.name])
               .then((response) => {
-                console.log(response.rows)
+                res.send(response.rows)
               }).catch((err) => {
                 console.log(err)
               })
