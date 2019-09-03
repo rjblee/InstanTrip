@@ -15,12 +15,13 @@ export default function App() {
   //state for user login
   const [name, setName] =useState('')
   const [password, setPassword] =useState('')
-  const [user,setUser] = useState({name:'' , password:''})
+  const [user,setUser] = useState({id:'', name:'' , password:''})
   const [userdata, setUserData] = useState([])
   const [cities, setCities] = useState([])
-
-  console.log(cities)
+  console.log('----here')
+  console.log(cities) 
   console.log(userdata)
+  console.log(user)
   useEffect(() => {
     if (user.name) {
       // get all user data from database 
