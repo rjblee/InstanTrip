@@ -25,7 +25,7 @@ export default function Place(props) {
          <datalist 
           id="targetCity"
           value={targetCity}
-          onchange={event => {
+          onChange={event => {
             setTargetCity(event.target.value)
           }}
          >
