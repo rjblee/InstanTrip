@@ -5,7 +5,7 @@ import Home from './Home/Home';
 import ImageSearch from './ImageSearch/ImageSearch';
 import GoogleMap from './GoogleMap';
 
-import City from './City/City'
+import City from './City/City';
 
 export default function App() {
   return (
@@ -25,7 +25,7 @@ export default function App() {
               <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
             </li>
             <li className="nav-item">
-              <div className="nav-link"><Link to="/sampleCity">sample city page</Link></div>
+              <div className="nav-link"><Link to="/sampleCity">Sample City Page</Link></div>
             </li>
           </ul>
         </div>
@@ -34,7 +34,7 @@ export default function App() {
       <Route path="/" exact component={Home} />
       <Route path="/imageSearch" exact component={ImageSearch} />
       <Route path="/sampleCity" exact component={City} />
-       <Route path="/map" exact component={GoogleMap} /> 
+      <Route path="/map" exact component={GoogleMap} /> 
       
     </Router>
   );

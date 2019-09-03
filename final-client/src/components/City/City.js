@@ -1,14 +1,14 @@
 import React, {Fragment} from 'react';
 import Wishlist from "./Wishlist";
 
+import "./City.css";
 
 
 export default function City() {
   return(
-  <Fragment>
-    <p> here is the city page</p>
-    <Wishlist></Wishlist>
-  </Fragment>
+
+      <Wishlist></Wishlist>
+
 
   )
 }
