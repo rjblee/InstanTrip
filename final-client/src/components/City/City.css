@@ -1,0 +1,16 @@
+.wishlist {
+  border: 3px solid black;
+  position: absolute;
+  right: 100px;
+  width: 30%;
+  height: 800px;
+  color: blue;
+  padding: 20px 10px;
+}
+
+.wishlistItem {
+  border: 1px solid black;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: center; 
+}
