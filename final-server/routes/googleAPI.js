@@ -1,7 +1,6 @@
 const express = require('express');
 const router  = express.Router();
 const request = require('then-request');
-const synRequest = require('sync-request');
 const { Pool } = require('pg');
 // config database
 const dbParams = require('../lib/db.js');
@@ -12,27 +11,6 @@ module.exports = () => {
   router.get("/", (req, res) => {
     res.send('hello world')
   });
-
-
-  // request("POST", "https:")
-  //   .then(response=> {
-  //     response.data
-  //     return request("POST", "https:")
-  //   })
-  //   .then(response => {
-  //     response.data 
-  //     return Promise.all(response.data.map(place => request("POST", "https://maps.googleapis.com/maps/api/place/photo",{
-  //       qs: {
-  //         maxwidth: 200,
-  //         photoreference: place.photos[0].photo_reference,
-  //         key: "AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"
-  //       }
-  //     })))
-  //   })
-  //   .then(all => 
-      
-  //     all[0].data)
-
 
   router.post("/searchPlaces", (req, res) => {
     const dataForSearch = {
@@ -54,7 +32,7 @@ module.exports = () => {
       }
       ).getBody('utf8').done((response) => {
         const placeArray = JSON.parse(response).results
-        const endPlaces = []
+        const resultPlaces = []
         let pictureCount = 0;
         for (let place of placeArray) {
           let targetPlace = {}
@@ -64,30 +42,29 @@ module.exports = () => {
           targetPlace.lng = place.geometry.location.lng
           targetPlace.placeId = place.place_id
           targetPlace.rating = place.rating
-          // const pictureRequest = synRequest(
-          const pictureRequest = synRequest(
+          resultPlaces.push(targetPlace)
+        }
+        console.log(placeArray[0].photos[0].photo_reference)
+        Promise.all(placeArray.map(place => {
+          return request(
             'POST',
             'https://maps.googleapis.com/maps/api/place/photo',
             {
-              qs: {
+              qs : {
                 maxwidth: 200,
                 photoreference: place.photos[0].photo_reference,
                 key: "AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"
               }
             }
-          )
-          // .getBody('utf8').done((res) => {
-            
-          // })
-          targetPlace.picture = pictureRequest.url
-          endPlaces.push(targetPlace)
-          pictureCount += 1;
-        }
-        while (pictureCount < placeArray.length) {
+            )
+        })).then((all) => {
+          const pictures = all.map(each => each.url)
+          for (let i = 0; i < resultPlaces.length; i ++) {
+            resultPlaces[i].picture = pictures[i]
+          }
+          res.send(resultPlaces)
+        })
 
-        }
-        console.log(endPlaces)
-        res.send(endPlaces)
       })
   })
 
@@ -103,10 +80,6 @@ module.exports = () => {
                 console.log(err)
               })
   })
-  // db.query(`SELECT * 
-  // FROM users JOIN wishlist ON user.id = wishlist.user_id
-  // JOIN places ON wishlist.id = places.wishlist_id where users.name = $1`, ['Jiadan'])
-
 
   router.post("/user", (req,res) => {
     db.query(`SELECT * FROM users WHERE name=$1 AND password=$2`,[req.body.name,req.body.password])
