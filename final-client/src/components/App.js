@@ -66,6 +66,7 @@ export default function App() {
                         setPassword={setPassword}
                         setUserData={setUserData}
                         setCities={setCities}
+                        setAlert={setAlert}
                       />
                       : 
                       <Login 
@@ -75,6 +76,7 @@ export default function App() {
                         setPassword={setPassword}
                         setUser={setUser}
                         setUserData={setUserData}
+                        setAlert={setAlert}
                         />}
 
       </nav>
