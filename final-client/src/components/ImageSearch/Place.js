@@ -12,11 +12,10 @@ export default function Place(props) {
         <p>name: {props.place.name}</p>
         <p>address: {props.place.address}</p>
         <p>rating: {props.place.rating}</p>
-
          <input 
           type="text" 
-          name="city" 
-          list="citynames"
+          name="tragetCity" 
+          list="targetCity"
           placeholder="Choose target city"
           value= {targetCity}
           onChange ={event => {
@@ -24,7 +23,7 @@ export default function Place(props) {
           }}
           />
          <datalist 
-          id="citynames"
+          id="targetCity"
           value={targetCity}
           onchange={event => {
             setTargetCity(event.target.value)
@@ -40,15 +39,3 @@ export default function Place(props) {
     </div>
   )
 }
-// need wish list     
-// need botton
-
-
-
-// address: "4700 Kingsway, Burnaby, BC V5H 4N2, Canada"
-// lat: 49.2274622
-// lng: -122.9999852
-// name: "Metropolis at Metrotown"
-// picture: "https://lh3.googleusercontent.com/p/AF1QipMm9Ae9bmHQQ4RvSJ9Mi28fJcBrOFU-PZZgIXwi=s1600-w200"
-// placeId: "ChIJB7RfXFl2hlQRpb-Vv0SYE3A"
-// rating: 4.3

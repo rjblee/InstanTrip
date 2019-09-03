@@ -9,7 +9,6 @@ const bodyParser = require("body-parser");
 const request = require('then-request');
 const app        = express();
 const morgan     = require('morgan');
-const { Pool } = require('pg');
 const  cors = require('cors')
 
 //middleware config
@@ -18,12 +17,6 @@ app.use(morgan('dev'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-// config database
-const dbParams = require('./lib/db.js');
-const db = new Pool(dbParams);
-db.connect();
-
 
 // db query example 
 // db.query(`select * from users`).then((res) => {
