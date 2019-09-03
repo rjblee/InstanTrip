@@ -16,4 +16,4 @@
         DB_NAME=final_project
         DB_PORT=5432
         PORT=8080`
-   into .env under root directory
+  into .env under root directory

@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS places;
-DROP TABLE IF EXISTS wishlists;
+DROP TABLE IF EXISTS cities;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -8,7 +8,7 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE wishlists (
+CREATE TABLE cities (
   id SERIAL PRIMARY KEY NOT NULL,
   city VARCHAR(255),
   lat VARCHAR(255),
@@ -25,5 +25,5 @@ CREATE TABLE places (
   rating VARCHAR(255),
   picture VARCHAR(1000),
   placeId VARCHAR(255),
-  wishlist_id INTEGER REFERENCES wishlists(id) ON DELETE CASCADE
+  city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE
 );
