@@ -5,7 +5,6 @@ import Place from './Place'
 export default function ImageSearch(props) {
   const [inputvalue, setInputvalue] = useState('')
   const [places, setplaces] = useState([])
-  const [cities, setcities] = useState(props.cities)
   const user = props.user || {}
   console.log(places)
   return(
@@ -41,7 +40,7 @@ export default function ImageSearch(props) {
       return <Place
               place={place}
               key={place.placeId}
-              cities={cities}
+              cities={props.cities}
               user={user}
               />
     })}

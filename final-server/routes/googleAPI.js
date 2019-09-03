@@ -107,5 +107,14 @@ module.exports = () => {
   // FROM users JOIN wishlist ON user.id = wishlist.user_id
   // JOIN places ON wishlist.id = places.wishlist_id where users.name = $1`, ['Jiadan'])
 
+
+  router.post("/user", (req,res) => {
+    db.query(`SELECT * FROM users WHERE name=$1 AND password=$2`,[req.body.name,req.body.password])
+      .then((response) => {
+        res.send(response.rows)
+      }).catch((err) => {
+        console.log(err)
+      })
+  })
   return router;
 };
