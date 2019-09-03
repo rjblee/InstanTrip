@@ -93,10 +93,9 @@ module.exports = () => {
 
   router.post("/userdata", (req,res) => {
     console.log(req.body)
-    res.send('we have your response')
     db.query(`SELECT * 
-              FROM users JOIN wishlists ON users.id = wishlists.user_id
-              JOIN places ON wishlists.id = places.wishlist_id
+              FROM users JOIN cities ON users.id = cities.user_id
+              JOIN places ON cities.id = places.city_id
               Where users.name = $1`, [req.body.name])
               .then((response) => {
                 res.send(response.rows)
