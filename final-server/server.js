@@ -6,7 +6,6 @@ require('dotenv').config();
 const PORT       = process.env.PORT;
 const express    = require("express");
 const bodyParser = require("body-parser");
-const request = require('then-request');
 const app        = express();
 const morgan     = require('morgan');
 const  cors = require('cors')
@@ -21,10 +20,12 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 const googleAPIRoutes = require("./routes/googleAPI.js");
+const datbaseRoutes = require("./routes/databse.js");
 
 
 // Mount all resource routes
 app.use(googleAPIRoutes());
+app.use(datbaseRoutes());
 
 
 

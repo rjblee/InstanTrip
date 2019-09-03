@@ -7,7 +7,7 @@ import GoogleMap from './GoogleMap';
 import Login from './Navbar/Login'
 import Logout from './Navbar/Logout'
 import getUserData from '../helpers/getUserData'
-
+import getCities from '../helpers/getCities'
 import City from './City/City'
 
 export default function App() {
@@ -19,22 +19,34 @@ export default function App() {
   const [userdata, setUserData] = useState([])
   const [cities, setCities] = useState([])
   const [alert, setAlert] = useState('')
+
+  ////////////////////////////////////
   console.log('----here')
   console.log(cities) 
   console.log(userdata)
   console.log(user)
+//////////////////////////////////////
   useEffect(() => {
     if (user.name) {
       // get all user data from database 
       getUserData(user).then((response) => {
-        //get cities 
-        const getUniqueCities = function (city, index, self) {
-          return self.indexOf(city) === index
-        }
-        setCities(response.data.map((place) => place.city).filter(getUniqueCities))
+        // //get cities 
+        // const getUniqueCities = function (city, index, self) {
+        //   return self.indexOf(city) === index
+        // }
+
+        // const citiesFromDate = response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}})
+        // const citiesname
+        // setCities(response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}}).filter(getUniqueCities))
+
+
         //store user data
         setUserData(response.data)
         console.log(response.data)
+      } 
+      )
+      getCities(user).then((response) => {
+        setCities(response.data)
       })
     }
   },[user])
