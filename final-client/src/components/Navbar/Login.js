@@ -7,7 +7,7 @@ export default function Login(props) {
   return (
     <div className="form-inline my-2 my-lg-0 ml-auto">
     <input 
-      className="form-control mr-2" 
+      className="form-conpostposttrol mr-2" 
       type="text" 
       placeholder="Name"
       value={props.name}

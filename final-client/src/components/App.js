@@ -18,6 +18,7 @@ export default function App() {
   const [user,setUser] = useState({id:'', name:'' , password:''})
   const [userdata, setUserData] = useState([])
   const [cities, setCities] = useState([])
+  const [alert, setAlert] = useState('')
   console.log('----here')
   console.log(cities) 
   console.log(userdata)
@@ -77,6 +78,10 @@ export default function App() {
                         />}
 
       </nav>
+      
+      {alert.length ? <div class="alert alert-danger" role="alert">
+        {alert}
+      </div> : <></>}
       <Route path="/" exact render={() => <Home/>} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
