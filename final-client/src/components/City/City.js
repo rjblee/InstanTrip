@@ -10,6 +10,7 @@ export default function City() {
 
     <Fragment>
     <p> here is the city page</p>
+    
     <Wishlist></Wishlist>
     <Map></Map>
   </Fragment>
