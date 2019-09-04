@@ -20,7 +20,7 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 const googleAPIRoutes = require("./routes/googleAPI.js");
-const datbaseRoutes = require("./routes/databse.js");
+const datbaseRoutes = require("./routes/database.js");
 
 
 // Mount all resource routes

@@ -13,7 +13,8 @@ CREATE TABLE cities (
   city VARCHAR(255),
   c_lat VARCHAR(255),
   c_lng VARCHAR(255),
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  c_picture VARCHAR(1000)
 );
 
 CREATE TABLE places (
