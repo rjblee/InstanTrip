@@ -21,7 +21,6 @@ module.exports = function searchPlaces (dataForSearch, res) {
           targetPlace.rating = place.rating
           resultPlaces.push(targetPlace)
         }
-        console.log(placeArray[0].photos[0].photo_reference)
         Promise.all(placeArray.map(place => {
           return request(
             'POST',

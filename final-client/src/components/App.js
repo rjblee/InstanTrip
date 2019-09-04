@@ -49,7 +49,7 @@ export default function App() {
         setCities(response.data)
       })
     }
-  },[user])
+  },[])
 
   return (
     <Router className="App">
@@ -96,9 +96,12 @@ export default function App() {
       {alert.length ? <div class="alert alert-danger" role="alert">
         {alert}
       </div> : <></>}
-      <Route path="/" exact render={() => <Home/>} />
+      <Route path="/" exact render={() => <Home
+                                            user={user}
+                                          />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
+                                                        
       />}/>
       <Route path="/sampleCity" exact render={() => <City/>} />
       <Route path="/map" exact component={GoogleMap} /> 

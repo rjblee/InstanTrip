@@ -37,6 +37,7 @@ export default function Place(props) {
          </datalist>
 
         <button>Add to Wishlist</button>
+        
       </div>
     </div>
   )
