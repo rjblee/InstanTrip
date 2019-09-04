@@ -41,6 +41,7 @@ module.exports = () => {
 
 
   router.post('/savePlace', (req, res) => {
+
     console.log('-----get datatttt')
     console.log(req.body)
     const place = req.body.place
@@ -58,19 +59,17 @@ module.exports = () => {
       // create city first and then add place to city
       db.query(`Insert Into cities (city, c_lat, c_lng, user_id, c_picture)
                 values ($1, $2, $3, $4, $5)
-                RETURNING id`
+                RETURNING *`
                 ,[city.name, city.lat, city.lng, user.id, city.picture])
                 .then((response) => {
                   // insert place to database with ref to created city
-                  console.log('city might be created')
                   const cityId = response.rows[0].id
-                  console.log(response.rows[0].id)
-
+                  const createdCity = response.rows[0]
                   db.query(`Insert INTO places (lat, lng, rating, picture, placeId, city_id, name, address)
                   values ($1, $2, $3, $4, $5, $6, $7, $8)
                   `, [place.lat, place.lng, place.rating, place.picture, place.placeId, cityId, place.name, place.address])
                   .then(() => {
-                    console.log('maybe im in')
+                    res.send(createdCity)
                   }).catch((err) => { console.log(err)})
                 }).catch((err) => { console.log(err)})
     }

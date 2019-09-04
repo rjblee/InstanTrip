@@ -5,7 +5,7 @@ axios.defaults.baseURL = process.env.SERVER_URL || "http://localhost:8080"
 axios.defaults.headers.common = {
   "Content-Type": "application/x-www-form-urlencoded"
 }
-export default function searchPlace(data) {
+export default function searchPlaces(data) {
   // format example for data
   // { 
   //   'query': inputvalue, 

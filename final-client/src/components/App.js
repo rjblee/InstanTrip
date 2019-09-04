@@ -102,6 +102,7 @@ export default function App() {
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
                                                         user={user}
+                                                        setCities={setCities}
                                                         
       />}/>
       <Route path="/sampleCity" exact render={() => <City/>} />

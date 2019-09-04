@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 import axios from "axios";
 import qs from 'qs'
 import searchPlace from '../../helpers/searchPlaces';
+import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
 
 export default function Place(props) {
   const [targetCity, setTargetCity] = useState('')
@@ -41,42 +42,43 @@ export default function Place(props) {
 
         <button
           onClick={() => {
-            function savePlace(data) {
-              const options = {
-                method: 'post',
-                headers: { 'content-type': 'application/x-www-form-urlencoded' },
-                data: qs.stringify(data),
-                url: '/savePlace'
-              }
-              return (
-                axios(options)
-              ) 
-            }
+            savePlaceToDatabase(props, targetCity)
+            // function savePlace(data) {
+            //   const options = {
+            //     method: 'post',
+            //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            //     data: qs.stringify(data),
+            //     url: '/savePlace'
+            //   }
+            //   return (
+            //     axios(options)
+            //   ) 
+            // }
 
-            // check if city is in city list
-            const selectedCity = props.cities.filter((city) => {
-              return city.city == targetCity
-            })
+            // // check if city is in city list
+            // const selectedCity = props.cities.filter((city) => {
+            //   return city.city == targetCity
+            // })
 
-            if (selectedCity.length) {
-              // if yes, send city data with place data directly
-              savePlace({place: props.place, city: selectedCity[0], existCity: 'true'}).then((response) => {
-                console.log(response)
-              })
-            } else {
-              // else find the city, create citiy and add place to that city in database
-              searchPlace({ 'query': targetCity}).then((response) => {
-                console.log('city from no where')
-                console.log(response.data)
-                console.log(props.user)
-                // let data = {user: props.user, place: props.place, city: response.data[0], existCity: 'false'}
-                // console.log('data')
-                // console.log(data)
-                savePlace({user: props.user, place: props.place, city: response.data[0], existCity: 'false'}).then((response) => {
-                  console.log(response)
-                })
-              })
-            }
+            // if (selectedCity.length) {
+            //   // if yes, send city data with place data directly
+            //   savePlace({place: props.place, city: selectedCity[0], existCity: 'true'}).then((response) => {
+            //     console.log(response)
+            //   })
+            // } else {
+            //   // else find the city, create citiy and add place to that city in database
+            //   searchPlace({ 'query': targetCity}).then((response) => {
+            //     console.log('city from no where')
+            //     console.log(response.data)
+            //     console.log(props.user)
+            //     // let data = {user: props.user, place: props.place, city: response.data[0], existCity: 'false'}
+            //     // console.log('data')
+            //     // console.log(data)
+            //     savePlace({user: props.user, place: props.place, city: response.data[0], existCity: 'false'}).then((response) => {
+            //       console.log(response)
+            //     })
+            //   })
+            // }
 
         }}
         >Add to Wishlist</button>
