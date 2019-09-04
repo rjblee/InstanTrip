@@ -30,11 +30,11 @@ export default function ImageSearch(props) {
             console.log('here is places')
             console.log(response.data)
             setplaces(response.data)
+            
           })
         }}
       >Search</button>
     </div>
-
 
     {places.map((place) => {
       return <Place
