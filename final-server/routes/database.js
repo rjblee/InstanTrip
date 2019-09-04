@@ -57,11 +57,21 @@ module.exports = () => {
       user = req.body.user
       // create city first and then add place to city
       db.query(`Insert Into cities (city, c_lat, c_lng, user_id, c_picture)
-                values ($1, $2, $3, $4, $5)`
+                values ($1, $2, $3, $4, $5)
+                RETURNING id`
                 ,[city.name, city.lat, city.lng, user.id, city.picture])
                 .then((response) => {
+                  // insert place to database with ref to created city
                   console.log('city might be created')
-                  console.log(response)
+                  const cityId = response.rows[0].id
+                  console.log(response.rows[0].id)
+
+                  db.query(`Insert INTO places (lat, lng, rating, picture, placeId, city_id, name, address)
+                  values ($1, $2, $3, $4, $5, $6, $7, $8)
+                  `, [place.lat, place.lng, place.rating, place.picture, place.placeId, cityId, place.name, place.address])
+                  .then(() => {
+                    console.log('maybe im in')
+                  }).catch((err) => { console.log(err)})
                 }).catch((err) => { console.log(err)})
     }
 
