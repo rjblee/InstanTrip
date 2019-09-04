@@ -2,7 +2,7 @@ import React, {Fragment, useState} from 'react';
 import searchPlaces from '../../helpers/searchPlaces'
 import Place from './Place'
 import axios from "axios";
-
+import imageSearch from '../../helpers/imageSearch'
 
 export default function ImageSearch(props) {
   const [inputvalue, setInputvalue] = useState('')
@@ -48,45 +48,7 @@ export default function ImageSearch(props) {
             onClick={() => {
               //send request based on search option
               if (searchOption === 'image') {
-                //imaga search option
-                console.log('oh here is the image search')
-                axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U',
-                {
-                  "requests": [
-                      {
-                        "image": {
-                          "source": {
-                            "imageUri": inputvalue  
-                          } 
-                        },
-                        "features": [
-                          {
-                            "type": "LANDMARK_DETECTION"
-                          }
-                        ]
-                      }
-                  ]
-                }
-                ).then((response) => {
-                  setInputvalue('')
-                  console.log('image search')
-                  const landmarks = response.data.responses[0].landmarkAnnotations.map((landmark) => landmark.description)
-                  console.log(landmarks)
-                  Promise.all(
-                    landmarks.map(landmark => {
-                      return searchPlaces({'query': landmark})
-                    })
-                  ).then((all) => {
-                    const landmarks = all.map(each => {
-                      return each.data[0]
-                    })
-                    setplaces([])
-                    setplaces(landmarks)
-                  })
-                }).catch((err) => {
-                  console.log(err)
-                })
-
+                imageSearch(inputvalue,setInputvalue,setplaces)
               } else {
                 //text search option
                 console.log(inputvalue)
