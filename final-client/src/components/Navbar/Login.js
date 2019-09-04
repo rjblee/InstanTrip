@@ -16,7 +16,7 @@ export default function Login(props) {
     <input 
       className="form-control" 
       type="password" 
-      placeholder="password"
+      placeholder="Password"
       value={props.password}
       onChange={event => {
         props.setPassword(event.target.value)

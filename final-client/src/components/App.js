@@ -39,21 +39,21 @@ export default function App() {
 
   return (
     <Router className="App">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">Travel</a>
+      <nav className="navbar navbar-expand-lg">
+        <a className="navbar-logo"><Link to="/">WeTravel</Link></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbar-menu">
           <ul className="navbar-nav">
             <li className="nav-item active">
               <div className="nav-link"><Link to="/">Home</Link></div>
             </li>
             <li className="nav-item">
-              <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
+              <div className="nav-link"><Link to="/imageSearch">Search by Image</Link></div>
             </li>
             <li className="nav-item">
-              <div className="nav-link"><Link to="/sampleCity">sample city page</Link></div>
+              <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div>
             </li>
           </ul>
         </div>
@@ -73,13 +73,11 @@ export default function App() {
                         setPassword={setPassword}
                         setUser={setUser}
                         setUserData={setUserData}
-                        />}
+                      />}
 
       </nav>
       <Route path="/" exact render={() => <Home/>} />
-      <Route path="/imageSearch" exact render={() => <ImageSearch
-                                                        cities={cities}
-      />}/>
+      <Route path="/imageSearch" exact render={() => <ImageSearch cities={cities}/>}/>
       <Route path="/sampleCity" exact render={() => <City/>} />
       <Route path="/map" exact component={GoogleMap} /> 
       

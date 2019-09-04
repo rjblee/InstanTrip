@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import Wishlist from "./Wishlist";
 
-import "./City.css";
+import "../../styles/City.css";
 
 
 export default function City() {
