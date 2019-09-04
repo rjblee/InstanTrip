@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import WishlistItem from './WishlistItem';
-import "./City.css";
+import "../../styles/City.css";
 
 
 const mockData = [{

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./City.css";
+import "../../styles/City.css";
 
 export default function WishlistItem(props) {
   return (
