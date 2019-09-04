@@ -7,7 +7,7 @@ import GoogleMap from './GoogleMap';
 import Login from './Navbar/Login'
 import Logout from './Navbar/Logout'
 import getUserData from '../helpers/getUserData'
-
+import getCities from '../helpers/getCities'
 import City from './City/City'
 
 export default function App() {
@@ -15,24 +15,38 @@ export default function App() {
   //state for user login
   const [name, setName] =useState('')
   const [password, setPassword] =useState('')
-  const [user,setUser] = useState({name:'' , password:''})
+  const [user,setUser] = useState({id:'', name:'' , password:''})
   const [userdata, setUserData] = useState([])
   const [cities, setCities] = useState([])
+  const [alert, setAlert] = useState('')
 
-  console.log(cities)
+  ////////////////////////////////////
+  console.log('----here')
+  console.log(cities) 
   console.log(userdata)
+  console.log(user)
+//////////////////////////////////////
   useEffect(() => {
     if (user.name) {
       // get all user data from database 
       getUserData(user).then((response) => {
-        //get cities 
-        const getUniqueCities = function (city, index, self) {
-          return self.indexOf(city) === index
-        }
-        setCities(response.data.map((place) => place.city).filter(getUniqueCities))
+        // //get cities 
+        // const getUniqueCities = function (city, index, self) {
+        //   return self.indexOf(city) === index
+        // }
+
+        // const citiesFromDate = response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}})
+        // const citiesname
+        // setCities(response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}}).filter(getUniqueCities))
+
+
         //store user data
         setUserData(response.data)
         console.log(response.data)
+      } 
+      )
+      getCities(user).then((response) => {
+        setCities(response.data)
       })
     }
   },[user])
@@ -64,6 +78,7 @@ export default function App() {
                         setPassword={setPassword}
                         setUserData={setUserData}
                         setCities={setCities}
+                        setAlert={setAlert}
                       />
                       : 
                       <Login 
@@ -73,11 +88,24 @@ export default function App() {
                         setPassword={setPassword}
                         setUser={setUser}
                         setUserData={setUserData}
-                      />}
+                        setAlert={setAlert}
+                        />}
 
       </nav>
-      <Route path="/" exact render={() => <Home/>} />
-      <Route path="/imageSearch" exact render={() => <ImageSearch cities={cities}/>}/>
+      
+      {alert.length ? <div class="alert alert-danger" role="alert">
+        {alert}
+      </div> : <></>}
+      <Route path="/" exact render={() => <Home
+                                            user={user}
+                                          />} />
+      <Route path="/imageSearch" exact render={() => <ImageSearch
+                                                        cities={cities}
+                                                        user={user}
+                                                        setCities={setCities}
+                                                        
+      />}/>
+
       <Route path="/sampleCity" exact render={() => <City/>} />
       <Route path="/map" exact component={GoogleMap} /> 
       

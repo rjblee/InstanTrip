@@ -5,7 +5,7 @@ axios.defaults.baseURL = process.env.SERVER_URL || "http://localhost:8080"
 axios.defaults.headers.common = {
   "Content-Type": "application/x-www-form-urlencoded"
 }
-export default function searchPlaces(data) {
+export default function userAuthentication(user) {
   // format example for data
   // { 
   //   'query': inputvalue, 
@@ -15,17 +15,16 @@ export default function searchPlaces(data) {
   const options = {
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(data),
-    url: '/searchPlaces'
+    data: qs.stringify(user),
+    url: '/user'
   }
   return (
     axios(options)
   )
+
   // axios(options).then(function(response) {
   //   console.log(response.data)
   // });
 
 
 }
-
-

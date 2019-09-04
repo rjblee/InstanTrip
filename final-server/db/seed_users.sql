@@ -1,8 +1,8 @@
 INSERT INTO users (name, password) 
-  VALUES ('Jiadan', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
+  VALUES ('Jiadan', '123');
 
 INSERT INTO users (name, password) 
-  VALUES ('Ralph', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
+  VALUES ('Ralph', '123');
   
 INSERT INTO users (name, password) 
-  VALUES ('Sean', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
+  VALUES ('Sean', '123');
