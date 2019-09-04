@@ -17,7 +17,6 @@ module.exports = () => {
       dataForSearch.location= `${location.lat},${location.lng}`
       dataForSearch.radius= '10000'
     }
-    
     searchPlaces(dataForSearch, res)
   })
 
