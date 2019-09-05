@@ -1,7 +1,10 @@
 import React from 'react';
 import "../../styles/Home.css";
+import CityCard from './CityCard'
 
-export default function Home() {
+export default function Home(props) {
+  console.log('props.cities')
+  console.log(props.cities)
   return(
     <div className="home-page">
       {/* <h1><b>Find Yourself In...</b></h1> */}
@@ -30,6 +33,14 @@ export default function Home() {
           })
         }}
       >Search</button> */}
+
+    <div>
+    {props.cities.map((city) => {
+      return (<CityCard city={city}/>)
+    })}
+    </div>
+    
+
     </div>
   </div>
 
