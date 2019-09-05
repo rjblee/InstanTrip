@@ -54,7 +54,7 @@ export default function App() {
   return (
     <Router className="App">
       <nav className="navbar navbar-expand-lg">
-        <a className="navbar-logo"><Link to="/">WeTravel</Link></a>
+        <span className="navbar-logo"><Link to="/">WeTravel</Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -103,11 +103,12 @@ export default function App() {
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
-                                                        
-      />}/>
+                                                      />}/>
 
-      <Route path="/sampleCity" exact render={() => <City/>} />
-      <Route path="/map" exact component={GoogleMap} /> 
+      <Route path="/sampleCity" exact render={() => <City
+                                                      city={cities[0]}
+                                                    />} />
+      <Route path="/map" exact component={GoogleMap} />
       
     </Router>
   );

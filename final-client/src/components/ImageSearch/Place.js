@@ -1,7 +1,4 @@
-import React, {Fragment, useState} from 'react';
-import axios from "axios";
-import qs from 'qs'
-import searchPlace from '../../helpers/searchPlaces';
+import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
 
 export default function Place(props) {
@@ -11,7 +8,7 @@ export default function Place(props) {
   console.log(props.cities)
   return (
     <div className="placeCard d-flex">
-      <img className="placeImage" src={props.place.picture}></img>
+      <img className="placeImage" src={props.place.picture} alt=''></img>
       <div>
         <p>name: {props.place.name}</p>
         <p>address: {props.place.address}</p>
