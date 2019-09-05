@@ -10,6 +10,7 @@ export default function City(props) {
   const [places, setplaces] = useState([])
   console.log('city-----------')
   console.log(props.city)
+  console.log(props.places)
   return(
 
     <>
