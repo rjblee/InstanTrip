@@ -68,37 +68,80 @@ export default function Map() {
 
         function calculateAndDisplayRoute(directionsService, directionsDisplay) {
           // var selectedMode = mode.current.value;
-          
+          const mode = 'DRIVIN'
           directionsService.route({
             origin: markerPositions[0], 
             destination: markerPositions[1], 
-            // waypoints: waypoints, //an array of waypoints
-            // optimizeWaypoints: true,
-            travelMode: "TRANSIT",
-            transitOptions: {
-              departureTime: new Date(Date.now() + 100000),
-              modes: ['BUS'],
-              routingPreference: 'FEWER_TRANSFERS'
-            }
+            waypoints: waypoints, //an array of waypoints
+            optimizeWaypoints: true,
+            travelMode: 'DRIVING'
+            // google.maps.TravelMode[selectedMode],
+            // transitOptions: {
+            //   departureTime: new Date(Date.now() + 100000),
+            //   modes: ['BUS'],
+            //   routingPreference: 'FEWER_TRANSFERS'
+            // }
             
           }, function(response, status) {
             console.log('here is the response ----------')
             console.log(response)
             if (status == 'OK') {
-              directionsDisplay.setDirections(response);
-              console.log("-----response",response)
-              
-              var infowindow2 = new google.maps.InfoWindow();
-              infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
-              infowindow2.setPosition({lat: 49.166592, lng: -123.133568});
-              infowindow2.open(targetMap);
+              if (mode === "DRIVING") {
+                directionsDisplay.setDirections(response);
+                var infowindow2 = new google.maps.InfoWindow();
+                infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
+                infowindow2.setPosition({lat: 49.166592, lng: -123.133568});
+                infowindow2.open(targetMap);
+              } else {
+                const steps = response.routes[0].legs
+                console.log(steps)
+                steps.forEach (step => {
+                  const start_address = step.start_address
+                  const end_address = step.end_address
+                  directionsService.route({
+                    origin: start_address, 
+                    destination: end_address, 
+                    // waypoints: waypoints, //an array of waypoints
+                    // optimizeWaypoints: true,
+                    travelMode: 'TRANSIT',
+                    // google.maps.TravelMode[selectedMode],
+                    transitOptions: {
+                      departureTime: new Date(Date.now() + 100000),
+                      modes: ['BUS'],
+                      routingPreference: 'FEWER_TRANSFERS'
+                    }
+                  }, function (response, status) {
+                    console.log(response)
+                    if (status == 'OK') {
+                      console.log('here is the lat')
+                      const start_location =  response.routes[0].legs[0].start_location
+                      const end_location =  response.routes[0].legs[0].end_location
+                      // console.log(response.routes[0].legs[0].start_location.lat())
+                      const directionsDisplay = new google.maps.DirectionsRenderer;
+                      directionsDisplay.setMap(targetMap);
+                      directionsDisplay.setDirections(response);
+                      var center_point = response.routes[0].overview_path.length/2;
+                      const infowindow2 = new google.maps.InfoWindow();
+                      infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
+                      infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
+                      infowindow2.open(targetMap);
+                      
+                      console.log(center_point)
+
+
+                    } else {
+                      console.log('oh wrongg')
+                    }
+                  })
+
+                })
+              }
             } else {
               window.alert('Directions request failed due to ' + status);
             }
           });
+
         }
-
-
     })
 
   })
@@ -108,8 +151,8 @@ export default function Map() {
     <>
     <div
       style={{
-        height: '500px',
-        width: '500px',
+        height: '600px',
+        width: '600px',
       }}
       className='bg-dark'
       ref={map}
