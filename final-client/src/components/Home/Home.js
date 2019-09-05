@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import "../../styles/Home.css";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
           //   setInputvalue(event.target.value)
           // }}
         />
-      <div class="button_cont" align="center"><a class="example_e" href="/sampleCity" target="_blank" rel="nofollow noopener">Create</a></div>
+      <div className="button_cont" align="center"><a class="example_e" href="/sampleCity" target="_blank" rel="nofollow noopener">Create</a></div>
       {/* </div> */}
       {/* <button  
         className="btn btn-primary mb-2"
