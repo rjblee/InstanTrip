@@ -41,9 +41,17 @@ export default function City(props) {
       <p> here is the city page</p>
       <SearchBar setplaces={setfoundPlaces} city={props.city}/>
 
-      <Wishlist></Wishlist>
-
-      {/* <Map></Map> */}
+      <div class="container">
+           <div class="row">
+            <div class="col-5">
+            <Map></Map>
+            </div>
+            <div class="col-2" ></div>
+            <div class="col-5">
+            <Wishlist></Wishlist>
+            </div>
+          </div>
+        </div>
     </>
 
 
