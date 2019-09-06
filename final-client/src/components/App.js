@@ -107,6 +107,7 @@ export default function App() {
           places={places}
         />} />
       })}
+      
       <Route path="/" exact render={() => <Home
                                             user={user}
                                             cities={cities}

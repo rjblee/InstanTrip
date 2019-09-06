@@ -91,9 +91,57 @@ module.exports = () => {
 
 
   router.post('/saveSchedules', (req, res) => {
-    
-    res.send('a response from the sever /saveSchedules')
+    console.log('check schedule body')
+    console.log(req.body)
 
+    const placesClusters = req.body.placesClusters;
+    const cityId = req.body.cityId;
+
+    // create schedule instance in schedules table
+    Promise.all(
+      placesClusters.map((placesCluster) => {
+        return db.query(`INSERT INTO schedules (city_id)
+                          values ($1)
+                          RETURNING *
+                          `, 
+                          [cityId]
+                        )
+                        
+      })
+    ).then(all => {
+      scheduleIds = all.map(each => {
+        return each.rows[0].id
+      })
+      console.log('scheduleIds')
+      console.log(scheduleIds)
+      
+      //prepare for Promise all
+      // combine place data with schedule id
+      dbQuerysPrep =[]
+      for (let i = 0; i < scheduleIds.length; i++) {
+        const scheduleId = scheduleIds[i]
+        for (let place of placesClusters[i]) {
+          dbQuerysPrep.push({place: place, scheduleId: scheduleId})
+        }
+      }
+
+      console.log('dbQuerysPrepafter')
+      console.log(dbQuerysPrep)
+
+      // resolve all dbquerys 
+      Promise.all(
+        dbQuerysPrep.map((each) => {
+          return db.query(`UPDATE places 
+                           SET schedule_id = $1
+                           WHERE id = $2
+                           `, [each.scheduleId, each.place.id]).catch(err => console.log(err))
+
+        })
+      ).then((response) => {
+        //and then send back response
+        res.send('schesuled')
+      })
+    })
   })
 
 

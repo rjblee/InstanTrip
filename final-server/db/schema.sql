@@ -36,6 +36,6 @@ CREATE TABLE places (
   picture VARCHAR(1000),
   placeId VARCHAR(255),
   city_id INTEGER REFERENCES cities(id) ON DELETE CASCADE,
-  schedule_id INTEGER REFERENCES cities(id) ON DELETE CASCADE
+  schedule_id INTEGER REFERENCES schedules(id) ON DELETE CASCADE
 );
 
