@@ -3,9 +3,6 @@ import "../../styles/Home.css";
 
 import Axios from 'axios';
 import CityCard from './CityCard'
-
-import CityCard from './CityCard'
-
 export default function Home(props) {
   const [inputvalue, setInputvalue] = useState()
 

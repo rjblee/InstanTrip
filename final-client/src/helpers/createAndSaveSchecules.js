@@ -24,8 +24,7 @@ export default function createAndSaveSchecules (places, kValue) {
       console.log(resultClusters)
 
 
-      
-
+    
     }})
 
 

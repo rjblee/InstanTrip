@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Wishlist from "./Wishlist";
 import "../../styles/City.css";
-// import Map from './Map';
+import Map from './Map';
 import SearchBar from '../SearchBar/searchBar'
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
 
@@ -31,7 +31,7 @@ export default function City(props) {
   // })
 
 
-  createAndSaveSchecules(props.places, 2)
+  // createAndSaveSchecules(props.places, 2)
 
 
 
@@ -40,6 +40,7 @@ export default function City(props) {
     <>
       <p> here is the city page</p>
       <SearchBar setplaces={setfoundPlaces} city={props.city}/>
+
       <Wishlist></Wishlist>
 
       {/* <Map></Map> */}
