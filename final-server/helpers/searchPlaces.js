@@ -1,7 +1,7 @@
 const request = require('then-request');
 
 module.exports = function searchPlaces (dataForSearch, res) {
-    request(
+  return request(
       'POST',
       'https://maps.googleapis.com/maps/api/place/textsearch/json',
       {

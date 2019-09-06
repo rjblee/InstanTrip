@@ -73,8 +73,29 @@ module.exports = () => {
                   }).catch((err) => { console.log(err)})
                 }).catch((err) => { console.log(err)})
     }
+  })
+
+
+  router.post('/createCity', (req, res) => {
+    console.log(req.body)
+    const city = req.body.city
+    const user = req.body.user
+    db.query(`INSERT INTO cities (city, c_lat, c_lng, user_id, c_picture)
+              values ($1, $2, $3, $4, $5) RETURNING *
+            `, [city.name, city.lat, city.lng, user.id, city.picture]).then((response) => {
+              res.send(response.rows[0])
+            }).catch((err) => {
+              console.log(err)
+            })})
+
+
+
+  router.post('/saveSchedules', (req, res) => {
+    
+    res.send('a response from the sever /saveSchedules')
 
   })
+
 
   return router;
 };

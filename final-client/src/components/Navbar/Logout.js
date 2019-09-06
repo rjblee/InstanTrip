@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 
 export default function Logout(props) {
   return (
-    <Fragment>
+    <>
       <span className="navbar-text white-text">
         Welcome, {props.user.name}
       </span>
@@ -18,6 +18,6 @@ export default function Logout(props) {
         props.setAlert('')
       }}
       >Logout</button>
-    </Fragment>
+    </>
   )
 }

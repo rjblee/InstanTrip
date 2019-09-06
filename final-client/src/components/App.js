@@ -3,7 +3,7 @@ import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './Home/Home';
 import ImageSearch from './ImageSearch/ImageSearch';
-import GoogleMap from './GoogleMap';
+// import GoogleMap from './GoogleMap';
 import Login from './Navbar/Login'
 import Logout from './Navbar/Logout'
 import getUserData from '../helpers/getUserData'
@@ -54,7 +54,7 @@ export default function App() {
   return (
     <Router className="App">
       <nav className="navbar navbar-expand-lg">
-        <a className="navbar-logo"><Link to="/">WeTravel</Link></a>
+        <span className="navbar-logo"><Link to="/">WeTravel</Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -96,18 +96,32 @@ export default function App() {
       {alert.length ? <div class="alert alert-danger" role="alert">
         {alert}
       </div> : <></>}
+
+        
+      {cities.map( (city) => {
+        const places = userdata.filter((place) => {
+          return place.city === city.city
+        })
+        return <Route path={"/" + city.city} exact render={() => <City
+          city={city}
+          places={places}
+        />} />
+      })}
       <Route path="/" exact render={() => <Home
                                             user={user}
+                                            cities={cities}
+                                            setCities={setCities}
                                           />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
-                                                        
-      />}/>
+                                                      />}/>
 
-      <Route path="/sampleCity" exact render={() => <City/>} />
-      <Route path="/map" exact component={GoogleMap} /> 
+      <Route path="/sampleCity" exact render={() => <City
+                                                      city={cities[0]}
+                                                    />} />
+      {/* <Route path="/map" exact component={GoogleMap} /> */}
       
     </Router>
   );

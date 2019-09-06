@@ -17,7 +17,7 @@ export default function SavePlaceToDatabase(props, targetCity) {
   
   // check if city is in city list
   const selectedCity = props.cities.filter((city) => {
-    return city.city == targetCity
+    return city.city === targetCity
   })
   
   if (selectedCity.length) {
