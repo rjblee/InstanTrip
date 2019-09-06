@@ -21,8 +21,8 @@ export default function createAndSaveSchecules (places, kValue, city, setUser) {
       const clusters = res.map((cluster) => {
         return cluster.clusterInd
       })
-      console.log('clusters123123123')
-      console.log(clusters)
+      // console.log('clusters123123123')
+      // console.log(clusters)
 
       // transfer array of city index value into real city data
       const placesClusters = clusters.map(cluster => {

@@ -97,54 +97,72 @@ module.exports = () => {
     const placesClusters = req.body.placesClusters;
     const cityId = req.body.cityId;
 
-    // create schedule instance in schedules table
-    Promise.all(
-      placesClusters.map((placesCluster) => {
-        return db.query(`INSERT INTO schedules (city_id)
-                          values ($1)
-                          RETURNING *
-                          `, 
-                          [cityId]
-                        )
-                        
-      })
-    ).then(all => {
-      scheduleIds = all.map(each => {
-        return each.rows[0].id
-      })
-      console.log('scheduleIds')
-      console.log(scheduleIds)
-      
-      //prepare for Promise all
-      // combine place data with schedule id
-      dbQuerysPrep =[]
-      for (let i = 0; i < scheduleIds.length; i++) {
-        const scheduleId = scheduleIds[i]
-        for (let place of placesClusters[i]) {
-          dbQuerysPrep.push({place: place, scheduleId: scheduleId})
-        }
-      }
 
-      console.log('dbQuerysPrepafter')
-      console.log(dbQuerysPrep)
+    // delete recent cooresponding rows in schedule table 
+    db.query(`DELETE FROM schedules
+              WHERE city_id = $1
+             `, [cityId]).then( () => {
+               // then re-create schedule instance in schedules table
+               Promise.all(
+                 placesClusters.map((placesCluster) => {
+                   return db.query(`INSERT INTO schedules (city_id)
+                                     values ($1)
+                                     RETURNING *
+                                     `, 
+                                     [cityId]
+                                   )
+                 })
+               ).then(all => {
+                 scheduleIds = all.map(each => {
+                   return each.rows[0].id
+                 })
+                 console.log('scheduleIds')
+                 console.log(scheduleIds)
+                 
+                 //prepare for Promise all
+                 // combine place data with schedule id
+                 dbQuerysPrep =[]
+                 for (let i = 0; i < scheduleIds.length; i++) {
+                   const scheduleId = scheduleIds[i]
+                   for (let place of placesClusters[i]) {
+                     dbQuerysPrep.push({place: place, scheduleId: scheduleId})
+                   }
+                 }
+           
+                 console.log('dbQuerysPrepafter')
+                 console.log(dbQuerysPrep)
+           
+                 // resolve all dbquerys 
+                 Promise.all(
+                   dbQuerysPrep.map((each) => {
+                     return db.query(`UPDATE places 
+                                      SET schedule_id = $1
+                                      WHERE id = $2
+                                      RETURNING *
+                                      `, [each.scheduleId, each.place.id])
+           
+                   })
+                 ).then((all) => {
+                   //and then send back response
+                   const updatedPlaces = all.map(each => each.rows[0])
+                   res.send(updatedPlaces)
+                 })
+               })
 
-      // resolve all dbquerys 
-      Promise.all(
-        dbQuerysPrep.map((each) => {
-          return db.query(`UPDATE places 
-                           SET schedule_id = $1
-                           WHERE id = $2
-                           RETURNING *
-                           `, [each.scheduleId, each.place.id])
-
-        })
-      ).then((all) => {
-        //and then send back response
-        const updatedPlaces = all.map(each => each.rows[0])
-        res.send(updatedPlaces)
-      })
-    })
+             }).catch(err => console.log(err))
   })
+
+  router.get(`/city/:id/schedules`, (req, res) => {
+    console.log("here is restful schedule")
+    const cityId = req.params.id
+    db.query(`SELECT * FROM schedules
+              WHERE city_id = $1
+              `, [cityId]
+            ).then((response) => {
+              res.send(response.rows)
+            })
+  })
+
 
 
   return router;
