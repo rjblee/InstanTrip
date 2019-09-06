@@ -8,11 +8,10 @@ import Map from './Map'
 export default function City() {
   return(
 
-    <Fragment>
-    <p> here is the city page</p>
+  <div>
     <Wishlist></Wishlist>
     <Map></Map>
-  </Fragment>
+  </div>
 
 
   )

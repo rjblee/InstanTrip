@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 import searchPlaces from '../../helpers/searchPlaces'
 import Place from './Place'
 import axios from "axios";
+import "../../styles/ImageSearch.css";
 
 
 export default function ImageSearch(props) {
@@ -13,7 +14,7 @@ export default function ImageSearch(props) {
 
   return(
   <Fragment>
-    <p> here is the imageSearch page</p>
+    <div className="search-page"><h1><b>Search Your Wonders</b></h1></div>
     <div>
       <div className="form-row">
         <div className='col-md-1'></div>
@@ -21,7 +22,7 @@ export default function ImageSearch(props) {
           <input 
                 type="text" 
                 className="form-control" 
-                placeholder="Search for place"
+                placeholder="Search for Location"
                 value={inputvalue}
                 onChange={event => {
                   setInputvalue(event.target.value)
@@ -37,8 +38,8 @@ export default function ImageSearch(props) {
                 console.log(event.target.value)
               }}
               >
-              <option defaultValue value='image'>img</option>
-              <option value="text">text</option>
+              <option defaultValue value='image'>By Image URL</option>
+              <option value="text">By Text</option>
             </select>
         </div>
 
