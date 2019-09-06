@@ -76,10 +76,26 @@ module.exports = () => {
   })
 
 
+  router.post('/createCity', (req, res) => {
+    console.log(req.body)
+    const city = req.body.city
+    const user = req.body.user
+    db.query(`INSERT INTO cities (city, c_lat, c_lng, user_id, c_picture)
+              values ($1, $2, $3, $4, $5)
+            `, [city.name, city.lat, city.lng, user.id, city.picture]).then(() => {
+              res.send('hello there is createcity!!')
+            }).catch((err) => {
+              console.log(err)
+            })
+
+
+
   router.post('/saveSchedules', (req, res) => {
     
     res.send('a response from the sever /saveSchedules')
+
   })
+
 
   return router;
 };
