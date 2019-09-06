@@ -30,6 +30,7 @@ export default function Home(props) {
   console.log('props.cities')
   console.log(props.cities)
 
+
   return(
     <div className="home-page">
       {/* <h1><b>Find Yourself In...</b></h1> */}
