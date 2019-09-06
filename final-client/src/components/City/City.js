@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
 import Wishlist from "./Wishlist";
 import "../../styles/City.css";
-import Map from './Map';
+// import Map from './Map';
 import SearchBar from '../SearchBar/searchBar'
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
 
 export default function City(props) {
+
   const [foundPlaces, setfoundPlaces] = useState([])
+
 
   console.log('city-----------')
   console.log(props.city)
   console.log(props.places)
+
 
   console.log('result from kMeanClustering')
 

@@ -83,8 +83,7 @@ export default function Map() {
             // }
             
           }, function(response, status) {
-            console.log('here is the response ----------')
-            console.log(response)
+            
             if (status == 'OK') {
               if (mode === "DRIVING") {
                 directionsDisplay.setDirections(response);
@@ -94,7 +93,7 @@ export default function Map() {
                 infowindow2.open(targetMap);
               } else {
                 const steps = response.routes[0].legs
-                console.log(steps)
+               
                 steps.forEach (step => {
                   const start_address = step.start_address
                   const end_address = step.end_address
@@ -111,9 +110,8 @@ export default function Map() {
                       routingPreference: 'FEWER_TRANSFERS'
                     }
                   }, function (response, status) {
-                    console.log(response)
+                    
                     if (status == 'OK') {
-                      console.log('here is the lat')
                       const start_location =  response.routes[0].legs[0].start_location
                       const end_location =  response.routes[0].legs[0].end_location
                       // console.log(response.routes[0].legs[0].start_location.lat())
@@ -126,7 +124,7 @@ export default function Map() {
                       infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
                       infowindow2.open(targetMap);
                       
-                      console.log(center_point)
+                      
 
 
                     } else {
