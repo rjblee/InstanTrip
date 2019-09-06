@@ -3,7 +3,7 @@ import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './Home/Home';
 import ImageSearch from './ImageSearch/ImageSearch';
-import GoogleMap from './GoogleMap';
+// import GoogleMap from './GoogleMap';
 import Login from './Navbar/Login'
 import Logout from './Navbar/Logout'
 import getUserData from '../helpers/getUserData'
@@ -108,7 +108,7 @@ export default function App() {
       <Route path="/sampleCity" exact render={() => <City
                                                       city={cities[0]}
                                                     />} />
-      <Route path="/map" exact component={GoogleMap} />
+      {/* <Route path="/map" exact component={GoogleMap} /> */}
       
     </Router>
   );
