@@ -134,12 +134,14 @@ module.exports = () => {
           return db.query(`UPDATE places 
                            SET schedule_id = $1
                            WHERE id = $2
-                           `, [each.scheduleId, each.place.id]).catch(err => console.log(err))
+                           RETURNING *
+                           `, [each.scheduleId, each.place.id])
 
         })
-      ).then((response) => {
+      ).then((all) => {
         //and then send back response
-        res.send('schesuled')
+        const updatedPlaces = all.map(each => each.rows[0])
+        res.send(updatedPlaces)
       })
     })
   })

@@ -1,7 +1,7 @@
 import axios from "axios";
 import kmeans from 'node-kmeans'
 
-export default function createAndSaveSchecules (places, kValue, city) {
+export default function createAndSaveSchecules (places, kValue, city, setUser) {
 
   //process place data for k mean clustering
   const cityVector = places.map((place) => {
@@ -31,8 +31,11 @@ export default function createAndSaveSchecules (places, kValue, city) {
 
       // send axios request with cityId and cityclusters
       axios.post('/saveSchedules', {placesClusters: placesClusters, cityId: city.id}).then((response) => {
-        console.log(response)
+        // use setUser to trigger data relode
+        setUser(prev => {return prev})
       })
 
     }})
+
+
 }
