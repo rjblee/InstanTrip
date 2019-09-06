@@ -4,7 +4,7 @@ import GoogleMapLoader from 'google-maps'
 export default function Map() {
 
   let map = React.createRef();
-  let mode = React.createRef();
+  
 
   useEffect(() => {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
@@ -149,12 +149,12 @@ export default function Map() {
     <>
     <div
       style={{
-        height: '600px',
-        width: '600px',
+        height: '500px',
+        width: '500px',
       }}
       className='bg-dark'
       ref={map}
-      // ref={mode}
+    
 
     ></div>
     </>
