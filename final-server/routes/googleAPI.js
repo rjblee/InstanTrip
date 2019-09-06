@@ -11,7 +11,7 @@ module.exports = () => {
       query: req.body.query,
       key:"AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"
     }
-
+    console.log(req)
     if (req.body.location) {
       const location = req.body.location
       dataForSearch.location= `${location.lat},${location.lng}`

@@ -3,6 +3,8 @@ import "../../styles/Home.css";
 
 import Axios from 'axios';
 
+import CityCard from './CityCard'
+
 export default function Home(props) {
   const [inputvalue, setInputvalue] = useState()
 
@@ -24,7 +26,6 @@ export default function Home(props) {
   }
 
 
-import CityCard from './CityCard'
 
 export default function Home(props) {
   console.log('props.cities')
