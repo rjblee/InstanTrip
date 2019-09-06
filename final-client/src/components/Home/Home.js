@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "../../styles/Home.css";
+
 import Axios from 'axios';
 
 export default function Home(props) {
@@ -21,6 +22,13 @@ export default function Home(props) {
    
 
   }
+
+
+import CityCard from './CityCard'
+
+export default function Home(props) {
+  console.log('props.cities')
+  console.log(props.cities)
 
   return(
     <div className="home-page">
@@ -53,6 +61,11 @@ export default function Home(props) {
         }}
       >Search</button> */}
 
+    <div>
+    {props.cities.map((city) => {
+      return (<CityCard city={city}/>)
+    })}
+    </div>
     </div>
   </div>
 

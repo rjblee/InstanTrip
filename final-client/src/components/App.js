@@ -96,8 +96,20 @@ export default function App() {
       {alert.length ? <div class="alert alert-danger" role="alert">
         {alert}
       </div> : <></>}
+
+        
+      {cities.map( (city) => {
+        const places = userdata.filter((place) => {
+          return place.city === city.city
+        })
+        return <Route path={"/" + city.city} exact render={() => <City
+          city={city}
+          places={places}
+        />} />
+      })}
       <Route path="/" exact render={() => <Home
                                             user={user}
+                                            cities={cities}
                                           />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
