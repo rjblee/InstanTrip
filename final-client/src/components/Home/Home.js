@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import "../../styles/Home.css";
 
 import Axios from 'axios';
+import CityCard from './CityCard'
 
 export default function Home(props) {
   const [inputvalue, setInputvalue] = useState()
+
+  console.log('props.cities')
+  console.log(props.cities)
 
   const handleClick = (event) =>  {
     event.preventDefault()
@@ -19,17 +23,7 @@ export default function Home(props) {
       // console.log(props.user)
       
     })
-   
-
   }
-
-
-import CityCard from './CityCard'
-
-export default function Home(props) {
-  console.log('props.cities')
-  console.log(props.cities)
-
 
   return(
     <div className="home-page">
