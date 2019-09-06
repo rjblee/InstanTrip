@@ -17,7 +17,7 @@ export default function City(props) {
       <p> here is the city page</p>
       <SearchBar setplaces={setplaces} city={props.city}/>
       <Wishlist></Wishlist>
-      <Map></Map>
+      {/* <Map></Map> */}
     </>
 
 
