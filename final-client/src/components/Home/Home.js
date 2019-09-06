@@ -15,14 +15,12 @@ export default function Home(props) {
    let result = '';
     Axios.post("/searchPlaces", { query: inputvalue}).then(response => {
       Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
-        console.log(response)
+        console.log(response.data)
+        props.setCities(prev => {return [...prev, response.data]})
       })
-      // console.log('response------11111')
-      // console.log(response.data[0])
-      // console.log(props.user)
-      
     })
   }
+
   return(
     <div className="home-page">
       {/* <h1><b>Find Yourself In...</b></h1> */}
@@ -39,7 +37,7 @@ export default function Home(props) {
           }}
         />
       <div className="button_cont" align="center">
-        <a class="example_e" href="/sampleCity" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</a>
+        <div class="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
       </div>
       {/* </div> */}
       {/* <button  

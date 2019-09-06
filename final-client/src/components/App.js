@@ -110,6 +110,7 @@ export default function App() {
       <Route path="/" exact render={() => <Home
                                             user={user}
                                             cities={cities}
+                                            setCities={setCities}
                                           />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
