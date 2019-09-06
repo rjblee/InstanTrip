@@ -73,7 +73,12 @@ module.exports = () => {
                   }).catch((err) => { console.log(err)})
                 }).catch((err) => { console.log(err)})
     }
+  })
 
+
+  router.post('/saveSchedules', (req, res) => {
+    
+    res.send('a response from the sever /saveSchedules')
   })
 
   return router;
