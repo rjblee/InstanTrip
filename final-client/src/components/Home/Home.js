@@ -2,7 +2,7 @@ import React, { useState,Fragment } from 'react';
 import "../../styles/Home.css";
 import Axios from 'axios';
 import CityCard from './CityCard';
-import Map from '../City/Map'
+// import Map from '../City/Map'
 export default function Home(props) {
   const [inputvalue, setInputvalue] = useState()
 

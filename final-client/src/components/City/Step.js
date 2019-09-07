@@ -8,7 +8,7 @@ const { Step } = Steps;
 const stepStyle = {
   marginBottom: 60,
   boxShadow: '0px -1px 0 0 #e8e8e8 inset',
-  background: 'white'
+  // background: 'white'
 };
 export default function Demo() {
   const [current, setCurrent] = useState(0);
