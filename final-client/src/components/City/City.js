@@ -10,6 +10,7 @@ import ScheduleForm from './ScheduleForm'
 import Demo from './Step'
 // import SearchResultList from './SearchResultList'
 import CityPlace from './CityPlace'
+import WishlistItem from './WishlistItem';
 
 
 import addScheduleIdToPlace from '../../helpers/addScheduleIdToPlace'
@@ -31,13 +32,16 @@ export default function City(props) {
   //props .places 
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
+
+  const [currentSchedule, setCurrentSchedule] = useState([])
+
   const [kValue, setKValue] = useState('')
 
 
-  console.log(`here is the place data for ${props.city.city}`)
-  console.log(props.places)
-  console.log('schedules')
-  console.log(schedules)
+  // console.log(`here is the place data for ${props.city.city}`)
+  // console.log(props.places)
+  // console.log('schedules')
+  // console.log(schedules)
 
 
   useEffect( () => { 
@@ -58,7 +62,8 @@ export default function City(props) {
   //   lng = foundPlaces[0].lng
   //   lat = foundPlaces[0].lat
   // }
-  
+
+console.log("XXXXXXXX", props)
 
   return(
     <>
@@ -96,10 +101,24 @@ export default function City(props) {
         <div class="row">
           <div class="col-1" ></div>
           <div class="col-6">
-            <Map></Map>
+            <Map
+            // places={props.places.filter((places)=>{
+            //   return 
+            //   places.schedule_id === schedule.id
+            // })}
+            // start_location={start_location}
+            // end_location={start_location}
+            // schedule={currentSchedule}
+            // setSchedule={setCurrentSchedule}
+
+           />
           </div>
           <div class="col-4">
-            <Wishlist></Wishlist>
+          
+           <Wishlist
+                  places={props.places}  
+                  />
+        
           </div>
           <div class="col-1" ></div>
         </div>

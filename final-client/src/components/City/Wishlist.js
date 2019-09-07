@@ -2,38 +2,24 @@ import React, { useState } from 'react';
 import WishlistItem from './WishlistItem';
 import "../../styles/City.css";
 
-
-const mockData = [{
-  name: "Canada Place",
-  rating: 4.1
-},
-{
-  name: "Stanely Park",
-  rating: 4.3
-},
-{
-  name: "Gastown",
-  rating: 3.8
-}];
-
-
-export default function Wishlist() {
-
-  const [state, setState] = useState(mockData);
+export default function Wishlist(props) {
+  console.log("VVVVVVV", props)
+  const [state, setState] = useState('');
 
   return (
     <div className="wishlist">
-      {state.map(
-        element => {
-          return (
-            <WishlistItem
-              name={element.name}
-              rating={element.rating}
+    {props.places.map((place)=>{
+      return(
+      <WishlistItem
+              name={place.name}
+              rating={place.rating}
             >
             </WishlistItem>
-          )
-        }
-      )}
+      )
+    })}
+            
+        
+       
     </div>
   )
 };
