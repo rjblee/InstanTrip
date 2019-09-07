@@ -152,6 +152,7 @@ module.exports = () => {
              }).catch(err => console.log(err))
   })
 
+
   router.get(`/city/:id/schedules`, (req, res) => {
     console.log("here is restful schedule")
     const cityId = req.params.id
@@ -163,6 +164,58 @@ module.exports = () => {
             })
   })
 
+  // add schedule id to places 
+  router.put(`/places/:id/schedule`, (req, res) => {
+    const scheduleId = req.body.scheduleId
+    const placeId = req.params.id
+    
+    console.log('check: put---- /places/:id/schedule')
+    console.log('scheduleId = ')
+    console.log(scheduleId)
+
+    db.query(`UPDATE places 
+              SET schedule_id = $1
+              WHERE id = $2
+              `, [scheduleId, placeId]).then(() => {
+                res.send('successs')
+              }).catch(err => console.log(err))
+  })
+
+  //delete schedule id from places
+  router.delete(`/places/:id/schedule`, (req, res) => {
+    const placeId = req.params.id
+
+    console.log('check: delete---- /places/:id/schedule')
+    console.log('placeId = ')
+    console.log(placeId)
+
+    db.query(`UPDATE places
+              SET schedule_id = $1
+              WHERE id = $2
+              `, [null, placeId]).then(() => {
+                res.send('successs')
+              }).catch(err => console.log(err))
+  })
+
+
+  // update schedule table with start loc, end loc, transit
+  router.post(`/schedule/:id`, (req, res) => {
+    const start_place = req.body.start_place || null;
+    const end_place = req.body.end_place || null;
+    const transit = req.body.transit || null;
+    const scheduleId = req.params.id
+
+    console.log('--start_loc' + start_loc)
+    console.log('--end_loc' + end_loc)
+    console.log('--transit' + transit)
+
+    db.query(`UPDATE schedules
+              SET start_place = $1, end_place = $2, transit = $3
+              WHERE id = $4
+              `, [start_place, end_place, transit, scheduleId]).then(() => {
+                res.send('successs')
+              }).catch(err => console.log(err))
+  })
 
 
   return router;
