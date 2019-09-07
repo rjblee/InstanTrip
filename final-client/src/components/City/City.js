@@ -8,6 +8,8 @@ import SearchBar from '../SearchBar/searchBar'
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
 import ScheduleForm from './ScheduleForm'
 import Demo from './Step'
+// import SearchResultList from './SearchResultList'
+import CityPlace from './CityPlace'
 
 
 export default function City(props) {
@@ -74,22 +76,35 @@ export default function City(props) {
 
       <SearchBar setplaces={setfoundPlaces} city={props.city}/>
       
+      
       <div>
-           <div class="row">
-           <div class="col-1" ></div>
-            <div class="col-6">
+        <div class="row">
+          <div class="col-1" ></div>
+          <div class="col-6">
             <Map></Map>
-            </div>
-            <div class="col-4">
-            <Wishlist></Wishlist>
-            </div>
-            <div class="col-1" ></div>
           </div>
+          <div class="col-4">
+            <Wishlist></Wishlist>
+          </div>
+          <div class="col-1" ></div>
+        </div>
       </div>
-      <div><Demo /></div>
+
+    <div><Demo /></div>
+    
+    <div>
+    {foundPlaces.map((place) => {
+          return <CityPlace
+                  place={place}
+                  key={place.placeId}
+                  city={props.city}
+                  user={props.user}
+                  setCities={props.setCities}
+                  />
+        })}
+    </div>
+
     </>
-
-
 
   )
 }

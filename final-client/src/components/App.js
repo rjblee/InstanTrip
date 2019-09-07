@@ -123,6 +123,9 @@ export default function App() {
 
       <Route path="/sampleCity" exact render={() => <City
                                                       city={cities[0]}
+                                                      cities={cities}
+                                                      user={user}
+                                                      setCities={setCities}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}
       
