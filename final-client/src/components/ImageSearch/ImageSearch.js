@@ -14,7 +14,7 @@ export default function ImageSearch(props) {
   return(
 
   <>
-    <p> here is the imageSearch page</p>
+   <div className="search-page"><h1><b>Search Your Wonders</b></h1></div>
     <SearchBar setplaces={setplaces}/>
 
     {places.map((place) => {

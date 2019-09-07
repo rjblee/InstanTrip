@@ -1,6 +1,6 @@
 .home-page {
   color: white;
-  padding-top: 250px;
+  padding-top: 200px;
   padding-left: 150px;
   /* font-family: 'Permanent Marker', cursive; */
   font-family: 'Playfair Display SC', serif;
@@ -10,16 +10,14 @@
 
 .home-search {
   display: flex;
-  padding-top: 20px;
-  margin: 0 50px 0 50px;
-  height: 100px;
+  padding-top: 30px;
+  margin: 0 70px 0 70px;
   width: 600px;
   /* opacity: 0.8; */
 }
 
 .form-control {
   height: 70px;
-  /* opacity: 0.5; */
   font-family: 'Playfair Display SC', serif;
 }
 

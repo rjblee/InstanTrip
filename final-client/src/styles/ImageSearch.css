@@ -1,6 +1,38 @@
 .search-page {
   color: white;
-  padding-top: 250px;
+  padding-top: 200px;
   padding-left: 150px;
   font-family: 'Playfair Display SC', serif;
+  
+}
+
+.form-row {
+  height: 70px;
+  font-family: 'Playfair Display SC', serif;
+  padding-top: 30px;
+  margin: 0 70px 100px 70px;
+}
+
+.placeCard {
+  font-family: 'Playfair Display SC', serif;
+  border: 3px solid white;
+  /* margin-top: 100px; */
+  background: white;
+  opacity: 0.9;
+  width: 60%;
+  font-size: 1.4rem;
+  margin-left: 20%;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+
+.placeImage {
+  width: 300px;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.placeCard:hover {
+  /* Clip-path spanning the entire box so it's no longer hiding the full-width border. */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }

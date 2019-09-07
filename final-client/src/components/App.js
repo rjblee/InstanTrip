@@ -16,6 +16,7 @@ export default function App() {
   const [name, setName] =useState('')
   const [password, setPassword] =useState('')
   const [user,setUser] = useState({id:'', name:'' , password:''})
+  // const [userdata, setUserData] = useState([])
   const [userdata, setUserData] = useState([])
   const [cities, setCities] = useState([])
   const [alert, setAlert] = useState('')
@@ -105,8 +106,10 @@ export default function App() {
         return <Route path={"/" + city.city} exact render={() => <City
           city={city}
           places={places}
+          setUser={setUser}
         />} />
       })}
+      
       <Route path="/" exact render={() => <Home
                                             user={user}
                                             cities={cities}
