@@ -24,6 +24,7 @@ export default function Home(props) {
     <div className="home-page">
       {/* <h1><b>Find Yourself In...</b></h1> */}
       <h1><b>Your Journey Begins...</b></h1>
+
     <div className="home-search">
       {/* <div className="form-group mx-sm-3 mb-2"> */}
         <input 
@@ -59,7 +60,6 @@ export default function Home(props) {
 
     </div>
     </div>
-  </div>
 
   )
 }
