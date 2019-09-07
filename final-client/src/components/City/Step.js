@@ -17,7 +17,7 @@ export default function Demo() {
   //   setCurrent(current);
   // };
     return (
-      <div>
+      <div className='col-10'>
         {/* <Steps
           type="navigation"
           size="small"
