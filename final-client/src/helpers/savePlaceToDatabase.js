@@ -16,9 +16,15 @@ export default function SavePlaceToDatabase(props, targetCity) {
   }
   
   // check if city is in city list
-  const selectedCity = props.cities.filter((city) => {
-    return city.city === targetCity
-  })
+
+  let selectedCity =''
+  if (props.cities) {
+    const selectedCity = props.cities.filter((city) => {
+      return city.city === targetCity
+    })
+  } else {
+    selectedCity = [targetCity]
+  }
   
   if (selectedCity.length) {
     // if yes, send city data with place data directly
