@@ -106,7 +106,7 @@ export default function App() {
         return <Route path={"/" + city.city} exact render={() => <City
           city={city}
           places={places}
-          setUser= {setUser}
+          setUser={setUser}
         />} />
       })}
       
