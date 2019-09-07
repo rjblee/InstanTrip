@@ -1,29 +1,32 @@
 import React, {useEffect} from 'react';
 import GoogleMapLoader from 'google-maps'
 
-export default function Map() {
-
+export default function Map(props) {
+  const lat = props.lat || 49.246292;
+  const lng = props.lng || -123.116226;
   let map = React.createRef();
-  let mode = React.createRef();
 
   useEffect(() => {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
     GoogleMapLoader.load(function(google){
 
       const targetMap = new google.maps.Map(map.current, {
-        center: {lat: 49.246292, lng: -123.116226},
+        center: {lat: lat, lng: lng},
         zoom: 8
       });
 
 
       const markerPositions= [
-        {lat: 49.246292, lng: -123.116226},
-        {lat: 49.267132, lng: -122.968941},
-        {lat: 49.166592, lng: -123.133568},
-        {lat:49.2384, lng:-123.0318},
-        {lat:49.2483,lng:-123.0559}
+        {lat: lat, lng: lng}
+        // {lat: 49.246292, lng: -123.116226},
+        // {lat: 49.267132, lng: -122.968941},
+        // {lat: 49.166592, lng: -123.133568},
+        // {lat:49.2384, lng:-123.0318},
+        // {lat:49.2483,lng:-123.0559}
         ]
       //code from here
+
+
       //maker
       markerPositions.map(loc => {
         new google.maps.Marker({
@@ -37,6 +40,9 @@ export default function Map() {
       //   map: targetMap,
       //   title: 'Hello World!'
       // });
+
+
+
       //route
       
       var trafficLayer = new google.maps.TrafficLayer();
@@ -53,9 +59,7 @@ export default function Map() {
       {
         location: {lat:49.2483,lng:-123.0559},
         stopover: true
-  }
-      
-        
+  }  
       ];
       var directionsDisplay = new google.maps.DirectionsRenderer;
       var directionsService = new google.maps.DirectionsService;
@@ -149,12 +153,12 @@ export default function Map() {
     <>
     <div
       style={{
-        height: '600px',
-        width: '600px',
+        height: '500px',
+        width: '700px',
       }}
       className='bg-dark'
       ref={map}
-      // ref={mode}
+    
 
     ></div>
     </>

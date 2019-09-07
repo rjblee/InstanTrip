@@ -4,8 +4,11 @@ import "../../styles/City.css";
 import Map from './Map';
 import axios from "axios";
 import SearchBar from '../SearchBar/searchBar'
+
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
 import ScheduleForm from './ScheduleForm'
+import Demo from './Step'
+
 
 export default function City(props) {
   //access
@@ -16,10 +19,12 @@ export default function City(props) {
 
   const [kValue, setKValue] = useState('')
 
+
   console.log(`here is the place data for ${props.city.city}`)
   console.log(props.places)
   console.log('schedules')
   console.log(schedules)
+
 
   useEffect( () => { 
     
@@ -30,7 +35,13 @@ export default function City(props) {
     })
   },[])
 
+  // let lng;
+  // let lat;
 
+  // if (foundPlaces.length > 0) {
+  //   lng = foundPlaces[0].lng
+  //   lat = foundPlaces[0].lat
+  // }
 
   return(
     <>
@@ -61,15 +72,23 @@ export default function City(props) {
       >Make Schedule</button>
     </div>
 
-      <SearchBar 
-        setplaces={setfoundPlaces} 
-        city={props.city}
-        />
-
-      <Wishlist></Wishlist>
-
-      {/* <Map></Map> */}
+      <SearchBar setplaces={setfoundPlaces} city={props.city}/>
+      
+      <div>
+           <div class="row">
+           <div class="col-1" ></div>
+            <div class="col-6">
+            <Map></Map>
+            </div>
+            <div class="col-4">
+            <Wishlist></Wishlist>
+            </div>
+            <div class="col-1" ></div>
+          </div>
+      </div>
+      <div><Demo /></div>
     </>
+
 
 
   )

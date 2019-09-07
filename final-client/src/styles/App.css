@@ -47,3 +47,9 @@ a {
   font-family: 'Playfair Display SC', serif;
   padding: 10px;
 }
+
+.loginout {
+  height: 40px;
+  margin: 10px;
+  font-family: 'Playfair Display SC', serif;
+}
