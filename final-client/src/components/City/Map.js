@@ -154,7 +154,7 @@ export default function Map(props) {
     <div
       style={{
         height: '500px',
-        width: '700px',
+        width: '800px',
       }}
       className='bg-dark'
       ref={map}

@@ -3,9 +3,9 @@ import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
 
 export default function Place(props) {
   const [targetCity, setTargetCity] = useState('')
-  console.log(targetCity)
-  console.log('citiys----------')
-  console.log(props.cities)
+  // console.log(targetCity)
+  // console.log('citiys----------')
+  // console.log(props.cities)
   return (
     <div className="placeCard d-flex">
       <img className="placeImage" src={props.place.picture} alt=''></img>
