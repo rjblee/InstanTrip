@@ -115,17 +115,26 @@ export default function App() {
                                             cities={cities}
                                             setCities={setCities}
                                           />} />
-      <Route path="/imageSearch" exact render={() => <ImageSearch
+      <Route path="/imageSearch" exact renuserdatader={() => <ImageSearch
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
                                                       />}/>
 
+      
       <Route path="/sampleCity" exact render={() => <City
-                                                      city={cities[0]}
+                                                      city={{
+                                                        c_lat: "49.246292",
+                                                        c_lng: "-123.116226",
+                                                        c_picture: "https://lh3.googleusercontent.com/p/AF1QipMY2PblrieyoxW-CyVSLa8AS6EGuKQOzAHIshdj=s1600-w200",
+                                                        city: "Vancouver",
+                                                        id: 1,
+                                                        user_id: 1
+                                                      }}
                                                       cities={cities}
                                                       user={user}
                                                       setCities={setCities}
+                                                      places={userdata}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}
       

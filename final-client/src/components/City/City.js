@@ -6,7 +6,7 @@ import axios from "axios";
 import SearchBar from '../SearchBar/searchBar'
 
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
-import ScheduleForm from './ScheduleForm'
+import StartEndTransitForm from './StartEndTransitForm'
 import Demo from './Step'
 // import SearchResultList from './SearchResultList'
 import CityPlace from './CityPlace'
@@ -22,27 +22,23 @@ import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
 //deleteScheduleFromPlace(1, props.setUser)
 
 import updateSchedule from '../..//helpers/updateSchedule'
-//example:
-//updateSchedule(2, '33322222111start!!!1231111', "33332222111end!!!123111", '33322221111transit!!!1231111', setSchedules)
-
 
 export default function City(props) {
   //access
   //props.city 
-  //props .places 
+  //props.places 
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
 
-  const [currentSchedule, setCurrentSchedule] = useState([])
-
   const [kValue, setKValue] = useState('')
 
-
-  // console.log(`here is the place data for ${props.city.city}`)
-  // console.log(props.places)
-  // console.log('schedules')
-  // console.log(schedules)
-
+  const [currentSchedule, setCurrentSchedule] = useState({id: '', city_id: '', start_place: null, end_place: null, transit: null})
+  console.log(`here is the place data for ${props.city.city}`)
+  console.log(props.places)
+  console.log('schedules')
+  console.log(schedules)
+  console.log('setcurrent schedule')
+  console.log(currentSchedule)
 
   useEffect( () => { 
     
@@ -69,35 +65,35 @@ console.log("XXXXXXXX", props)
     <>
       <p> here is the city page</p>
 
-    <div className="form-inline">
-      <div className="form-group mx-sm-3 mb-2">
-        <input 
-          type="text" 
-          className="form-control" 
-          placeholder={`Days in ${props.city.city}`}
-          value={kValue}
-          onChange={(event) => {
-            setKValue(event.target.value)
+      <div className="form-inline">
+        <div className="form-group mx-sm-3 mb-2">
+          <input 
+            type="text" 
+            className="form-control" 
+            placeholder={`Days in ${props.city.city}`}
+            value={kValue}
+            onChange={(event) => {
+              setKValue(event.target.value)
+            }}
+            />
+        </div>
+        <button 
+          type="submit" 
+          className="btn btn-primary mb-2"
+          onClick={() => {
+            // function takes place data, k value to do clustering 
+            // and then  city id to  create row in schedules table
+            // and add schedule id into schedule_id colume of places table
+            // then update data by calling setUser(prev => {return prev})
+            createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
           }}
-          />
+        >Make Schedule</button>
       </div>
-      <button 
-        type="submit" 
-        className="btn btn-primary mb-2"
-        onClick={() => {
-          // function takes place data, k value to do clustering 
-          // and then  city id to  create row in schedules table
-          // and add schedule id into schedule_id colume of places table
-          // then update data by calling setUser(prev => {return prev})
-          createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
-        }}
-      >Make Schedule</button>
-    </div>
 
       <SearchBar setplaces={setfoundPlaces} city={props.city}/>
       
       
-      <div>
+      <div class="mb-5">
         <div class="row">
           <div class="col-1" ></div>
           <div class="col-6">
@@ -124,19 +120,32 @@ console.log("XXXXXXXX", props)
         </div>
       </div>
 
-    <div><Demo /></div>
-    
-    <div>
-    {foundPlaces.map((place) => {
-          return <CityPlace
-                  place={place}
-                  key={place.placeId}
-                  city={props.city}
-                  user={props.user}
-                  setCities={props.setCities}
-                  />
-        })}
-    </div>
+      <StartEndTransitForm
+        currentSchedule = {currentSchedule}
+        setCurrentSchedule = {setCurrentSchedule}
+        places={props.places}
+        setSchedules={setSchedules}
+      /> 
+
+      <div class="row">
+          <div class="col-1" ></div>
+          <div class="col-10">
+            <Demo/>
+          </div>
+          <div class="col-1" ></div>
+        </div>
+      <div>
+        
+      {foundPlaces.map((place) => {
+            return <CityPlace
+                    place={place}
+                    key={place.placeId}
+                    city={props.city}
+                    user={props.user}
+                    setCities={props.setCities}
+                    />
+      })}
+      </div>
 
     </>
 
