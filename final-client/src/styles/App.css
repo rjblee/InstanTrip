@@ -32,8 +32,7 @@
 }
 
 /* navbar font */
-@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Courgette|Permanent+Marker|Playfair+Display+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif|Playfair+Display+SC|Quicksand&display=swap');
 
 .navbar-logo {
   color: white;
