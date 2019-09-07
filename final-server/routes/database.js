@@ -199,24 +199,27 @@ module.exports = () => {
 
 
   // update schedule table with start loc, end loc, transit
-  router.post(`/schedule/:id`, (req, res) => {
+  router.put(`/schedule/:id`, (req, res) => {
     const start_place = req.body.start_place || null;
     const end_place = req.body.end_place || null;
     const transit = req.body.transit || null;
     const scheduleId = req.params.id
 
-    console.log('--start_loc' + start_loc)
-    console.log('--end_loc' + end_loc)
+    console.log('--start_loc' + start_place)
+    console.log('--end_loc' + end_place)
     console.log('--transit' + transit)
 
     db.query(`UPDATE schedules
               SET start_place = $1, end_place = $2, transit = $3
               WHERE id = $4
-              `, [start_place, end_place, transit, scheduleId]).then(() => {
-                res.send('successs')
+              RETURNING *
+              `, [start_place, end_place, transit, scheduleId]).then((response) => {
+                const newSchedule = response.rows[0]
+                res.send(newSchedule)
               }).catch(err => console.log(err))
   })
 
 
+  
   return router;
 };

@@ -12,6 +12,19 @@ import Demo from './Step'
 import CityPlace from './CityPlace'
 
 
+import addScheduleIdToPlace from '../../helpers/addScheduleIdToPlace'
+//example: 
+// addScheduleIdToPlace(1, '1234', props.setUser)
+
+import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
+//example:
+//deleteScheduleFromPlace(1, props.setUser)
+
+import updateSchedule from '../..//helpers/updateSchedule'
+//example:
+//updateSchedule(2, '33322222111start!!!1231111', "33332222111end!!!123111", '33322221111transit!!!1231111', setSchedules)
+
+
 export default function City(props) {
   //access
   //props.city 
@@ -45,6 +58,7 @@ export default function City(props) {
   //   lng = foundPlaces[0].lng
   //   lat = foundPlaces[0].lat
   // }
+  
 
   return(
     <>
