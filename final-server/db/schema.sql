@@ -23,7 +23,8 @@ CREATE TABLE schedules (
   name VARCHAR(255),
   city_id INTEGER REFERENCES cities(id),
   start_place VARCHAR(255),
-  end_place VARCHAR(255)
+  end_place VARCHAR(255),
+  transit VARCHAR(255)
 );
 
 CREATE TABLE places (

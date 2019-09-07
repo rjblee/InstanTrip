@@ -13,13 +13,28 @@ import CityPlace from './CityPlace'
 import WishlistItem from './WishlistItem';
 
 
+import addScheduleIdToPlace from '../../helpers/addScheduleIdToPlace'
+//example: 
+// addScheduleIdToPlace(1, '1234', props.setUser)
+
+import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
+//example:
+//deleteScheduleFromPlace(1, props.setUser)
+
+import updateSchedule from '../..//helpers/updateSchedule'
+//example:
+//updateSchedule(2, '33322222111start!!!1231111', "33332222111end!!!123111", '33322221111transit!!!1231111', setSchedules)
+
+
 export default function City(props) {
   //access
   //props.city 
   //props .places 
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
+
   const [currentSchedule, setCurrentSchedule] = useState([])
+
   const [kValue, setKValue] = useState('')
 
 
@@ -32,10 +47,12 @@ export default function City(props) {
   useEffect( () => { 
     
     // extract schedules
-    axios.get(`/city/${props.city.id}/schedules`).then(response => {
-      console.log('maybe we have it')
-      setSchedules(response.data)
-    })
+    if(props.city.id) {
+      axios.get(`/city/${props.city.id}/schedules`).then(response => {
+        console.log('maybe we have it')
+        setSchedules(response.data)
+      })
+    }
   },[])
 
   // let lng;
@@ -45,7 +62,9 @@ export default function City(props) {
   //   lng = foundPlaces[0].lng
   //   lat = foundPlaces[0].lat
   // }
+
 console.log("XXXXXXXX", props)
+
   return(
     <>
       <p> here is the city page</p>
