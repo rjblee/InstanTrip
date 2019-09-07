@@ -18,7 +18,6 @@ export default function City(props) {
   //props .places 
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
-
   const [kValue, setKValue] = useState('')
 
 
@@ -31,10 +30,12 @@ export default function City(props) {
   useEffect( () => { 
     
     // extract schedules
-    axios.get(`/city/${props.city.id}/schedules`).then(response => {
-      console.log('maybe we have it')
-      setSchedules(response.data)
-    })
+    if(props.city.id) {
+      axios.get(`/city/${props.city.id}/schedules`).then(response => {
+        console.log('maybe we have it')
+        setSchedules(response.data)
+      })
+    }
   },[])
 
   // let lng;
