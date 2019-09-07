@@ -1,11 +1,12 @@
 import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
+import "../../styles/ImageSearch.css";
 
 export default function Place(props) {
   const [targetCity, setTargetCity] = useState('')
-  console.log(targetCity)
-  console.log('citiys----------')
-  console.log(props.cities)
+  // console.log(targetCity)
+  // console.log('citiys----------')
+  // console.log(props.cities)
   return (
     <div className="placeCard d-flex">
       <img className="placeImage" src={props.place.picture} alt=''></img>
@@ -14,10 +15,11 @@ export default function Place(props) {
         <p>Address: {props.place.address}</p>
         <p>Rating: {props.place.rating}</p>
          <input 
+          className="wishlist-dropdown"
           type="text" 
-          name="tragetCity" 
+          name="targetCity" 
           list="targetCity"
-          placeholder="Choose target city"
+          placeholder="Wishlist"
           value= {targetCity}
           onChange ={event => {
             setTargetCity(event.target.value)
@@ -38,6 +40,7 @@ export default function Place(props) {
          </datalist>
 
         <button
+          className="example_d"
           onClick={() => {
             savePlaceToDatabase(props, targetCity)
             // function savePlace(data) {
