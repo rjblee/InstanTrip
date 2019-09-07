@@ -37,21 +37,22 @@ export default function SearchBar (props) {
 
       <div className="form-group col-md-2">
       <button  
-          className="btn btn-primary mb-2"
+          className="example_e"
           onClick={() => {
             //send request based on search option
             if (searchOption === 'image') {
               imageSearch(inputvalue,setInputvalue,setplaces)
             } else {
               //text search option
-              const queryDate = { 'query': inputvalue}
+              const queryData = { 'query': inputvalue}
               if (props.city) {
-                queryDate['location'] = {lat: props.city.c_lat, lng: props.city.c_lng}
+                queryData['location'] = {lat: props.city.c_lat, lng: props.city.c_lng}
               }
               console.log('query data ----')
-              console.log(queryDate)
+              console.log(queryData)
               console.log(inputvalue)
-              searchPlaces({ 'query': inputvalue}).then(function(response) {
+              // searchPlaces({ 'query': inputvalue}).then(function(response) {
+              searchPlaces(queryData).then(function(response) {
                 console.log('here is places')
                 console.log(response.data)
                 setplaces(response.data)

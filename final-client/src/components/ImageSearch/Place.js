@@ -10,9 +10,9 @@ export default function Place(props) {
     <div className="placeCard d-flex">
       <img className="placeImage" src={props.place.picture} alt=''></img>
       <div>
-        <p>name: {props.place.name}</p>
-        <p>address: {props.place.address}</p>
-        <p>rating: {props.place.rating}</p>
+        <p>Name: {props.place.name}</p>
+        <p>Address: {props.place.address}</p>
+        <p>Rating: {props.place.rating}</p>
          <input 
           type="text" 
           name="tragetCity" 
