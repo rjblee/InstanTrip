@@ -19,7 +19,7 @@ export default function AllPlaceItem(props) {
           setTargetScheduleId(event.target.value)
         }}
         >
-        <option selected>Schedule ID</option>
+        <option defaultValue>Schedule ID</option>
         {props.schedules.map((schedule) => {
           return <option value={schedule.id}>{schedule.id}</option>
         })}

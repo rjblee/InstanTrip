@@ -31,7 +31,7 @@ export default function City(props) {
 
   const [kValue, setKValue] = useState('')
 
-  const [currentSchedule, setCurrentSchedule] = useState({id: '', city_id: '', start_place: null, end_place: null, transit: null})
+  const [currentSchedule, setCurrentSchedule] = useState({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
   const [steps,setSteps] = useState({id:'',city_id:'', place:'', start_place: null, end_place: null, transit: null,duration:''})
 
   // console.log(`here is the place data for ${props.city.city}`)
@@ -40,6 +40,8 @@ export default function City(props) {
   // console.log(schedules)
   // console.log('setcurrent schedule')
   // console.log(currentSchedule)
+  console.log('currentSchedule')
+  console.log(currentSchedule)
 
   useEffect( () => { 
     
@@ -119,6 +121,7 @@ export default function City(props) {
               places={props.places}
               schedules={schedules}
               setUser={props.setUser}
+              setCurrentSchedule={setCurrentSchedule}
             />
 
           </div>

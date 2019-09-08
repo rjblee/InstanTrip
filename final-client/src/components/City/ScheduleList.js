@@ -6,12 +6,20 @@ export default function ScheduleList (props) {
   console.log('props.places-1-1-1-1-1')
   console.log(props.places)
   console.log(props.schedules)
-  
+  // setCurrentSchedule
   return (
     <>
       <nav>
         <div className="nav nav-tabs" id="nav-tab" role="tablist">
-          <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+          <a className="nav-item nav-link active"
+              id="nav-home-tab" data-toggle="tab" 
+              href="#nav-home" role="tab" 
+              aria-controls="nav-home" 
+              aria-selected="true"
+              onClick={ () => {
+                props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
+              }}
+              >All</a>
           {props.schedules.map((schedule) => {
             return <a  
               key={schedule.id}className="nav-item nav-link" 
@@ -20,7 +28,12 @@ export default function ScheduleList (props) {
               href={`#nav-schedule-${schedule.id}`} 
               role="tab" 
               aria-controls={`nav-schedule-${schedule.id}`} 
-              aria-selected="false">schedule {schedule.id}</a>
+              aria-selected="false"
+              onClick={() => {
+                props.setCurrentSchedule(schedule)
+              }}
+              >schedule {schedule.id}</a>
+
           })}
         </div>
       </nav>
