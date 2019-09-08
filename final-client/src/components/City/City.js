@@ -60,6 +60,7 @@ export default function City(props) {
   // }
 
 console.log("XXXXXXXX", props)
+// console.log("CCCCC",props.city.c_lat)
 
   return(
     <>
@@ -106,7 +107,8 @@ console.log("XXXXXXXX", props)
             // end_location={start_location}
             // schedule={currentSchedule}
             // setSchedule={setCurrentSchedule}
-
+            lat={props.city.c_lat}
+            lng={props.city.c_lng}
            />
           </div>
           <div class="col-4">
