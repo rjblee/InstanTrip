@@ -22,11 +22,11 @@ export default function App() {
   const [alert, setAlert] = useState('')
 
   ////////////////////////////////////
-  console.log('----here')
-  console.log(cities) 
-  console.log(userdata)
-  console.log(user)
-//////////////////////////////////////
+  // console.log('----here')
+  // console.log(cities) 
+  // console.log(userdata)
+  // console.log(user)
+  ////////////////////////////////////
   useEffect(() => {
     if (user.name) {
       // get all user data from database 
@@ -39,8 +39,6 @@ export default function App() {
         // const citiesFromDate = response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}})
         // const citiesname
         // setCities(response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}}).filter(getUniqueCities))
-
-
         //store user data
         setUserData(response.data)
         console.log(response.data)

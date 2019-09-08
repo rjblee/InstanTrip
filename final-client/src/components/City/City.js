@@ -33,12 +33,14 @@ export default function City(props) {
   const [kValue, setKValue] = useState('')
 
   const [currentSchedule, setCurrentSchedule] = useState({id: '', city_id: '', start_place: null, end_place: null, transit: null})
-  console.log(`here is the place data for ${props.city.city}`)
-  console.log(props.places)
-  console.log('schedules')
-  console.log(schedules)
-  console.log('setcurrent schedule')
-  console.log(currentSchedule)
+  const [steps,setSteps] = useState({id:'',city_id:'', place:'', start_place: null, end_place: null, transit: null,duration:''})
+
+  // console.log(`here is the place data for ${props.city.city}`)
+  // console.log(props.places)
+  // console.log('schedules')
+  // console.log(schedules)
+  // console.log('setcurrent schedule')
+  // console.log(currentSchedule)
 
   useEffect( () => { 
     
@@ -59,12 +61,12 @@ export default function City(props) {
   //   lat = foundPlaces[0].lat
   // }
 
-console.log("XXXXXXXX", props)
-// console.log("CCCCC",props.city.c_lat)
+// console.log("XXXXXXXX", props)
+// // console.log("CCCCC",props.city.c_lat)
 
   return(
     <>
-      <p> here is the city page</p>
+      {/* <p> here is the city page</p> */}
 
       <div className="form-inline">
         <div className="form-group mx-sm-3 mb-2">
@@ -109,6 +111,7 @@ console.log("XXXXXXXX", props)
             // setSchedule={setCurrentSchedule}
             lat={props.city.c_lat}
             lng={props.city.c_lng}
+            setSteps={setSteps}
            />
           </div>
           <div class="col-4">
@@ -132,7 +135,8 @@ console.log("XXXXXXXX", props)
       <div class="row">
           <div class="col-1" ></div>
           <div class="col-10">
-            <Demo/>
+            <Demo
+            steps={steps}/>
           </div>
           <div class="col-1" ></div>
         </div>
