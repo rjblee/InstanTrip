@@ -11,7 +11,7 @@ import Demo from './Step'
 // import SearchResultList from './SearchResultList'
 import CityPlace from './CityPlace'
 import WishlistItem from './WishlistItem';
-
+import ScheduleList from './ScheduleList'
 
 import addScheduleIdToPlace from '../../helpers/addScheduleIdToPlace'
 //example: 
@@ -21,7 +21,6 @@ import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
 //example:
 //deleteScheduleFromPlace(1, props.setUser)
 
-import updateSchedule from '../..//helpers/updateSchedule'
 
 export default function City(props) {
   //access
@@ -110,11 +109,13 @@ console.log("XXXXXXXX", props)
            />
           </div>
           <div class="col-4">
-          
-           <Wishlist
-                  places={props.places}  
-                  />
-        
+
+            <ScheduleList
+              places={props.places}
+              schedules={schedules}
+              setUser={props.setUser}
+            />
+
           </div>
           <div class="col-1" ></div>
         </div>
