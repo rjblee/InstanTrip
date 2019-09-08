@@ -55,11 +55,16 @@ export default function Demo() {
           }
         } 
         style={stepStyle}>
-          <Step status="finish" title="Step 1" />
-          <Step status="process" title="Step 2" />
+          <Step status="process" title="Step 1" />
+          <Step status="wait" title="Step 2" />
           <Step status="wait" title="Step 3" />
           <Step status="wait" title="Step 4" />
         </Steps>
+        {/* <Step status="finish" title="Step 1" />
+          <Step status="process" title="Step 2" />
+          <Step status="wait" title="Step 3" />
+          <Step status="wait" title="Step 4" />
+        </Steps> */}
         {/* <Steps
           type="navigation"
           size="small"

@@ -5,7 +5,7 @@ export default function Map(props) {
   const lat = parseInt(props.lat) || 49.246292;
   const lng = parseInt(props.lng) || -123.116226;
   let map = React.createRef();
-  console.log("EEEEEEE",props)
+  // console.log("EEEEEEE",props)
 
   useEffect(() => {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
