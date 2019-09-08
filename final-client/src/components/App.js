@@ -113,7 +113,7 @@ export default function App() {
                                             cities={cities}
                                             setCities={setCities}
                                           />} />
-      <Route path="/imageSearch" exact renuserdatader={() => <ImageSearch
+      <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
@@ -135,6 +135,7 @@ export default function App() {
                                                       user={user}
                                                       setCities={setCities}
                                                       places={userdata}
+                                                      setUser={setUser}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}
       
