@@ -95,10 +95,10 @@ export default function City(props) {
       <SearchBar setplaces={setfoundPlaces} city={props.city}/>
       
       
-      <div class="mb-5">
-        <div class="row">
-          <div class="col-1" ></div>
-          <div class="col-6">
+      <div className="mb-5">
+        <div className="row">
+          <div className="col-1" ></div>
+          <div className="col-6">
             <Map
             // places={props.places.filter((places)=>{
             //   return 
@@ -113,7 +113,7 @@ export default function City(props) {
             setSteps={setSteps}
            />
           </div>
-          <div class="col-4">
+          <div className="col-4">
 
             <ScheduleList
               places={props.places}
@@ -122,7 +122,7 @@ export default function City(props) {
             />
 
           </div>
-          <div class="col-1" ></div>
+          <div className="col-1" ></div>
         </div>
       </div>
 
@@ -133,13 +133,13 @@ export default function City(props) {
         setSchedules={setSchedules}
       /> 
 
-      <div class="row">
-          <div class="col-1" ></div>
-          <div class="col-10">
+      <div className="row">
+          <div className="col-1" ></div>
+          <div className="col-10">
             <Demo
             steps={steps}/>
           </div>
-          <div class="col-1" ></div>
+          <div className="col-1" ></div>
         </div>
       <div>
         

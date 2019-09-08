@@ -92,7 +92,7 @@ export default function App() {
 
       </nav>
       
-      {alert.length ? <div class="alert alert-danger" role="alert">
+      {alert.length ? <div className="alert alert-danger" role="alert">
         {alert}
       </div> : <></>}
 
