@@ -2,9 +2,10 @@ import React, {useEffect} from 'react';
 import GoogleMapLoader from 'google-maps'
 
 export default function Map(props) {
-  const lat = props.lat || 49.246292;
-  const lng = props.lng || -123.116226;
+  const lat = parseInt(props.lat) || 49.246292;
+  const lng = parseInt(props.lng) || -123.116226;
   let map = React.createRef();
+  // console.log("EEEEEEE",props)
 
   useEffect(() => {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
@@ -17,7 +18,9 @@ export default function Map(props) {
 
 
       const markerPositions= [
-        {lat: lat, lng: lng}
+        // {lat: lat, lng: lng},
+        // {lat: lat, lng: lng},
+
         // {lat: 49.246292, lng: -123.116226},
         // {lat: 49.267132, lng: -122.968941},
         // {lat: 49.166592, lng: -123.133568},
@@ -56,10 +59,10 @@ export default function Map(props) {
         location: {lat:49.2384, lng:-123.0318},
         stopover: true
     },
-      {
-        location: {lat:49.2483,lng:-123.0559},
-        stopover: true
-  }  
+  //     {
+  //       location: {lat:49.2483,lng:-123.0559},
+  //       stopover: true
+  // }  
       ];
       var directionsDisplay = new google.maps.DirectionsRenderer;
       var directionsService = new google.maps.DirectionsService;
@@ -127,9 +130,6 @@ export default function Map(props) {
                       infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
                       infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
                       infowindow2.open(targetMap);
-                      
-                      
-
 
                     } else {
                       console.log('oh wrongg')
