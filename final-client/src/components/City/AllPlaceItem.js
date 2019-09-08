@@ -29,7 +29,7 @@ export default function AllPlaceItem(props) {
           addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
           setTargetScheduleId('Schedule ID')
         }}
-      >Add to Schedule</button>
+      >Add to schedule</button>
 
     </div>
   )
