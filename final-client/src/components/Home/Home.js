@@ -51,11 +51,12 @@ export default function Home(props) {
             })
           }}
         >Search</button> */}
-
-        <div>
-        {props.cities.map((city) => {
-          return (<CityCard city={city}/>)
-        })}
+      </div>
+      <div >
+        <div className="city-cards">
+          {props.cities.map((city) => {
+            return (<CityCard city={city}/>)
+          })}
         </div>
       </div>
     </div>

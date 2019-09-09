@@ -35,7 +35,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif|Playfair+Display+SC|Quicksand&display=swap');
 
 .navbar-logo {
-  color: white;
+  color: white !important;
   font-size: 40px;
   padding: 0 40px 0 40px;
   font-family: 'Playfair Display SC', serif;
@@ -50,5 +50,13 @@ a {
 .loginout {
   height: 40px;
   margin: 10px;
-  font-family: 'Playfair Display SC', serif;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-family: 'Noto Serif', serif;
+}
+
+.welcome {
+  font-family: 'Noto Serif', serif;
+  font-size: 25px;
+  margin-right: 20px;
 }

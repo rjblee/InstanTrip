@@ -1,7 +1,7 @@
 
 import React, { useState} from 'react';
 import { Steps } from 'antd';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 
 
 const { Step } = Steps;
