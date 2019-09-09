@@ -15,6 +15,11 @@
   text-align: center; 
 }
 
+
+.add-button {
+  background-color: transparent;
+  border: transparent;
+
 /* Wishlist by tabs */
 .col-4 {
   background: whitesmoke;
@@ -35,4 +40,5 @@
   margin-right: 40px;
   background: white;
   border-radius: 6px;
+
 }
