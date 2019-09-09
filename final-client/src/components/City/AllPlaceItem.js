@@ -10,27 +10,35 @@ export default function AllPlaceItem(props) {
   return (
     <div className="AllPlaceItem">
       <h3>{props.place.name}</h3>
-      <h3>{props.place.address}</h3>
+      <h5>{props.place.address}</h5>
 
       <select
-        className="form-control"
+        className="schedule-dropdown"
         value={targetScheduleId}
         onChange={(event) => {
           setTargetScheduleId(event.target.value)
         }}
         >
-        <option defaultValue>Schedule ID</option>
+        <option defaultValue>Schedule</option>
         {props.schedules.map((schedule) => {
           return <option value={schedule.id}>{schedule.id}</option>
         })}
       </select>
       <button
+        className="example_d"
         onClick={() => {
           addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
           setTargetScheduleId('Schedule ID')
         }}
-      >Add to schedule</button>
-
+      >Add</button>
+      {/* <a href="https://icons8.com/icon/47259/delete-bin">Delete Bin icon by Icons8</a> */}
+      <button
+        // className="example_f"
+        onClick={() => {
+          // addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
+          // setTargetScheduleId('Schedule ID')
+        }}
+      >Delete</button>
     </div>
   )
 }
