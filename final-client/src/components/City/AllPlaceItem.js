@@ -19,7 +19,7 @@ export default function AllPlaceItem(props) {
           setTargetScheduleId(event.target.value)
         }}
         >
-        <option selected>Schedule ID</option>
+        <option defaultValue>Schedule ID</option>
         {props.schedules.map((schedule) => {
           return <option value={schedule.id}>{schedule.id}</option>
         })}
@@ -29,7 +29,7 @@ export default function AllPlaceItem(props) {
           addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
           setTargetScheduleId('Schedule ID')
         }}
-      >Add to Schedule</button>
+      >Add to schedule</button>
 
     </div>
   )

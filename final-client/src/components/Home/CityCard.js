@@ -1,25 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import City from '../City/City'
+import "../../styles/Home.css";
 
 export default function CityCard(props) {
 
     const style = {
       backgroundImage: `url(${props.city.c_picture})`,
-      width: '200px',
-      height: '200px',
-      backgroundSize: 'cover', 
-      backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat',
+      // width: '300px',
+      // height: '300px',
+      // backgroundSize: 'cover', 
+      // backgroundPosition: 'center center',
+      // backgroundRepeat: 'no-repeat',
     }
     console.log('citycard')
     console.log(props.city)
   return (
-    <div 
-      style = {style}
-    >
-        <Link to={"/" + props.city.city}>{props.city.city}</Link>
-
+    <div  className="city-card" style = {style}>
+      <div className="city-card-layer">
+        <Link to={"/" + props.city.city}><b>{props.city.city}</b></Link>
+      </div>
     </div>
   )
 }

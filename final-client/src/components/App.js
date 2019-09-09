@@ -92,7 +92,7 @@ export default function App() {
 
       </nav>
       
-      {alert.length ? <div class="alert alert-danger" role="alert">
+      {alert.length ? <div className="alert alert-danger" role="alert">
         {alert}
       </div> : <></>}
 
@@ -131,10 +131,12 @@ export default function App() {
                                                         user_id: 1
                                                       }}
 
+
                                                       cities={cities}
                                                       user={user}
                                                       setCities={setCities}
                                                       places={userdata}
+
                                                       setUser={setUser}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}

@@ -21,6 +21,48 @@
   font-family: 'Playfair Display SC', serif;
 }
 
+.city-cards {
+  display: flex;
+  margin-top: 90px;
+  margin-left: 65px;
+}
+
+.city-card {
+  /* border: 3px solid white; */
+  
+  margin-right: 70px;
+
+  width: 300px;
+  height: 250px;
+  background-Size: cover;
+  background-Position: center center;
+  background-repeat: no-repeat;
+  
+  /* justify-content: space-evenly; */
+  border-radius: 16px;
+  font-size: 35px;
+  opacity: 0.9;
+  /* z-index:  */
+}
+
+.city-card-layer {
+  position: relative;
+  z-index: 1;
+  opacity: 0.5;
+  height: 100%;
+  background-color: black;
+  border-radius: 16px;
+}
+
+
+
+.city-card:hover {
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 20px 20px 20px 0px rgba(233, 222, 222, 0.794);
+  -moz-box-shadow: 0px 40px 40px -10px rgb(255, 255, 255);
+  transition: all 0.4s ease 0s;
+}
+
 .example_e {
   border: none;
   background: #404040;

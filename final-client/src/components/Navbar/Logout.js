@@ -1,13 +1,14 @@
 import React from 'react';
+import "../../styles/App.css";
 
 export default function Logout(props) {
   return (
     <>
-      <span className="navbar-text white-text">
-        Welcome, {props.user.name}
+      <span className="welcome white-text">
+        <b>Welcome, {props.user.name}</b>
       </span>
       <button 
-      className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" 
+      className="example_d btn-outline-white btn-md my-2 my-sm-0 ml-3" 
       type="submit"
       onClick= {() => {
         props.setUser({name:'', password:''})

@@ -1,30 +1,76 @@
 import React from 'react';
 import AllPlaceItem from './AllPlaceItem';
+import SchedulePlaceItem from './SchedulePlaceItem'
 
 export default function ScheduleList (props) {
   console.log('props.places-1-1-1-1-1')
   console.log(props.places)
+  console.log(props.schedules)
+  // setCurrentSchedule
   return (
     <>
       <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+          <a className="nav-item nav-link active"
+              id="nav-home-tab" data-toggle="tab" 
+              href="#nav-home" role="tab" 
+              aria-controls="nav-home" 
+              aria-selected="true"
+              onClick={() => {
+                props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
+              }}
+              >All</a>
+          {props.schedules.map((schedule) => {
+            return <a  
+              key={schedule.id}className="nav-item nav-link" 
+              id={`nav-schedule-tab-${schedule.id}`} 
+              data-toggle="tab" 
+              href={`#nav-schedule-${schedule.id}`} 
+              role="tab" 
+              aria-controls={`nav-schedule-${schedule.id}`} 
+              aria-selected="false"
+              onClick={() => {
+                props.setCurrentSchedule(schedule)
+              }}
+              >schedule {schedule.id}</a>
+
+          })}
         </div>
       </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div className="tab-content" id="nav-tabContent">
+        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
           {props.places.map((place) => {
             return <AllPlaceItem
+              key={place.id}
               place={place}
               schedules={props.schedules}
               setUser={props.setUser}
             />
           })}
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+
+        {props.schedules.map((schedule) => {
+            return <div 
+                      key={schedule.id}
+                      className="tab-pane fade" 
+                      id={`nav-schedule-${schedule.id}`} 
+                      role="tabpanel" 
+                      aria-labelledby="nav-schedule-tab">
+              here is {schedule.id}
+              {props.places.filter((place) => {
+                return place.schedule_id == schedule.id
+              })
+              .map((place) => {
+                return <SchedulePlaceItem
+                        key={place.id}
+                        place={place}
+                        setUser={props.setUser}
+                        />
+              })
+              }
+              </div>
+          })}
+        
       </div>
     </>
   )
