@@ -15,7 +15,30 @@
   text-align: center; 
 }
 
+
 .add-button {
   background-color: transparent;
   border: transparent;
+
+/* Wishlist by tabs */
+.col-4 {
+  background: whitesmoke;
+  border-radius: 6px;
+  font-family: 'Noto Serif', serif;
+}
+
+.AllPlaceItem {
+  margin: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid gray;
+}
+
+.schedule-dropdown {
+  width: 250px;
+  height: 50px;
+  margin-right: 40px;
+  background: white;
+  border-radius: 6px;
+
 }

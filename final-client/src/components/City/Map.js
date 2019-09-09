@@ -431,7 +431,6 @@ export default function Map(props) {
         border:'12px solid white',
         borderRadius: '10px'
 
-
       }}
       className='bg-dark'
       ref={map}
