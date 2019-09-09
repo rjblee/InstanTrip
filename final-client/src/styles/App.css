@@ -27,7 +27,7 @@
 #navbar-menu {
   height: 100px;
   font-size: 25px;
-  color: black;
+  color:white;
   /* background-color: black; */
 }
 
@@ -35,17 +35,19 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif|Playfair+Display+SC|Quicksand&display=swap');
 
 .navbar-logo {
+
   color: white !important;
   font-size: 40px;
   padding: 0 40px 0 40px;
   font-family: 'Playfair Display SC', serif;
 }
 
-a {
+nav a {
   color: white;
   font-family: 'Playfair Display SC', serif;
   padding: 10px;
 }
+
 
 .loginout {
   height: 40px;

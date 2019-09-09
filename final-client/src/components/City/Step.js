@@ -8,7 +8,7 @@ const { Step } = Steps;
 const stepStyle = {
   marginBottom: 60,
   boxShadow: '0px -1px 0 0 #e8e8e8 inset',
-  background: 'white'
+  // background: 'white'
 };
 export default function Demo() {
   const [current, setCurrent] = useState(0);
@@ -17,7 +17,7 @@ export default function Demo() {
   //   setCurrent(current);
   // };
     return (
-      <div>
+      <div className='col-10'>
         {/* <Steps
           type="navigation"
           size="small"
@@ -55,11 +55,16 @@ export default function Demo() {
           }
         } 
         style={stepStyle}>
-          <Step status="finish" title="Step 1" />
-          <Step status="process" title="Step 2" />
+          <Step status="process" title="Step 1" />
+          <Step status="wait" title="Step 2" />
           <Step status="wait" title="Step 3" />
           <Step status="wait" title="Step 4" />
         </Steps>
+        {/* <Step status="finish" title="Step 1" />
+          <Step status="process" title="Step 2" />
+          <Step status="wait" title="Step 3" />
+          <Step status="wait" title="Step 4" />
+        </Steps> */}
         {/* <Steps
           type="navigation"
           size="small"

@@ -22,11 +22,11 @@ export default function App() {
   const [alert, setAlert] = useState('')
 
   ////////////////////////////////////
-  console.log('----here')
-  console.log(cities) 
-  console.log(userdata)
-  console.log(user)
-//////////////////////////////////////
+  // console.log('----here')
+  // console.log(cities) 
+  // console.log(userdata)
+  // console.log(user)
+  ////////////////////////////////////
   useEffect(() => {
     if (user.name) {
       // get all user data from database 
@@ -39,8 +39,6 @@ export default function App() {
         // const citiesFromDate = response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}})
         // const citiesname
         // setCities(response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}}).filter(getUniqueCities))
-
-
         //store user data
         setUserData(response.data)
         console.log(response.data)
@@ -55,7 +53,7 @@ export default function App() {
   return (
     <Router className="App">
       <nav className="navbar navbar-expand-lg">
-        <span className="navbar-logo"><Link to="/">WeTravel</Link></span>
+        <span className="navbar-logo" ><Link to="/">WeTravel</Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -94,7 +92,7 @@ export default function App() {
 
       </nav>
       
-      {alert.length ? <div class="alert alert-danger" role="alert">
+      {alert.length ? <div className="alert alert-danger" role="alert">
         {alert}
       </div> : <></>}
 
@@ -121,18 +119,25 @@ export default function App() {
                                                         setCities={setCities}
                                                       />}/>
 
+      
       <Route path="/sampleCity" exact render={() => <City
+
                                                       city={{
                                                         c_lat: "49.246292",
                                                         c_lng: "-123.116226",
-                                                        c_picture: "https://lh3.googleusercontent.com/p/AF1QipMY2PblrieyoxW-CyVSLa8AS6EGuKQOzAHIshdj=s1600-w200(78 kB)",                                                       city: "Vancouver",
+                                                        c_picture: "https://lh3.googleusercontent.com/p/AF1QipMY2PblrieyoxW-CyVSLa8AS6EGuKQOzAHIshdj=s1600-w200",
+                                                        city: "Vancouver",
                                                         id: 1,
                                                         user_id: 1
                                                       }}
+
+
                                                       cities={cities}
                                                       user={user}
                                                       setCities={setCities}
                                                       places={userdata}
+
+                                                      setUser={setUser}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}
       
