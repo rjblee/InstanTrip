@@ -30,7 +30,10 @@ export default function ScheduleList (props) {
               aria-controls={`nav-schedule-${schedule.id}`} 
               aria-selected="false"
               onClick={() => {
+                props.setMegaSteps([])
+                props.setSteps([])
                 props.setCurrentSchedule(schedule)
+
               }}
               >schedule {schedule.id}</a>
 
