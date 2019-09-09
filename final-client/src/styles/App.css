@@ -35,7 +35,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif|Playfair+Display+SC|Quicksand&display=swap');
 
 .navbar-logo {
-  background-color:black; 
+  /* background-color:black;  */
   color:white;
   font-size: 40px;
   padding: 0 40px 0 40px;

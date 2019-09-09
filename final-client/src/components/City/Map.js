@@ -11,21 +11,155 @@ export default function Map(props) {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
     GoogleMapLoader.load(function(google){
 
+     
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
-        zoom: 8
+        zoom: 8,
+        styles: [
+          {
+              featureType: "administrative",
+              elementType: "labels.text.fill",
+              stylers: [
+                  {
+                      color: "#393939"
+                  }
+              ]
+          },
+          {
+              featureType: "landscape.natural",
+              elementType: "geometry.fill",
+              stylers: [
+                  {
+                      color: "#aacfa8"
+                  }
+              ]
+          },
+          {
+              featureType: "poi",
+              elementType: "all",
+              stylers: [
+                  {
+                      visibility: "off"
+                  }
+              ]
+          },
+          {
+              featureType: "road",
+              elementType: "all",
+              stylers: [
+                  {
+                      saturation: -100
+                  },
+                  {
+                      lightness: "4"
+                  },
+                  {
+                      gamma: "0.46"
+                  },
+                  {
+                      visibility: "on"
+                  }
+              ]
+          },
+          {
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                  {
+                      visibility: "on"
+                  },
+                  {
+                      saturation: "-15"
+                  },
+                  {
+                      lightness: "69"
+                  },
+                  {
+                      gamma: "0.31"
+                  }
+              ]
+          },
+          {
+              featureType: "road.highway",
+              elementType: "all",
+              stylers: [
+                  {
+                      visibility: "simplified"
+                  }
+              ]
+          },
+          {
+              featureType: "road.highway",
+              elementType: "labels",
+              stylers: [
+                  {
+                      visibility: "off"
+                  },
+                  {
+                      saturation: "-100"
+                  },
+                  {
+                      lightness: "-22"
+                  },
+                  {
+                      gamma: "0.08"
+                  },
+                  {
+                      weight: "0.01"
+                  },
+                  {
+                      invert_lightness: true
+                  }
+              ]
+          },
+          {
+              featureType: "road.arterial",
+              elementType: "labels.icon",
+              stylers: [
+                  {
+                      visibility: "off"
+                  },
+                  {
+                      lightness: "19"
+                  }
+              ]
+          },
+          {
+              featureType: "transit",
+              elementType: "all",
+              stylers: [
+                  {
+                      visibility: "off"
+                  }
+              ]
+          },
+          {
+              featureType: "water",
+              elementType: "all",
+              stylers: [
+                  {
+                      color: "#92b4c2"
+                  },
+                  {
+                      visibility: "on"
+                  }
+              ]
+          }
+      ]
       });
-
+    
+      // map.mapTypes.set('styled map', styledMapType);
+      // map.setMapTypeId('styled map');
 
       const markerPositions= [
         // {lat: lat, lng: lng},
         // {lat: lat, lng: lng},
 
-        // {lat: 49.246292, lng: -123.116226},
-        // {lat: 49.267132, lng: -122.968941},
-        // {lat: 49.166592, lng: -123.133568},
-        // {lat:49.2384, lng:-123.0318},
-        // {lat:49.2483,lng:-123.0559}
+        {lat: 49.246292, lng: -123.116226},
+        {lat: 49.267132, lng: -122.968941},
+        {lat: 49.166592, lng: -123.133568},
+        {lat:49.2384, lng:-123.0318},
+        {lat:49.2483,lng:-123.0559}
         ]
       //code from here
 
@@ -48,8 +182,8 @@ export default function Map(props) {
 
       //route
       
-      var trafficLayer = new google.maps.TrafficLayer();
-      trafficLayer.setMap(targetMap);
+      // var trafficLayer = new google.maps.TrafficLayer();
+      // trafficLayer.setMap(targetMap);
       var waypoints = [
         {
           location: {lat: 49.166592, lng: -123.133568},
@@ -75,7 +209,7 @@ export default function Map(props) {
 
         function calculateAndDisplayRoute(directionsService, directionsDisplay) {
           // var selectedMode = mode.current.value;
-          const mode = 'DRIVIN'
+          const mode = 'DRIVING'
           directionsService.route({
             origin: markerPositions[0], 
             destination: markerPositions[1], 
@@ -94,9 +228,10 @@ export default function Map(props) {
             if (status == 'OK') {
               if (mode === "DRIVING") {
                 directionsDisplay.setDirections(response);
+                var center_point = response.routes[0].overview_path.length/2;
                 var infowindow2 = new google.maps.InfoWindow();
                 infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
-                infowindow2.setPosition({lat: 49.166592, lng: -123.133568});
+                infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
                 infowindow2.open(targetMap);
               } else {
                 const steps = response.routes[0].legs
@@ -156,6 +291,9 @@ export default function Map(props) {
 
         height: '600px',
         width: '100%',
+        border:'12px solid white',
+        borderRadius: '10px'
+
 
       }}
       className='bg-dark'
