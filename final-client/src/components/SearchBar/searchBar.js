@@ -48,8 +48,8 @@ export default function SearchBar (props) {
               if (props.city) {
                 queryData['location'] = {lat: props.city.c_lat, lng: props.city.c_lng}
               }
-              console.log('query data ----')
-              console.log(queryData)
+              // console.log('query data ----')
+              // console.log(queryData)
               console.log(inputvalue)
               // searchPlaces({ 'query': inputvalue}).then(function(response) {
               searchPlaces(queryData).then(function(response) {

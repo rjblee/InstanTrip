@@ -60,7 +60,7 @@ export default function City(props) {
     // extract schedules
     if(props.city.id) {
       axios.get(`/city/${props.city.id}/schedules`).then(response => {
-        console.log('maybe we have it')
+        // console.log('maybe we have it')
         setSchedules(response.data)
       })
     }

@@ -14,11 +14,147 @@ export default function Map(props) {
   useEffect(() => {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
     GoogleMapLoader.load(function(google){
+
+
+     
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
-        zoom: 13
-      });
+        zoom: 8,
+        styles: [
+          {
+              featureType: "administrative",
+              elementType: "labels.text.fill",
+              stylers: [
+                  {
+                      color: "#393939"
+                  }
+              ]
+          },
+          {
+              featureType: "landscape.natural",
+              elementType: "geometry.fill",
+              stylers: [
+                  {
+                      color: "#aacfa8"
+                  }
+              ]
+          },
+          {
+              featureType: "poi",
+              elementType: "all",
+              stylers: [
+                  {
+                      visibility: "off"
+                  }
+              ]
+          },
+          {
+              featureType: "road",
+              elementType: "all",
+              stylers: [
+                  {
+                      saturation: -100
+                  },
+                  {
+                      lightness: "4"
+                  },
+                  {
+                      gamma: "0.46"
+                  },
+                  {
+                      visibility: "on"
+                  }
+              ]
+          },
+          {
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                  {
+                      visibility: "on"
+                  },
+                  {
+                      saturation: "-15"
+                  },
+                  {
+                      lightness: "69"
+                  },
+                  {
+                      gamma: "0.31"
+                  }
+              ]
+          },
+          {
+              featureType: "road.highway",
+              elementType: "all",
+              stylers: [
+                  {
+                      visibility: "simplified"
+                  }
+              ]
+          },
+          {
+              featureType: "road.highway",
+              elementType: "labels",
+              stylers: [
+                  {
+                      visibility: "off"
+                  },
+                  {
+                      saturation: "-100"
+                  },
+                  {
+                      lightness: "-22"
+                  },
+                  {
+                      gamma: "0.08"
+                  },
+                  {
+                      weight: "0.01"
+                  },
+                  {
+                      invert_lightness: true
+                  }
+              ]
+          },
+          {
+              featureType: "road.arterial",
+              elementType: "labels.icon",
+              stylers: [
+                  {
+                      visibility: "off"
+                  },
+                  {
+                      lightness: "19"
+                  }
+              ]
+          },
+          {
+              featureType: "transit",
+              elementType: "all",
+              stylers: [
+                  {
+                      visibility: "off"
+                  }
+              ]
+          },
+          {
+              featureType: "water",
+              elementType: "all",
+              stylers: [
+                  {
+                      color: "#92b4c2"
+                  },
+                  {
+                      visibility: "on"
+                  }
+              ]
+          }
+      ]
 
+    
+      // map.mapTypes.set('styled map', styledMapType);
+      // map.setMapTypeId('styled map');
 
     const bounds = new google.maps.LatLngBounds()
 
@@ -54,6 +190,7 @@ export default function Map(props) {
       // code from here
 
 
+
       // maker
       // markerPositions.map(loc => {
       //   new google.maps.Marker({
@@ -72,6 +209,7 @@ export default function Map(props) {
 
 
       //route
+
       if (currentSchedule.start_place && currentSchedule.end_place && currentSchedule.transit) {
 
         console.log('---------------in routes now')
@@ -162,6 +300,7 @@ export default function Map(props) {
                       // const directionsDisplay = new google.maps.DirectionsRenderer; //
                       // directionsDisplay.setMap(targetMap); //
                       // directionsDisplay.setDirections(response);
+
 
 
                       // // const steps = response.routes[0].legs
@@ -287,6 +426,9 @@ export default function Map(props) {
 
         height: '600px',
         width: '100%',
+        border:'12px solid white',
+        borderRadius: '10px'
+
 
       }}
       className='bg-dark'

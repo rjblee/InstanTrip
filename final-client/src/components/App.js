@@ -41,7 +41,7 @@ export default function App() {
         // setCities(response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}}).filter(getUniqueCities))
         //store user data
         setUserData(response.data)
-        console.log(response.data)
+        // console.log(response.data)
       } 
       )
       getCities(user).then((response) => {
