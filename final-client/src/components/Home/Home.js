@@ -11,7 +11,7 @@ export default function Home(props) {
 
   const handleClick = (event) =>  {
     event.preventDefault()
-    console.log(inputvalue)
+    // console.log(inputvalue)
    let result = '';
     Axios.post("/searchPlaces", { query: inputvalue}).then(response => {
       Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
@@ -37,7 +37,7 @@ export default function Home(props) {
             }}
           />
         <div className="button_cont" align="center">
-          <div class="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
+          <div className="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
         </div>
         {/* </div> */}
         {/* <button  

@@ -74,7 +74,7 @@ export default function Demo() {
             setCurrent(current);
           }
         }
-                  style={stepStyle}
+        style={stepStyle}
         >
           <Step status="finish" title="finish 1" />
           <Step status="finish" title="finish 2" />
