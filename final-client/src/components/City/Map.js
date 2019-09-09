@@ -116,6 +116,7 @@ export default function Map(props) {
                   }
               ]
           },
+
           {
               featureType: "road.arterial",
               elementType: "labels.icon",
@@ -149,10 +150,12 @@ export default function Map(props) {
                   }
               ]
           }
+
       ]})
 
       //pass map object out of <Map>
       props.setTargetMap(targetMap)
+
 
     
       // map.mapTypes.set('styled map', styledMapType);
@@ -488,7 +491,6 @@ export default function Map(props) {
         width: '100%',
         border:'12px solid white',
         borderRadius: '10px'
-
 
       }}
       className='bg-dark'
