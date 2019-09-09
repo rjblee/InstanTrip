@@ -55,11 +55,34 @@
   display: inline-block;
   transition: all 0.3s ease 0s;
   font-family: 'Playfair Display SC', serif;
+  margin: 10px;
 }
 
 .example_d:hover {
   color: #2a7ae2 !important;
   border-radius: 50px;
   border-color: #2a7ae2 !important;
+  transition: all 0.3s ease 0s;
+}
+
+.example_f {
+  color: #494949 !important;
+  font-size: 18px;
+  text-transform: uppercase;
+  background: #ffffff;
+  margin-left: 15px;
+  padding: 10px;
+  border: 3px solid #494949 !important;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  font-family: 'Playfair Display SC', serif;
+  margin: 10px;
+}
+
+.example_f:hover {
+  color: red!important;
+  border-radius: 50px;
+  border-color: red !important;
   transition: all 0.3s ease 0s;
 }

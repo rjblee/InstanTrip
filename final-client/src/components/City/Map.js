@@ -156,6 +156,7 @@ export default function Map(props) {
 
         height: '600px',
         width: '100%',
+        border: '10px solid white',
 
       }}
       className='bg-dark'
