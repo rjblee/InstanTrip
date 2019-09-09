@@ -32,8 +32,16 @@ export default function City(props) {
   const [kValue, setKValue] = useState('')
 
   const [currentSchedule, setCurrentSchedule] = useState({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
-  const [steps,setSteps] = useState({id:'',city_id:'', place:'', start_place: null, end_place: null, transit: null,duration:''})
+  const [steps,setSteps] = useState([])
+  const [megaSteps, setMegaSteps] = useState([])
 
+  // console.log('mega----steps ')
+  // console.log(steps.map((each) => {
+  //   return [each.start_location.lat(), each.start_location.lng()]
+  // }))
+  // console.log(megaSteps.map((each) => {
+  //   return [each.start_location.lat(), each.start_location.lng()]
+  // }))
   // console.log(`here is the place data for ${props.city.city}`)
   // console.log(props.places)
   // console.log('schedules')
@@ -42,6 +50,10 @@ export default function City(props) {
   // console.log(currentSchedule)
   console.log('currentSchedule')
   console.log(currentSchedule)
+  console.log('steps')
+  console.log(steps)
+  console.log('mage steps')
+  console.log(megaSteps)
 
   useEffect( () => { 
     
@@ -110,8 +122,17 @@ export default function City(props) {
             // end_location={start_location}
             // schedule={currentSchedule}
             // setSchedule={setCurrentSchedule}
+            places={props.places.filter((place) => {
+              if (currentSchedule.id === "All") {
+                return true
+              } else {
+                return place.schedule_id === currentSchedule.id
+              }
+            })}
+            currentSchedule={currentSchedule}
             lat={props.city.c_lat}
             lng={props.city.c_lng}
+            setMegaSteps={setMegaSteps}
             setSteps={setSteps}
            />
           </div>

@@ -16,7 +16,7 @@ export default function ScheduleList (props) {
               href="#nav-home" role="tab" 
               aria-controls="nav-home" 
               aria-selected="true"
-              onClick={ () => {
+              onClick={() => {
                 props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
               }}
               >All</a>
@@ -70,7 +70,6 @@ export default function ScheduleList (props) {
               }
               </div>
           })}
-
         
       </div>
     </>
