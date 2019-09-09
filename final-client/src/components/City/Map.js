@@ -117,6 +117,7 @@ export default function Map(props) {
                   }
               ]
           },
+
           {
               featureType: "road.arterial",
               elementType: "labels.icon",
@@ -151,6 +152,7 @@ export default function Map(props) {
               ]
           }
       ]
+    })
 
     
       // map.mapTypes.set('styled map', styledMapType);
