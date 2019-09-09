@@ -37,7 +37,7 @@ export default function Home(props) {
             }}
           />
         <div className="button_cont" align="center">
-          <div class="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
+          <div className="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
         </div>
         {/* </div> */}
         {/* <button  
