@@ -20,8 +20,7 @@ export default function ScheduleList (props) {
               href="#nav-home" role="tab" 
               aria-controls="nav-home" 
               aria-selected="false"
-             
-              aria-selected="false"
+              style={{ color: 'black'}}
               onClick={() => {
                 props.setMegaSteps([])
                 props.setSteps([])
@@ -35,7 +34,8 @@ export default function ScheduleList (props) {
               id={`nav-schedule-tab-${schedule.id}`} 
               data-toggle="tab" 
               href={`#nav-schedule-${schedule.id}`} 
-              role="tab" 
+              role="tab"
+              style={{ color: 'black'}}
               aria-controls={`nav-schedule-${schedule.id}`} 
               aria-selected="false"
               onClick={() => {
