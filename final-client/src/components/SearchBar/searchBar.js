@@ -41,7 +41,7 @@ export default function SearchBar (props) {
           onClick={() => {
             //send request based on search option
             if (searchOption === 'image') {
-              imageSearch(inputvalue,setInputvalue,setplaces)
+              imageSearch(inputvalue,setInputvalue,setplaces, props.setAlert)
             } else {
               //text search option
               const queryData = { 'query': inputvalue}
@@ -53,9 +53,14 @@ export default function SearchBar (props) {
               console.log(inputvalue)
               // searchPlaces({ 'query': inputvalue}).then(function(response) {
               searchPlaces(queryData).then(function(response) {
+                props.setAlert('')
                 console.log('here is places')
                 console.log(response.data)
-                setplaces(response.data)
+                if(response.data.length) {
+                  setplaces(response.data)
+                } else {
+                  props.setAlert('No places found')
+                }
               })
             }
           }}

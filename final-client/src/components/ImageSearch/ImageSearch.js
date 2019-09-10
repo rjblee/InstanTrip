@@ -15,22 +15,26 @@ export default function ImageSearch(props) {
 
   <>
    <div className="search-page"><h1><b>Search Your Wonders</b></h1></div>
-    <SearchBar setplaces={setplaces}/>
-<div className='scoll-placeCard'>
-    {places.map((place) => {
-          return(
-            
-             <Place
-                  place={place}
-                  key={place.placeId}
-                  cities={props.cities}
-                  user={props.user}
-                  setCities={props.setCities}
-                  />
-          
-          )
-        })}
-</div>
+    <SearchBar 
+      setplaces={setplaces}
+      alert={props.alert}
+      setAlert={props.setAlert}
+      />
+    <div className='scoll-placeCard'>
+        {places.map((place) => {
+              return(
+                
+                <Place
+                      place={place}
+                      key={place.placeId}
+                      cities={props.cities}
+                      user={props.user}
+                      setCities={props.setCities}
+                      />
+              
+              )
+            })}
+    </div>
 
   </>
   )
