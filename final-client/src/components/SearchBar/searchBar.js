@@ -4,7 +4,7 @@ import imageSearch from '../../helpers/imageSearch'
 
 export default function SearchBar (props) {
   const [inputvalue, setInputvalue] = useState('')
-  const [searchOption, setSearchOption] = useState('image')
+  const [searchOption, setSearchOption] = useState( props.defaultValue || 'image')
   const setplaces = props.setplaces
   return (
     <div>
@@ -30,7 +30,7 @@ export default function SearchBar (props) {
               console.log(event.target.value)
             }}
             >
-            <option defaultValue value='image'>img</option>
+            <option value='image'>img</option>
             <option value="text">text</option>
           </select>
       </div>

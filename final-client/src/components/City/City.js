@@ -122,6 +122,7 @@ export default function City(props) {
         city={props.city}
         setMegaSteps={setMegaSteps}
         setSteps={setSteps}
+        defaultValue='text'
         />
       
       
@@ -162,6 +163,9 @@ export default function City(props) {
               setCurrentSchedule={setCurrentSchedule}
               setMegaSteps={setMegaSteps}
               setSteps={setSteps}
+              foundPlaces={foundPlaces}
+              setfoundPlaces={setfoundPlaces}
+              city={props.city}
             />
 
           </div>
@@ -174,6 +178,8 @@ export default function City(props) {
         setCurrentSchedule = {setCurrentSchedule}
         places={props.places}
         setSchedules={setSchedules}
+        setSteps={setSteps}
+        setTargetMap = {setTargetMap}
       /> 
       {steps.length === megaSteps.length && megaSteps.length ? 
       <div className="row">

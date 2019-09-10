@@ -174,8 +174,8 @@ export default function Map(props) {
 
 
 
-    targetMap.fitBounds(bounds)
-    targetMap.panToBounds(bounds)
+    // targetMap.fitBounds(bounds)
+    // targetMap.panToBounds(bounds)
 
     
       // const markerPositions= [
@@ -401,6 +401,13 @@ export default function Map(props) {
                         })
   
                       })
+
+                      console.log('time out!')
+                      setTimeout(function(){                           
+                        targetMap.fitBounds(bounds)
+                        targetMap.panToBounds(bounds) 
+                      }, 1000);
+                      
                     } else {
                       const steps = response.routes[0].legs
                       props.setSteps(prev => {
