@@ -20,6 +20,7 @@
   background-color: transparent;
   border: transparent;
 }
+
 /* Wishlist by tabs */
 .col-4 {
   background: whitesmoke;
@@ -42,3 +43,9 @@
   border-radius: 6px;
 
 }
+
+.add-button {
+  background-color: transparent;
+  border: transparent;
+}
+
