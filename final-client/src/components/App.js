@@ -63,14 +63,14 @@ export default function App() {
               <div className="nav-link"><Link to="/">Home</Link></div>
             </li>
             <li className="nav-item">
-              <div className="nav-link"><Link to="/imageSearch">Search by Image</Link></div>
+              <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
             </li>
             <li className="nav-item dropdown">
               {/* <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div> */}
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Cities
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 {cities.map((city) => {
                   return <div className="nav-link"><Link to={"/" + city.city}>{city.city}</Link></div>
