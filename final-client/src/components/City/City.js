@@ -7,11 +7,12 @@ import SearchBar from '../SearchBar/searchBar'
 
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
 import StartEndTransitForm from './StartEndTransitForm'
-import Demo from './Step'
+import TravelSteps from './TravelSteps'
 // import SearchResultList from './SearchResultList'
 import CityPlace from './CityPlace'
 import WishlistItem from './WishlistItem';
 import ScheduleList from './ScheduleList'
+
 
 import addScheduleIdToPlace from '../../helpers/addScheduleIdToPlace'
 //example: 
@@ -34,6 +35,7 @@ export default function City(props) {
   const [currentSchedule, setCurrentSchedule] = useState({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
   const [steps,setSteps] = useState([])
   const [megaSteps, setMegaSteps] = useState([])
+  const [targetMap, setTargetMap] = useState({})
 
   // console.log('mega----steps ')
   // console.log(steps.map((each) => {
@@ -81,6 +83,13 @@ export default function City(props) {
     <>
       {/* <p> here is the city page</p> */}
 
+      {/* <button
+        onClick={() => {
+          console.log(targetMap)
+          targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+          targetMap.setZoom(12)
+        }}
+      >test center</button> */}
       <div className="form-inline">
         <div className="form-group mx-sm-3 mb-2">
           <input 
@@ -102,11 +111,18 @@ export default function City(props) {
             // and add schedule id into schedule_id colume of places table
             // then update data by calling setUser(prev => {return prev})
             createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
+            setMegaSteps([])
+            setSteps([])
           }}
         >Make Schedule</button>
       </div>
 
-      <SearchBar setplaces={setfoundPlaces} city={props.city}/>
+      <SearchBar 
+        setplaces={setfoundPlaces} 
+        city={props.city}
+        setMegaSteps={setMegaSteps}
+        setSteps={setSteps}
+        />
       
       
       <div className="mb-5">
@@ -134,6 +150,7 @@ export default function City(props) {
             lng={props.city.c_lng}
             setMegaSteps={setMegaSteps}
             setSteps={setSteps}
+            setTargetMap = {setTargetMap}
            />
           </div>
           <div className="col-4">
@@ -143,6 +160,8 @@ export default function City(props) {
               schedules={schedules}
               setUser={props.setUser}
               setCurrentSchedule={setCurrentSchedule}
+              setMegaSteps={setMegaSteps}
+              setSteps={setSteps}
             />
 
           </div>
@@ -156,17 +175,29 @@ export default function City(props) {
         places={props.places}
         setSchedules={setSchedules}
       /> 
-
+      {steps.length === megaSteps.length && megaSteps.length ? 
       <div className="row">
-          <div className="col-1" ></div>
-          <div className="col-10">
-            <Demo
-            steps={steps}/>
-          </div>
-          <div className="col-1" ></div>
+        <div className="col-1" ></div>
+        <div className="col-10">
+          <TravelSteps
+          steps={steps}
+          megaSteps={megaSteps}
+          places={props.places}
+          targetMap={targetMap}
+          />
         </div>
+
       
       <div className='scroll-foundPlace'>
+
+        <div className="col-1" ></div>
+      </div>
+      : <div></div>
+      }
+
+      <div>
+        
+
       {foundPlaces.map((place) => {
             return <CityPlace
                     place={place}

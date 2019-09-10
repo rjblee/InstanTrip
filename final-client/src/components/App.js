@@ -22,9 +22,9 @@ export default function App() {
   const [alert, setAlert] = useState('')
 
   ////////////////////////////////////
-  // console.log('----here')
+  console.log('----here')
   // console.log(cities) 
-  // console.log(userdata)
+  console.log(userdata)
   // console.log(user)
   ////////////////////////////////////
   useEffect(() => {

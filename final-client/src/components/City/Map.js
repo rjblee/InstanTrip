@@ -16,7 +16,6 @@ export default function Map(props) {
     GoogleMapLoader.load(function(google){
 
 
-     
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
         zoom: 8,
@@ -151,32 +150,34 @@ export default function Map(props) {
                   }
               ]
           }
-      ]
-    })
+
+      ]})
+
+      //pass map object out of <Map>
+      props.setTargetMap(targetMap)
+
 
     
       // map.mapTypes.set('styled map', styledMapType);
       // map.setMapTypeId('styled map');
 
-    const bounds = new google.maps.LatLngBounds()
+    // const bounds = new google.maps.LatLngBounds()
 
-    const markerPositions = props.places.map((place) => {
-      
-      const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
-      bounds.extend(loc)
-      // new google.maps.Marker({
-      //   position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
-      //   map: targetMap,
-      //   title: place.name
-      // })
-      return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
-
-    })
+    // props.places.forEach((place) => {
+    //   const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
+    //   bounds.extend(loc)
+    //   // new google.maps.Marker({
+    //   //   position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+    //   //   map: targetMap,
+    //   //   title: place.name
+    //   // })
+    //   // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+    // })
 
 
 
-    targetMap.fitBounds(bounds)
-    targetMap.panToBounds(bounds)
+    // targetMap.fitBounds(bounds)
+    // targetMap.panToBounds(bounds)
 
     
       // const markerPositions= [
@@ -214,22 +215,38 @@ export default function Map(props) {
 
       if (currentSchedule.start_place && currentSchedule.end_place && currentSchedule.transit) {
 
+        const markerPositions = props.places.map((place) => {
+      
+          // const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
+          // bounds.extend(loc)
+          // new google.maps.Marker({
+          //   position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+          //   map: targetMap,
+          //   title: place.name
+          // })
+          return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+    
+        })
+
         console.log('---------------in routes now')
 
         const start_place = props.places.filter((place) => {
           return place.name === currentSchedule.start_place
         }).map((place) => {
-          return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+          // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+          return place.address
         })[0]
 
         const end_place = props.places.filter((place) => {
           return place.name === currentSchedule.end_place
         }).map((place) => {
-          return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+          // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+          return place.address
         })[0]
 
-        console.log(start_place)
-        console.log(markerPositions[0])
+        // console.log(start_place)
+        // console.log(markerPositions[0])
+
 
         const waypoints = props.places.filter((place) => {
           if (place.name !== currentSchedule.start_place && place.name !== currentSchedule.end_place) {
@@ -238,8 +255,11 @@ export default function Map(props) {
             return false
           }
         }).map((place) => {
+          console.log('make sure if place address')
+          console.log(place)
           return {
-            location: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+            // location: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+            location: place.address,
             stopover: true
           }
         })
@@ -285,6 +305,8 @@ export default function Map(props) {
                   waypoints: waypoints, //an array of waypoints
                   optimizeWaypoints: true,
                   travelMode: 'DRIVING'
+
+                  // travelMode: 'TRANSIT'
                   // google.maps.TravelMode[selectedMode],
                   // transitOptions: {
                   //   departureTime: new Date(Date.now() + 100000),
@@ -295,6 +317,7 @@ export default function Map(props) {
                 }, function(response, status) {
                   const megaSteps = response.routes[0].legs;
                   props.setMegaSteps(megaSteps)
+                  // const startlatLng = {lat: megaSteps[0].start_location.lat(), lng: megaSteps[0].start_location.lng()}
 
                   if (status == 'OK') {
                     if (currentSchedule.transit === "car") {
@@ -328,6 +351,9 @@ export default function Map(props) {
                       // console.log(steps)
                       
                       const steps = response.routes[0].legs
+                      props.setSteps(prev => {
+                        return []
+                      })
                       steps.forEach (step => {
                         const start_address = step.start_address
                         const end_address = step.end_address
@@ -343,7 +369,18 @@ export default function Map(props) {
                             const end_location =  response.routes[0].legs[0].end_location
                             // console.log(response.routes[0].legs[0].start_location.lat())
                             const directionsDisplay = new google.maps.DirectionsRenderer;
+
+                            
                             directionsDisplay.setMap(targetMap);
+                            
+                            // //set center
+                            // google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+                            // // ... CALLBACK
+                            // console.log('set center called')
+                            // targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+                            // targetMap.setZoom(12)
+                            // });
+
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
@@ -353,6 +390,11 @@ export default function Map(props) {
                             props.setSteps(prev => {
                               return [...prev, response.routes[0].legs[0]]
                             })
+
+                            // set the center to be the beginning of the journey
+                            // targetMap.setCenter(startlatLng)
+                            // targetMap.setZoom(12)
+
                           } else {
                             console.log('oh wrong')
                           }
@@ -361,7 +403,9 @@ export default function Map(props) {
                       })
                     } else {
                       const steps = response.routes[0].legs
-                      
+                      props.setSteps(prev => {
+                        return []
+                      })
                       steps.forEach (step => {
                         const start_address = step.start_address
                         const end_address = step.end_address
@@ -384,19 +428,37 @@ export default function Map(props) {
                             const end_location =  response.routes[0].legs[0].end_location
                             // console.log(response.routes[0].legs[0].start_location.lat())
                             const directionsDisplay = new google.maps.DirectionsRenderer;
+
+                            
+                            
+                            
                             directionsDisplay.setMap(targetMap);
+                            
+                            // //set center
+                            // google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+                            //   // ... CALLBACK
+                            //   console.log('set center called')
+                            //   targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+                            //   targetMap.setZoom(12)
+                            // });
+
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
                             infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
                             infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
                             infowindow2.open(targetMap);
-  
+                            props.setSteps(prev => {
+                              return [...prev, response.routes[0].legs[0]]
+                            })
+
+                            // set the center to be the beginning of the journey
+                            // targetMap.setCenter(startlatLng)
+                            // targetMap.setZoom(12)
                           } else {
                             console.log('oh wrong')
                           }
                         })
-  
                       })
                     }
                   } else {
@@ -406,15 +468,35 @@ export default function Map(props) {
   
               }
       } else {
-        props.places.map((place) => {
-          // const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
-          // bounds.extend(loc)
+        const bounds = new google.maps.LatLngBounds()
+
+        props.places.forEach((place) => {
+          const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
+          bounds.extend(loc)
           new google.maps.Marker({
             position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
             map: targetMap,
             title: place.name
           })
+          return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
         })
+        targetMap.fitBounds(bounds)
+        targetMap.panToBounds(bounds)
+
+        // props.places.map((place) => {
+          
+        //   // const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
+        //   // bounds.extend(loc)
+        //   new google.maps.Marker({
+        //     position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+        //     map: targetMap,
+        //     title: place.name
+        //   })
+
+        //   targetMap.fitBounds(bounds)
+        //   targetMap.panToBounds(bounds)
+        // })
+
       }
     })
 

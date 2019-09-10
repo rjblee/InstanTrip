@@ -17,6 +17,12 @@
 
 
 
+.add-button {
+  background-color: transparent;
+  border: transparent;
+}
+
+
 /* Wishlist by tabs */
 .col-4 {
   background: whitesmoke;
@@ -43,6 +49,7 @@
 .add-button {
   background-color: transparent;
   border: transparent;
+
   outline: none;
   /* width:35px;
   height: 10px; */
@@ -64,3 +71,7 @@
   height: 540px;
   overflow: auto;
 }
+
+
+
+

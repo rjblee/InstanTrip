@@ -18,7 +18,10 @@ export default function ScheduleList (props) {
               aria-controls="nav-home" 
               aria-selected="true"
               onClick={() => {
+                props.setMegaSteps([])
+                props.setSteps([])
                 props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
+
               }}
               >All</a>
              
@@ -32,7 +35,10 @@ export default function ScheduleList (props) {
               aria-controls={`nav-schedule-${schedule.id}`} 
               aria-selected="false"
               onClick={() => {
+                props.setMegaSteps([])
+                props.setSteps([])
                 props.setCurrentSchedule(schedule)
+
               }}
               >schedule {schedule.id}</a>
 
