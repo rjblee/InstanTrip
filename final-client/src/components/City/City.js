@@ -192,6 +192,7 @@ export default function City(props) {
 
         <div className="col-1" ></div>
       </div>
+      </div>
       : <div></div>
       }
 
