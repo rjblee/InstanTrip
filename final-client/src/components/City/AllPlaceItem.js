@@ -46,9 +46,7 @@ export default function AllPlaceItem(props) {
       </AlertButton>
     
 
-  
 
-      
       {/* <button
 
         // className="example_f"
