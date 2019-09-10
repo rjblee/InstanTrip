@@ -16,9 +16,6 @@
 }
 
 
-.add-button {
-  background-color: transparent;
-  border: transparent;
 
 /* Wishlist by tabs */
 .col-4 {
@@ -41,4 +38,29 @@
   background: white;
   border-radius: 6px;
 
+}
+
+.add-button {
+  background-color: transparent;
+  border: transparent;
+  outline: none;
+  /* width:35px;
+  height: 10px; */
+}
+
+.delete-button{
+  background-color: transparent;
+  outline: none;
+  border: transparent;
+  width:20px;
+
+}
+
+.scroll-foundPlace{
+  height: 300px;
+  overflow: auto;
+}
+.scroll-all{
+  height: 540px;
+  overflow: auto;
 }

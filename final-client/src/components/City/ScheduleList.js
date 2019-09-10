@@ -1,11 +1,12 @@
 import React from 'react';
 import AllPlaceItem from './AllPlaceItem';
-import SchedulePlaceItem from './SchedulePlaceItem'
+import SchedulePlaceItem from './SchedulePlaceItem';
+import "../../styles/City.css";
 
 export default function ScheduleList (props) {
-  console.log('props.places-1-1-1-1-1')
-  console.log(props.places)
-  console.log(props.schedules)
+  // console.log('props.places-1-1-1-1-1')
+  // console.log(props.places)
+  // console.log(props.schedules)
   // setCurrentSchedule
   return (
     <>
@@ -20,6 +21,7 @@ export default function ScheduleList (props) {
                 props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
               }}
               >All</a>
+             
           {props.schedules.map((schedule) => {
             return <a  
               key={schedule.id}className="nav-item nav-link" 
@@ -35,10 +37,12 @@ export default function ScheduleList (props) {
               >schedule {schedule.id}</a>
 
           })}
+          
         </div>
       </nav>
       <div className="tab-content" id="nav-tabContent">
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div className='scroll-all'>
           {props.places.map((place) => {
             return <AllPlaceItem
               key={place.id}
@@ -47,6 +51,7 @@ export default function ScheduleList (props) {
               setUser={props.setUser}
             />
           })}
+          </div>
         </div>
 
         {props.schedules.map((schedule) => {

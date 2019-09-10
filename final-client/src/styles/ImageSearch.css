@@ -26,9 +26,14 @@
   margin-bottom: 10px;
   border-radius: 30px;
 }
+.scoll-placeCard{
+  height: 600px;
+  overflow: scroll;
+}
 
 .placeImage {
   width: 300px;
+  max-height: 200px;
   padding: 10px;
   border-radius: 30px;
 }

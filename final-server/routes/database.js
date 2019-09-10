@@ -9,7 +9,7 @@ db.connect();
 module.exports = () => {
 
   router.post("/userdata", (req,res) => {
-    console.log(req.body)
+    // console.log(req.body)
     db.query(`SELECT * 
               FROM users JOIN cities ON users.id = cities.user_id
               JOIN places ON cities.id = places.city_id
@@ -42,8 +42,8 @@ module.exports = () => {
 
   router.post('/savePlace', (req, res) => {
 
-    console.log('-----get datatttt')
-    console.log(req.body)
+    // console.log('-----get datatttt')
+    // console.log(req.body)
     const place = req.body.place
     if (req.body.existCity === 'true') {
       // add place to city if city is in database 
@@ -77,7 +77,7 @@ module.exports = () => {
 
 
   router.post('/createCity', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const city = req.body.city
     const user = req.body.user
     db.query(`INSERT INTO cities (city, c_lat, c_lng, user_id, c_picture)
@@ -91,8 +91,8 @@ module.exports = () => {
 
 
   router.post('/saveSchedules', (req, res) => {
-    console.log('check schedule body')
-    console.log(req.body)
+    // console.log('check schedule body')
+    // console.log(req.body)
 
     const placesClusters = req.body.placesClusters;
     const cityId = req.body.cityId;

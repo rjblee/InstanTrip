@@ -165,8 +165,8 @@ export default function City(props) {
           </div>
           <div className="col-1" ></div>
         </div>
-      <div>
-        
+      
+      <div className='scroll-foundPlace'>
       {foundPlaces.map((place) => {
             return <CityPlace
                     place={place}
@@ -177,6 +177,7 @@ export default function City(props) {
                     />
       })}
       </div>
+      
 
     </>
 

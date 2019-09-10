@@ -144,7 +144,7 @@ export default function Map(props) {
               elementType: "all",
               stylers: [
                   {
-                      color: "#92b4c2"
+                      color: "#116fa2"
                   },
                   {
                       visibility: "on"
