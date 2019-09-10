@@ -130,6 +130,8 @@ export default function App() {
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
+                                                        alert={alert}
+                                                        setAlert={setAlert}
                                                       />}/>
 
       
