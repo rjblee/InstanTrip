@@ -12,6 +12,7 @@ export default function Wishlist(props) {
       return(
       <WishlistItem
               name={place.name}
+              picture={place.picture}
               rating={place.rating}
               address={place.address}
             >

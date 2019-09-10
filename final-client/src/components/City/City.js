@@ -186,6 +186,10 @@ export default function City(props) {
           targetMap={targetMap}
           />
         </div>
+
+      
+      <div className='scroll-foundPlace'>
+
         <div className="col-1" ></div>
       </div>
       : <div></div>
@@ -193,6 +197,7 @@ export default function City(props) {
 
       <div>
         
+
       {foundPlaces.map((place) => {
             return <CityPlace
                     place={place}
@@ -203,6 +208,7 @@ export default function City(props) {
                     />
       })}
       </div>
+      
 
     </>
 
