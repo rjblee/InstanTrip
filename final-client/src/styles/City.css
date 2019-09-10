@@ -71,6 +71,14 @@
   height: 540px;
   overflow: auto;
 }
+.scroll-schedule{
+  height: 540px;
+  overflow: auto;
+}
+.scroll-foundPlace{
+  height: 540px;
+  overflow: auto;
+}
 
 
 .cityPlaceCard {

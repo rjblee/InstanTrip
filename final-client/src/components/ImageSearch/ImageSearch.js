@@ -15,6 +15,7 @@ export default function ImageSearch(props) {
 
   <>
    <div className="search-page"><h1><b>Search Your Wonders</b></h1></div>
+
     <SearchBar 
       setplaces={setplaces}
       alert={props.alert}
@@ -35,6 +36,7 @@ export default function ImageSearch(props) {
               )
             })}
     </div>
+
 
   </>
   )
