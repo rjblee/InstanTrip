@@ -154,7 +154,30 @@ export default function City(props) {
             setTargetMap = {setTargetMap}
            />
           </div>
-          <div className="col-4">
+          <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
+          
+          {foundPlaces.length ?  
+          <div
+            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+          >
+            <button
+              onClick={() => {
+                setfoundPlaces([])
+              }}
+            >
+              X
+            </button>
+            {foundPlaces.map((place) => {
+              // to rebuild
+              return <CityPlace
+                      place={place}
+                      key={place.placeId}
+                      city={props.city}
+                      user={props.user}
+                      setCities={props.setCities}
+                      />
+            })}
+          </div> : <></>}
 
             <ScheduleList
               places={props.places}

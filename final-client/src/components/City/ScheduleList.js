@@ -11,30 +11,16 @@ export default function ScheduleList (props) {
   // setCurrentSchedule
   return (
     <>
-      <nav>
-        {/* <div
-          style={{ position: 'relative', zIndex: '1' }}
-        >
-          {props.foundPlaces.map((place) => {
-            // to rebuild
-            return <CityPlace
-                    place={place}
-                    key={place.placeId}
-                    city={props.city}
-                    user={props.user}
-                    setCities={props.setCities}
-                    />
-          })}
-        </div> */}
+      <nav className='scheduleList'> 
+
         <div className="nav nav-tabs" id="nav-tab" role="tablist">
 
           <a className="nav-item nav-link active"
               id="nav-home-tab" data-toggle="tab" 
               href="#nav-home" role="tab" 
               aria-controls="nav-home" 
-              aria-selected="true"
-             
               aria-selected="false"
+              style={{ color: 'black'}}
               onClick={() => {
                 props.setMegaSteps([])
                 props.setSteps([])
@@ -48,32 +34,17 @@ export default function ScheduleList (props) {
               id={`nav-schedule-tab-${schedule.id}`} 
               data-toggle="tab" 
               href={`#nav-schedule-${schedule.id}`} 
-              role="tab" 
+              role="tab"
+              style={{ color: 'black'}}
               aria-controls={`nav-schedule-${schedule.id}`} 
               aria-selected="false"
               onClick={() => {
                 props.setMegaSteps([])
                 props.setSteps([])
                 props.setCurrentSchedule(schedule)
-
               }}
               >schedule {schedule.id}</a>
           })}
-          {props.foundPlaces.length ? 
-            <a  
-              key='foundPlace'
-              className="nav-item nav-link" 
-              id={`nav-schedule-tab-foundPlace`} 
-              data-toggle="tab" 
-              href={`#nav-schedule-foundPlace`} 
-              role="tab" 
-              aria-controls={`nav-schedule-foundPlace`} 
-              aria-selected="true"
-              onClick={() => {
-                props.setMegaSteps([])
-                props.setSteps([])
-              }}
-              >Found Places</a> : <></>}
           
         </div>
       </nav>
@@ -117,26 +88,7 @@ export default function ScheduleList (props) {
         {/* </div> */}
           
 
-        <div 
-          key='foundPlaces'
-          className="tab-pane fade" 
-          id={`nav-schedule-foundPlace`} 
-          role="tabpanel" 
-          aria-labelledby="nav-schedule-tab">
-            <div className='scroll-all'>
-            {props.foundPlaces.map((place) => {
 
-              // to rebuild
-              return <CityPlace
-                      place={place}
-                      key={place.placeId}
-                      city={props.city}
-                      user={props.user}
-                      setCities={props.setCities}
-                      />
-            })}
-            </div>
-        </div>
         
         
       </div>
