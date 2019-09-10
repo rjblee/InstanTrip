@@ -83,6 +83,13 @@ export default function City(props) {
     <>
       {/* <p> here is the city page</p> */}
 
+      {/* <button
+        onClick={() => {
+          console.log(targetMap)
+          targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+          targetMap.setZoom(12)
+        }}
+      >test center</button> */}
       <div className="form-inline">
         <div className="form-group mx-sm-3 mb-2">
           <input 

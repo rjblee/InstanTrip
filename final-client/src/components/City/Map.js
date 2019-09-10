@@ -166,12 +166,12 @@ export default function Map(props) {
     // props.places.forEach((place) => {
     //   const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
     //   bounds.extend(loc)
-    //   new google.maps.Marker({
-    //     position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
-    //     map: targetMap,
-    //     title: place.name
-    //   })
-    //   return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+    //   // new google.maps.Marker({
+    //   //   position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+    //   //   map: targetMap,
+    //   //   title: place.name
+    //   // })
+    //   // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
     // })
 
 
@@ -317,7 +317,7 @@ export default function Map(props) {
                 }, function(response, status) {
                   const megaSteps = response.routes[0].legs;
                   props.setMegaSteps(megaSteps)
-                  const startlatLng = {lat: megaSteps[0].start_location.lat(), lng: megaSteps[0].start_location.lng()}
+                  // const startlatLng = {lat: megaSteps[0].start_location.lat(), lng: megaSteps[0].start_location.lng()}
 
                   if (status == 'OK') {
                     if (currentSchedule.transit === "car") {
@@ -369,7 +369,18 @@ export default function Map(props) {
                             const end_location =  response.routes[0].legs[0].end_location
                             // console.log(response.routes[0].legs[0].start_location.lat())
                             const directionsDisplay = new google.maps.DirectionsRenderer;
+
+                            
                             directionsDisplay.setMap(targetMap);
+                            
+                            // //set center
+                            // google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+                            // // ... CALLBACK
+                            // console.log('set center called')
+                            // targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+                            // targetMap.setZoom(12)
+                            // });
+
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
@@ -417,7 +428,20 @@ export default function Map(props) {
                             const end_location =  response.routes[0].legs[0].end_location
                             // console.log(response.routes[0].legs[0].start_location.lat())
                             const directionsDisplay = new google.maps.DirectionsRenderer;
+
+                            
+                            
+                            
                             directionsDisplay.setMap(targetMap);
+                            
+                            // //set center
+                            // google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+                            //   // ... CALLBACK
+                            //   console.log('set center called')
+                            //   targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+                            //   targetMap.setZoom(12)
+                            // });
+
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
@@ -456,9 +480,6 @@ export default function Map(props) {
           })
           return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
         })
-    
-    
-    
         targetMap.fitBounds(bounds)
         targetMap.panToBounds(bounds)
 
