@@ -44,17 +44,29 @@ export default function TravelSteps(props) {
 
   console.log('result waypoints with name')
   console.log(wayPoinstWithDuration)
-  console.log(props.targetMap.getCenter)
+  // console.log(props.targetMap.getCenter)
   // after routes loaded on map, center the map
-  const initMapcenter = {lat: wayPoinstWithDuration[0].start_location.lat(), lng:  wayPoinstWithDuration[0].start_location.lng()}
+  // const initMapcenter = {lat: wayPoinstWithDuration[0].start_location.lat(), lng:  wayPoinstWithDuration[0].start_location.lng()}
   
-  props.targetMap.setCenter(initMapcenter)
-  // props.targetMap
-  props.targetMap.setZoom(5)
+
+  // props.targetMap.setCenter(initMapcenter)
+  // // props.targetMap
+  // props.targetMap.setZoom(5)
+
+  // props.targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+  // props.targetMap.setZoom(12)
   
   const lastRoute = wayPoinstWithDuration[wayPoinstWithDuration.length-1]
     return (
+ 
       <div>
+        {/* <button
+          onClick={() => {
+            props.targetMap.setCenter({lat: 49.246292, lng: -123.116226})
+            props.targetMap.setZoom(12)
+          }}
+        > test111
+        </button> */}
         {/* <Steps
           type="navigation"
           size="small"
@@ -93,10 +105,25 @@ export default function TravelSteps(props) {
         } 
         style={stepStyle}>
           {wayPoinstWithDuration.map((wayPoint) => {
-            return <Step status="finish" title={wayPoint.startName} description={`Time to next destination: ${wayPoint.duration} Distance: ${wayPoint.distance}`}/>
+            return <Step 
+                    status="finish" 
+                    title={wayPoint.startName} 
+                    description={`Time to next destination: ${wayPoint.duration} Distance: ${wayPoint.distance}`}
+                    onClick={() => {
+                      props.targetMap.setCenter({lat: wayPoint.start_location.lat(), lng: wayPoint.start_location.lng()})
+                      props.targetMap.setZoom(17)
+                    }}
+                    />
           })
           }
-          {<Step status="finish" title={lastRoute.endName} description={`Final destination`}/>}
+          {<Step 
+            status="finish" 
+            title={lastRoute.endName} 
+            description={`Final destination`} 
+            onClick={() => {
+            props.targetMap.setCenter({lat: lastRoute.end_location.lat(), lng: lastRoute.end_location.lng()})
+            props.targetMap.setZoom(17)
+          }}/>}
           {/* <Step status="wait" title="Step 2" />
           <Step status="wait" title="Step 3" />
           <Step status="wait" title="Step 4" /> */}
