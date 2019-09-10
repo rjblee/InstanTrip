@@ -90,7 +90,7 @@ export default function ScheduleList (props) {
           })}
           </div>
         </div>
-
+        {/* <div className='scroll-schedule'> */}
         {props.schedules.map((schedule) => {
             return <div 
                       key={schedule.id}
@@ -98,19 +98,24 @@ export default function ScheduleList (props) {
                       id={`nav-schedule-${schedule.id}`} 
                       role="tabpanel" 
                       aria-labelledby="nav-schedule-tab">
-              {props.places.filter((place) => {
-                return place.schedule_id == schedule.id
-              })
-              .map((place) => {
-                return <SchedulePlaceItem
-                        key={place.id}
-                        place={place}
-                        setUser={props.setUser}
-                        />
-              })
-              }
+                    <div className='scroll-all'>
+                      {props.places.filter((place) => {
+                        return place.schedule_id == schedule.id
+                      })
+                      .map((place) => {
+                        return <SchedulePlaceItem
+                                key={place.id}
+                                place={place}
+                                setUser={props.setUser}
+                                />
+                      })
+                      }
+                    </div>
+                
               </div>
           })}
+        {/* </div> */}
+          
 
         <div 
           key='foundPlaces'
@@ -118,6 +123,7 @@ export default function ScheduleList (props) {
           id={`nav-schedule-foundPlace`} 
           role="tabpanel" 
           aria-labelledby="nav-schedule-tab">
+            <div className='scroll-all'>
             {props.foundPlaces.map((place) => {
 
               // to rebuild
@@ -129,6 +135,7 @@ export default function ScheduleList (props) {
                       setCities={props.setCities}
                       />
             })}
+            </div>
         </div>
         
         
