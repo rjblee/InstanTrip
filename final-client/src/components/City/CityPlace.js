@@ -6,7 +6,7 @@ export default function Place(props) {
   // console.log('citiys----------')
   // console.log(props.cities)
   return (
-    <div className="placeCard d-flex">
+    <div className="cityPlaceCard d-flex">
       <img className="placeImage" src={props.place.picture} alt=''></img>
       <div>
         <p>{props.place.name}</p>

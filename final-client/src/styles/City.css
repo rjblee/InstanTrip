@@ -73,5 +73,27 @@
 }
 
 
+.cityPlaceCard {
+  font-family: 'Noto Serif', serif;
+  /* font-family: 'Quicksand', sans-serif; */
+  border: 3px solid white;
+  /* margin-top: 100px; */
+  background: white;
+  opacity: 0.9;
+  width: 100%;
+  font-size: 1.4rem;
+  /* margin-left: 11%; */
+  margin-bottom: 10px;
+  border-radius: 30px;
+
+}
+ 
+.scheduleListParent {
+  padding-left: 0px !important;
+}
+
+.scheduleList {
+  padding-left: 10px
+}
 
 
