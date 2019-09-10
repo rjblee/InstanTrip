@@ -155,29 +155,27 @@ export default function Map(props) {
 
       //pass map object out of <Map>
       props.setTargetMap(targetMap)
-
-
     
       // map.mapTypes.set('styled map', styledMapType);
       // map.setMapTypeId('styled map');
 
-    // const bounds = new google.maps.LatLngBounds()
+    const bounds = new google.maps.LatLngBounds()
 
-    // props.places.forEach((place) => {
-    //   const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
-    //   bounds.extend(loc)
-    //   // new google.maps.Marker({
-    //   //   position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
-    //   //   map: targetMap,
-    //   //   title: place.name
-    //   // })
-    //   // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
-    // })
+    props.places.forEach((place) => {
+      const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
+      bounds.extend(loc)
+      // new google.maps.Marker({
+      //   position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+      //   map: targetMap,
+      //   title: place.name
+      // })
+      // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
+    })
 
 
 
-    // targetMap.fitBounds(bounds)
-    // targetMap.panToBounds(bounds)
+    targetMap.fitBounds(bounds)
+    targetMap.panToBounds(bounds)
 
     
       // const markerPositions= [
@@ -398,6 +396,8 @@ export default function Map(props) {
                           } else {
                             console.log('oh wrong')
                           }
+                          // targetMap.fitBounds(bounds)
+                          // targetMap.panToBounds(bounds)
                         })
   
                       })
@@ -428,7 +428,7 @@ export default function Map(props) {
                             const end_location =  response.routes[0].legs[0].end_location
                             // console.log(response.routes[0].legs[0].start_location.lat())
                             const directionsDisplay = new google.maps.DirectionsRenderer;
-
+ 
                             
                             
                             
@@ -458,8 +458,17 @@ export default function Map(props) {
                           } else {
                             console.log('oh wrong')
                           }
+                          targetMap.fitBounds(bounds)
+                          targetMap.panToBounds(bounds)
                         })
                       })
+                      console.log('time out!')
+                      setTimeout(function(){                           
+                        targetMap.fitBounds(bounds)
+                        targetMap.panToBounds(bounds) 
+                      }, 1000);
+
+
                     }
                   } else {
                     window.alert('Directions request failed due to ' + status);
