@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  /* margin: 0;
   padding: 0;
   position: relative;
   font-family: sans-serif;
@@ -7,12 +7,18 @@ body {
   /* background-image: url("https://images.on-this.website/23194_133264798459d7a08b86460.jpg"); */
   /* background-image: url("https://files.slack.com/files-pri/T2G8TE2E5-FMZH8KQHW/bg9.jpg"); */
   /* background-image: url("https://stmed.net/sites/default/files/the-twelve-apostles-wallpapers-28071-6824020.jpg"); */
-  background-image: url("https://www.visitmelbourne.com/-/media/atdw/great-ocean-road/things-to-do/nature-and-wildlife/national-parks-and-reserves/d069d420c7dab28f6172d4570caa5015_1600x900.jpeg?ts=20170620381156");
+  /* background-image: url("https://www.visitmelbourne.com/-/media/atdw/great-ocean-road/things-to-do/nature-and-wildlife/national-parks-and-reserves/d069d420c7dab28f6172d4570caa5015_1600x900.jpeg?ts=20170620381156"); */
   /* background-image: url("http://cdn-image.travelandleisure.com/sites/default/files/1481050850/manarola-cinque-terre-italy-CINQUE1206.jpg"); */
   
-  background-size: 100%;
+  /* background-size: 100%;
   background-repeat: no-repeat;
-  /* background-position: center; */
+  background-position: center;  */
+
+  background: url("https://www.visitmelbourne.com/-/media/atdw/great-ocean-road/things-to-do/nature-and-wildlife/national-parks-and-reserves/d069d420c7dab28f6172d4570caa5015_1600x900.jpeg?ts=20170620381156") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   
 }
 

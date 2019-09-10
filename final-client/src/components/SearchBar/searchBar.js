@@ -11,7 +11,7 @@ export default function SearchBar (props) {
     <div className="form-row">
       <div className='col-md-1'></div>
       <div className="form-group col-md-4">
-        <input 
+        <input
               type="text" 
               className="form-control" 
               placeholder="Search for place"
@@ -53,6 +53,7 @@ export default function SearchBar (props) {
               console.log(inputvalue)
               // searchPlaces({ 'query': inputvalue}).then(function(response) {
               searchPlaces(queryData).then(function(response) {
+                console.log(props)
                 props.setAlert('')
                 console.log('here is places')
                 console.log(response.data)

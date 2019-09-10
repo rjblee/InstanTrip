@@ -120,9 +120,10 @@ export default function City(props) {
       <SearchBar 
         setplaces={setfoundPlaces} 
         city={props.city}
-        setMegaSteps={setMegaSteps}
-        setSteps={setSteps}
+        // setMegaSteps={setMegaSteps}
+        // setSteps={setSteps}
         defaultValue='text'
+        setAlert={props.setAlert}
         />
       
       
@@ -224,20 +225,6 @@ export default function City(props) {
       </div>
       : <div></div>
       }
-
-      <div>
-        
-
-      {foundPlaces.map((place) => {
-            return <CityPlace
-                    place={place}
-                    key={place.placeId}
-                    city={props.city}
-                    user={props.user}
-                    setCities={props.setCities}
-                    />
-      })}
-      </div>
       
 
     </>
