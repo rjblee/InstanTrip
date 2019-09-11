@@ -143,7 +143,7 @@ export default function City(props) {
 
           }}
         >Make Schedule</button>
-      </div>setKValue
+      
 
 
       <SearchBar 
@@ -256,7 +256,7 @@ export default function City(props) {
           <div className="col-1" ></div>
         </div>
       </div>
-      </div>
+      
       : <div></div>
       }
       
