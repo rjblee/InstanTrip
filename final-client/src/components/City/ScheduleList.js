@@ -11,23 +11,23 @@ export default function ScheduleList (props) {
   return (
     <>
       <nav>
-        <div className="nav nav-tabs" id="nav-tab" role="tablist">
-          <a className="nav-item nav-link active"
-              id="nav-home-tab" data-toggle="tab" 
-              href="#nav-home" role="tab" 
-              aria-controls="nav-home" 
-              aria-selected="true"
-              onClick={() => {
-                props.setMegaSteps([])
-                props.setSteps([])
-                props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
-
-              }}
-              >All</a>
+        <div className="wishlist-tabs nav-tabs" id="nav-tab" role="tablist">
+          <a 
+            className="wishlist-tab nav-link active"
+            id="wishlist-tab" data-toggle="tab" 
+            href="#nav-home" role="tab" 
+            aria-controls="nav-home" 
+            aria-selected="true"
+            onClick={() => {
+              props.setMegaSteps([])
+              props.setSteps([])
+              props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
+            }}
+          >All</a>
              
           {props.schedules.map((schedule) => {
             return <a  
-              key={schedule.id}className="nav-item nav-link" 
+              key={schedule.id} className="nav-item nav-link" 
               id={`nav-schedule-tab-${schedule.id}`} 
               data-toggle="tab" 
               href={`#nav-schedule-${schedule.id}`} 
@@ -41,7 +41,6 @@ export default function ScheduleList (props) {
 
               }}
               >schedule {schedule.id}</a>
-
           })}
           
         </div>

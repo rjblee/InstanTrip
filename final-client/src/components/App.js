@@ -53,27 +53,27 @@ export default function App() {
   return (
     <Router className="App">
       <nav className="navbar navbar-expand-lg">
-        <span className="navbar-logo" ><Link to="/">WeTravel</Link></span>
+        <span className="navbar-logo" ><Link to="/"><b>WeTravel</b></Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbar-menu">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <div className="nav-link"><Link to="/">Home</Link></div>
+              <div className="nav-link"><Link to="/"><b>Home</b></Link></div>
             </li>
             <li className="nav-item">
-              <div className="nav-link"><Link to="/imageSearch">Search by Image</Link></div>
+              <div className="nav-link"><Link to="/imageSearch"><b>Search by Image</b></Link></div>
             </li>
             <li className="nav-item dropdown">
               {/* <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div> */}
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cities
+                <b>City</b>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 {cities.map((city) => {
-                  return <div className="nav-link"><Link to={"/" + city.city}>{city.city}</Link></div>
+                  return <div className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
                 })}
              
 {/* 

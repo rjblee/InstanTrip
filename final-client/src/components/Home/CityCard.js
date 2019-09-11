@@ -16,9 +16,9 @@ export default function CityCard(props) {
     console.log('citycard')
     console.log(props.city)
   return (
-    <div  className="city-card" style = {style}>
-      <div className="city-card-layer">
-        <Link to={"/" + props.city.city}><b>{props.city.city}</b></Link>
+    <div className="city-card" style = {style}>
+      <div>
+        <Link to={"/" + props.city.city} style={{color: 'white'}}><b>{props.city.city}</b></Link>
       </div>
     </div>
   )

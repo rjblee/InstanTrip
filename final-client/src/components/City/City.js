@@ -90,68 +90,73 @@ export default function City(props) {
           targetMap.setZoom(12)
         }}
       >test center</button> */}
-      <div className="form-inline">
-        <div className="form-group mx-sm-3 mb-2">
-          <input 
-            type="text" 
-            className="form-control" 
-            placeholder={`Days in ${props.city.city}`}
-            value={kValue}
-            onChange={(event) => {
-              setKValue(event.target.value)
-            }}
-            />
-        </div>
-        <button 
-          type="submit" 
-          className="btn btn-primary mb-2"
-          onClick={() => {
-            // function takes place data, k value to do clustering 
-            // and then  city id to  create row in schedules table
-            // and add schedule id into schedule_id colume of places table
-            // then update data by calling setUser(prev => {return prev})
-            createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
-            setMegaSteps([])
-            setSteps([])
-          }}
-        >Make Schedule</button>
-      </div>
 
-      <SearchBar 
-        setplaces={setfoundPlaces} 
-        city={props.city}
-        setMegaSteps={setMegaSteps}
-        setSteps={setSteps}
+      <div className="combine-two-search-bar">
+
+        <SearchBar 
+          setplaces={setfoundPlaces} 
+          city={props.city}
+          setMegaSteps={setMegaSteps}
+          setSteps={setSteps}
         />
+
+        <div className="form-inline">
+          <div className="form-group mx-sm-3 mb-2">
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder={`Days in ${props.city.city}`}
+              value={kValue}
+              onChange={(event) => {
+                setKValue(event.target.value)
+              }}
+            />
+          </div>
+          <button 
+            type="submit" 
+            className="example_e btn-primary mb-2"
+            onClick={() => {
+              // function takes place data, k value to do clustering 
+              // and then  city id to  create row in schedules table
+              // and add schedule id into schedule_id colume of places table
+              // then update data by calling setUser(prev => {return prev})
+              createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
+              setMegaSteps([])
+              setSteps([])
+            }}
+          >Make Schedule</button>
+        </div>
+
+      </div>
       
-      
+
       <div className="mb-5">
         <div className="row">
           <div className="col-1" ></div>
           <div className="col-6">
             <Map
-            // places={props.places.filter((places)=>{
-            //   return 
-            //   places.schedule_id === schedule.id
-            // })}
-            // start_location={start_location}
-            // end_location={start_location}
-            // schedule={currentSchedule}
-            // setSchedule={setCurrentSchedule}
-            places={props.places.filter((place) => {
-              if (currentSchedule.id === "All") {
-                return true
-              } else {
-                return place.schedule_id === currentSchedule.id
-              }
-            })}
-            currentSchedule={currentSchedule}
-            lat={props.city.c_lat}
-            lng={props.city.c_lng}
-            setMegaSteps={setMegaSteps}
-            setSteps={setSteps}
-            setTargetMap = {setTargetMap}
-           />
+              // places={props.places.filter((places)=>{
+              //   return 
+              //   places.schedule_id === schedule.id
+              // })}
+              // start_location={start_location}
+              // end_location={start_location}
+              // schedule={currentSchedule}
+              // setSchedule={setCurrentSchedule}
+              places={props.places.filter((place) => {
+                if (currentSchedule.id === "All") {
+                  return true
+                } else {
+                  return place.schedule_id === currentSchedule.id
+                }
+              })}
+              currentSchedule={currentSchedule}
+              lat={props.city.c_lat}
+              lng={props.city.c_lng}
+              setMegaSteps={setMegaSteps}
+              setSteps={setSteps}
+              setTargetMap = {setTargetMap}
+            />
           </div>
           <div className="col-4">
 
@@ -187,10 +192,9 @@ export default function City(props) {
           />
         </div>
 
-      
-      <div className='scroll-foundPlace'>
-
-        <div className="col-1" ></div>
+        <div className='scroll-foundPlace'>
+          <div className="col-1" ></div>
+        </div>
       </div>
       : <div></div>
       }

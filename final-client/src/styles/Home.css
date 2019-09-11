@@ -1,8 +1,7 @@
-.home-page {
-  color: white;
+#home-page-text{
+  /* color: white; */
   padding-top: 200px;
   padding-left: 150px;
-  /* font-family: 'Permanent Marker', cursive; */
   font-family: 'Playfair Display SC', serif;
 }
 
@@ -13,7 +12,6 @@
   padding-top: 30px;
   margin: 0 70px 0 70px;
   width: 600px;
-  /* opacity: 0.8; */
 }
 
 .form-control {
@@ -23,44 +21,45 @@
 
 .city-cards {
   display: flex;
-  margin-top: 90px;
+  margin-top: 100px;
   margin-left: 65px;
 }
 
 .city-card {
   /* border: 3px solid white; */
-  
   margin-right: 70px;
-
   width: 300px;
   height: 250px;
   background-Size: cover;
   background-Position: center center;
   background-repeat: no-repeat;
-  
   /* justify-content: space-evenly; */
-  border-radius: 16px;
+  border-radius: 10px;
   font-size: 35px;
-  opacity: 0.9;
-  /* z-index:  */
+  opacity: 0.7;
+  border: 2px solid white;
 }
 
 .city-card-layer {
   position: relative;
   z-index: 1;
-  opacity: 0.5;
+  opacity: 0.8;
   height: 100%;
   background-color: black;
-  border-radius: 16px;
+  border-radius: 10px;
 }
 
 
 
 .city-card:hover {
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-  -webkit-box-shadow: 20px 20px 20px 0px rgba(233, 222, 222, 0.794);
+  text-shadow: 0px 0px 6px white;
+  /* -webkit-box-shadow: 20px 20px 20px 0px rgba(233, 222, 222, 0.794);
+  -moz-box-shadow: 0px 40px 40px -10px rgb(255, 255, 255); */
+
+  -webkit-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.794);
   -moz-box-shadow: 0px 40px 40px -10px rgb(255, 255, 255);
-  transition: all 0.4s ease 0s;
+  transition: all 0.2s ease 0s;
+  opacity: 1;
 }
 
 .example_e {
