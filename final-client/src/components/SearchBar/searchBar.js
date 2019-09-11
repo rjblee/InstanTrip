@@ -4,14 +4,16 @@ import imageSearch from '../../helpers/imageSearch'
 
 export default function SearchBar (props) {
   const [inputvalue, setInputvalue] = useState('')
-  const [searchOption, setSearchOption] = useState('image')
+  const [searchOption, setSearchOption] = useState( props.defaultValue || 'image')
   const setplaces = props.setplaces
   return (
     <div className="left-half-city-search">
     <div className="search-for-place">
       <div className='col-md-1'></div>
+
       <div className="city-page-search-bar col-md-4">
         <input 
+
               type="text" 
               className="form-control" 
               placeholder="Search Place by Using URL"
@@ -32,6 +34,7 @@ export default function SearchBar (props) {
             >
             <option defaultValue value='image'>📷</option>
             <option value="text">📝</option>
+
           </select>
       </div>
 
@@ -41,7 +44,7 @@ export default function SearchBar (props) {
           onClick={() => {
             //send request based on search option
             if (searchOption === 'image') {
-              imageSearch(inputvalue,setInputvalue,setplaces)
+              imageSearch(inputvalue,setInputvalue,setplaces, props.setAlert)
             } else {
               //text search option
               const queryData = { 'query': inputvalue}
@@ -53,9 +56,15 @@ export default function SearchBar (props) {
               console.log(inputvalue)
               // searchPlaces({ 'query': inputvalue}).then(function(response) {
               searchPlaces(queryData).then(function(response) {
+                console.log(props)
+                props.setAlert('')
                 console.log('here is places')
                 console.log(response.data)
-                setplaces(response.data)
+                if(response.data.length) {
+                  setplaces(response.data)
+                } else {
+                  props.setAlert('No places found')
+                }
               })
             }
           }}

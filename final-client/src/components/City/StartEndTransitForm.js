@@ -61,7 +61,8 @@ export default function StartEndTransitForm (props) {
         <button 
           className="form-control"
           onClick={() => {
-
+            props.setSteps([])
+            props.setTargetMap([])
             updateSchedule(props.currentSchedule.id, start, end, transit, props.setSchedules).then(response => {
               const newSchedule = response.data
               console.log(newSchedule)

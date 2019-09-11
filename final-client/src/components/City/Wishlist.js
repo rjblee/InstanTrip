@@ -3,7 +3,7 @@ import WishlistItem from './WishlistItem';
 import "../../styles/City.css";
 
 export default function Wishlist(props) {
-  console.log("VVVVVVV", props)
+  // console.log("VVVVVVV", props)
   const [state, setState] = useState('');
 
   return (

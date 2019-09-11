@@ -27,14 +27,12 @@ export default function AllPlaceItem(props) {
         })}
       </select>
       <AlertButton
-        id={props.place.id}
         onClick={() => {
           addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
           setTargetScheduleId('Schedule ID')
         }}
         text={"👍 " + props.place.name + " has been added"}
       >
-       
       </AlertButton>
     
 

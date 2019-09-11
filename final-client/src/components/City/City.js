@@ -31,7 +31,7 @@ export default function City(props) {
   const [foundPlaces, setfoundPlaces] = useState([])
 
   const [kValue, setKValue] = useState('')
-
+ 
   const [currentSchedule, setCurrentSchedule] = useState({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
   const [steps,setSteps] = useState([])
   const [megaSteps, setMegaSteps] = useState([])
@@ -126,10 +126,17 @@ export default function City(props) {
             }}
           >Make Schedule</button>
         </div>
-
       </div>
-      
 
+      <SearchBar 
+        setplaces={setfoundPlaces} 
+        city={props.city}
+        // setMegaSteps={setMegaSteps}
+        // setSteps={setSteps}
+        defaultValue='text'
+        setAlert={props.setAlert}
+        />
+      
       <div className="mb-5">
         <div className="row">
           <div className="col-1" ></div>
@@ -158,7 +165,33 @@ export default function City(props) {
               setTargetMap = {setTargetMap}
             />
           </div>
-          <div className="col-4">
+          <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
+          
+          {foundPlaces.length ?  
+          <div
+            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+          >
+            <button
+              onClick={() => {
+                setfoundPlaces([])
+              }}
+            >
+              X
+            </button>
+            {foundPlaces.map((place) => {
+              // to rebuild
+              return <CityPlace
+                      place={place}
+                      key={place.placeId}
+                      city={props.city}
+                      user={props.user}
+                      setCities={props.setCities}
+                      setUser={props.setUser}
+                      setAlert={props.setAlert}
+                      userdata={props.userdata}
+                      />
+            })}
+          </div> : <></>}
 
             <ScheduleList
               places={props.places}
@@ -167,6 +200,9 @@ export default function City(props) {
               setCurrentSchedule={setCurrentSchedule}
               setMegaSteps={setMegaSteps}
               setSteps={setSteps}
+              foundPlaces={foundPlaces}
+              setfoundPlaces={setfoundPlaces}
+              city={props.city}
             />
 
           </div>
@@ -179,6 +215,8 @@ export default function City(props) {
         setCurrentSchedule = {setCurrentSchedule}
         places={props.places}
         setSchedules={setSchedules}
+        setSteps={setSteps}
+        setTargetMap = {setTargetMap}
       /> 
       {steps.length === megaSteps.length && megaSteps.length ? 
       <div className="row">
@@ -196,22 +234,9 @@ export default function City(props) {
           <div className="col-1" ></div>
         </div>
       </div>
+      </div>
       : <div></div>
       }
-
-      <div>
-        
-
-      {foundPlaces.map((place) => {
-            return <CityPlace
-                    place={place}
-                    key={place.placeId}
-                    city={props.city}
-                    user={props.user}
-                    setCities={props.setCities}
-                    />
-      })}
-      </div>
       
 
     </>

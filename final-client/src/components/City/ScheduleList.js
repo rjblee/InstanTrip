@@ -2,6 +2,7 @@ import React from 'react';
 import AllPlaceItem from './AllPlaceItem';
 import SchedulePlaceItem from './SchedulePlaceItem';
 import "../../styles/City.css";
+import CityPlace from './CityPlace'
 
 export default function ScheduleList (props) {
   // console.log('props.places-1-1-1-1-1')
@@ -10,7 +11,8 @@ export default function ScheduleList (props) {
   // setCurrentSchedule
   return (
     <>
-      <nav>
+
+      <nav className='scheduleList'>
         <div className="wishlist-tabs nav-tabs" id="nav-tab" role="tablist">
           <a 
             className="wishlist-tab nav-link active"
@@ -18,12 +20,14 @@ export default function ScheduleList (props) {
             href="#nav-home" role="tab" 
             aria-controls="nav-home" 
             aria-selected="true"
+            style={{ color: 'black'}}
             onClick={() => {
               props.setMegaSteps([])
               props.setSteps([])
               props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
             }}
           >All</a>
+
              
           {props.schedules.map((schedule) => {
             return <a  
@@ -31,14 +35,14 @@ export default function ScheduleList (props) {
               id={`nav-schedule-tab-${schedule.id}`} 
               data-toggle="tab" 
               href={`#nav-schedule-${schedule.id}`} 
-              role="tab" 
+              role="tab"
+              style={{ color: 'black'}}
               aria-controls={`nav-schedule-${schedule.id}`} 
               aria-selected="false"
               onClick={() => {
                 props.setMegaSteps([])
                 props.setSteps([])
                 props.setCurrentSchedule(schedule)
-
               }}
               >schedule {schedule.id}</a>
           })}
@@ -58,7 +62,7 @@ export default function ScheduleList (props) {
           })}
           </div>
         </div>
-
+        {/* <div className='scroll-schedule'> */}
         {props.schedules.map((schedule) => {
             return <div 
                       key={schedule.id}
@@ -66,20 +70,27 @@ export default function ScheduleList (props) {
                       id={`nav-schedule-${schedule.id}`} 
                       role="tabpanel" 
                       aria-labelledby="nav-schedule-tab">
-              here is {schedule.id}
-              {props.places.filter((place) => {
-                return place.schedule_id == schedule.id
-              })
-              .map((place) => {
-                return <SchedulePlaceItem
-                        key={place.id}
-                        place={place}
-                        setUser={props.setUser}
-                        />
-              })
-              }
+                    <div className='scroll-all'>
+                      {props.places.filter((place) => {
+                        return place.schedule_id == schedule.id
+                      })
+                      .map((place) => {
+                        return <SchedulePlaceItem
+                                key={place.id}
+                                place={place}
+                                setUser={props.setUser}
+                                />
+                      })
+                      }
+                    </div>
+                
               </div>
           })}
+        {/* </div> */}
+          
+
+
+        
         
       </div>
     </>

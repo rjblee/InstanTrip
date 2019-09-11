@@ -63,14 +63,16 @@ export default function App() {
               <div className="nav-link"><Link to="/"><b>Home</b></Link></div>
             </li>
             <li className="nav-item">
-              <div className="nav-link"><Link to="/imageSearch"><b>Search by Image</b></Link></div>
+
+              <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
             </li>
             <li className="nav-item dropdown">
               {/* <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div> */}
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <b>City</b>
+
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 {cities.map((city) => {
                   return <div className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
@@ -118,6 +120,8 @@ export default function App() {
           city={city}
           places={places}
           setUser={setUser}
+          setAlert={setAlert}
+          userdata={userdata}
         />} />
       })}
       
@@ -125,16 +129,19 @@ export default function App() {
                                             user={user}
                                             cities={cities}
                                             setCities={setCities}
+                                            setAlert={setAlert}
                                           />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
+                                                        setUser={setUser}
+                                                        setAlert={setAlert}
+                                                        userdata={userdata}
                                                       />}/>
 
       
       <Route path="/sampleCity" exact render={() => <City
-
                                                       city={{
                                                         c_lat: "49.246292",
                                                         c_lng: "-123.116226",
@@ -149,7 +156,7 @@ export default function App() {
                                                       user={user}
                                                       setCities={setCities}
                                                       places={userdata}
-
+                                                      setAlert={setAlert}
                                                       setUser={setUser}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}

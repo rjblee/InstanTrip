@@ -10,14 +10,34 @@ export default function Home(props) {
   // console.log(props.cities)
 
   const handleClick = (event) =>  {
-    event.preventDefault()
     // console.log(inputvalue)
-   let result = '';
-    Axios.post("/searchPlaces", { query: inputvalue}).then(response => {
-      Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
-        props.setCities(prev => {return [...prev, response.data]})
+    // if(props.user.id) {
+
+    // }
+    Axios.post("/searchPlaces", {query: inputvalue}).then(response => {
+      console.log('after create city maybe???')
+      console.log(response)
+      const cityName = response.data[0].name
+
+      const exitCity = props.cities.filter((city) => {
+        return city.city == cityName
       })
+      props.setAlert('')
+
+      console.log('city add part')
+      console.log(props.cities)
+      console.log(exitCity)
+      if (exitCity.length === 0) {
+
+        Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
+          props.setCities(prev => {return [...prev, response.data]})
+        })
+
+      } else {
+        props.setAlert('city already exist')
+      }
     })
+
   }
 
   return(
@@ -37,7 +57,7 @@ export default function Home(props) {
             }}
           />
         <div className="button_cont" align="center">
-          <div className="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
+          <button className="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</button>
         </div>
         {/* </div> */}
         {/* <button  
