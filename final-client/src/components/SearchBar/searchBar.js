@@ -7,14 +7,16 @@ export default function SearchBar (props) {
   const [searchOption, setSearchOption] = useState( props.defaultValue || 'image')
   const setplaces = props.setplaces
   return (
-    <div>
-    <div className="form-row">
+    <div className="left-half-city-search">
+    <div className="search-for-place">
       <div className='col-md-1'></div>
-      <div className="form-group col-md-4">
-        <input
+
+      <div className="city-page-search-bar col-md-4">
+        <input 
+
               type="text" 
               className="form-control" 
-              placeholder="Search for place"
+              placeholder="Search Place by Using URL"
               value={inputvalue}
               onChange={event => {
                 setInputvalue(event.target.value)
@@ -30,8 +32,9 @@ export default function SearchBar (props) {
               console.log(event.target.value)
             }}
             >
-            <option value='image'>img</option>
-            <option value="text">text</option>
+            <option defaultValue value='image'>📷</option>
+            <option value="text">📝</option>
+
           </select>
       </div>
 
@@ -64,6 +67,7 @@ export default function SearchBar (props) {
                 }
               })
             }
+            setInputvalue('')
           }}
         >Search</button>
       </div>

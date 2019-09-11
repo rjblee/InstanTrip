@@ -9,10 +9,10 @@ export default function ImageSearch(props) {
   // const [inputvalue, setInputvalue] = useState('')
   // const [searchOption, setSearchOption] = useState('image')
   const [places, setplaces] = useState([])
-  console.log(places)
+
+  // console.log(places)
 
   useEffect(() => {
-    // set recommand places
     const queryData = { query: 'places of interest'}
     searchPlaces(queryData).then(function(response) {
       // console.log(props)
@@ -28,27 +28,29 @@ export default function ImageSearch(props) {
 
   },[])
 
-
+  
   return(
-
-  <>
-   <div className="search-page"><h1><b>Search Your Wonders</b></h1></div>
+    <>
+      <div className="search-page-text">
+      <h1><b style={{color: 'white'}}>Search Your Wonders</b></h1>
+      </div>
 
     <SearchBar 
       setplaces={setplaces}
       setAlert={props.setAlert}
-      />
+    />
     <div className='scoll-placeCard'>
         {places.map((place) => {
               return(
-                
                 <Place
+                      userdata={props.userdata}
                       place={place}
                       key={place.placeId}
                       cities={props.cities}
                       user={props.user}
                       setCities={props.setCities}
                       setUser={props.setUser}
+                      setAlert={props.setAlert}
                       />
               
               )
@@ -57,6 +59,7 @@ export default function ImageSearch(props) {
 
 
   </>
+
   )
 }
 

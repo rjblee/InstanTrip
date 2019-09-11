@@ -53,27 +53,29 @@ export default function App() {
   return (
     <Router className="App">
       <nav className="navbar navbar-expand-lg">
-        <span className="navbar-logo" ><Link to="/">WeTravel</Link></span>
+        <span className="navbar-logo" ><Link to="/"><b>WeTravel</b></Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbar-menu">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <div className="nav-link"><Link to="/">Home</Link></div>
+              <div className="nav-link"><Link to="/"><b>Home</b></Link></div>
             </li>
             <li className="nav-item">
+
               <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
             </li>
             <li className="nav-item dropdown">
               {/* <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div> */}
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cities
+                <b>City</b>
+
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 {cities.map((city) => {
-                  return <div className="nav-link"><Link to={"/" + city.city}>{city.city}</Link></div>
+                  return <div className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
                 })}
              
 {/* 
@@ -105,8 +107,15 @@ export default function App() {
 
       </nav>
       
-      {alert.length ? <div className="alert alert-danger" role="alert">
+      {alert.length ? <div className="alert alert-danger" role="alert" style={{ position: 'relative'}}>
         {alert}
+        <button 
+          className='alert alert-danger'
+          style={{ position: 'absolute', zIndex: '1', top:'-1px', right:'0px'}}
+          onClick={() => {
+            setAlert('')
+          }}
+        >X</button>
       </div> : <></>}
 
         
@@ -119,6 +128,7 @@ export default function App() {
           places={places}
           setUser={setUser}
           setAlert={setAlert}
+          userdata={userdata}
         />} />
       })}
       
@@ -126,6 +136,7 @@ export default function App() {
                                             user={user}
                                             cities={cities}
                                             setCities={setCities}
+                                            setAlert={setAlert}
                                           />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
@@ -133,6 +144,7 @@ export default function App() {
                                                         setCities={setCities}
                                                         setUser={setUser}
                                                         setAlert={setAlert}
+                                                        userdata={userdata}
                                                       />}/>
 
       

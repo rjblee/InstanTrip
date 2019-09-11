@@ -14,33 +14,51 @@ export default function Home(props) {
     // if(props.user.id) {
 
     // }
-    Axios.post("/searchPlaces", { query: inputvalue}).then(response => {
+    Axios.post("/searchPlaces", {query: inputvalue}).then(response => {
       console.log('after create city maybe???')
       console.log(response)
-      Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
-        props.setCities(prev => {return [...prev, response.data]})
+      const cityName = response.data[0].name
+
+      const exitCity = props.cities.filter((city) => {
+        return city.city == cityName
       })
+      props.setAlert('')
+
+      console.log('city add part')
+      console.log(props.cities)
+      console.log(exitCity)
+      if (exitCity.length === 0) {
+
+        Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
+          props.setCities(prev => {return [...prev, response.data]})
+        })
+
+      } else {
+        props.setAlert('city already exist')
+      }
     })
+
   }
 
+
   return(
-    <div className="home-page">
-      {/* <h1><b>Find Yourself In...</b></h1> */}
-      <h1><b>Your Journey Begins...</b></h1>
+    <div id="home-page-text">
+      <h1><b style={{color: 'white'}}>Find Yourself In...</b></h1>
+      {/* <h1><b>Your Journey Begins...</b></h1> */}
 
       <div className="home-search">
         {/* <div className="form-group mx-sm-3 mb-2"> */}
           <input 
             type="text" 
             className="form-control" 
-            placeholder="Create City"
+            placeholder="Enter City"
             value={inputvalue}
             onChange={event => {
               setInputvalue(event.target.value)
             }}
           />
         <div className="button_cont" align="center">
-          <div className="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</div>
+          <button className="example_e" target="_blank" rel="nofollow noopener" onClick={handleClick} >Create</button>
         </div>
         {/* </div> */}
         {/* <button  
