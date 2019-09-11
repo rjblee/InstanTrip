@@ -42,7 +42,24 @@ export default function Place(props) {
         <button
           className="example_d"
           onClick={() => {
-            savePlaceToDatabase(props, targetCity, props.setUser)
+            props.setAlert('')
+            // check if place is in database already
+            const placeName = props.place.name
+            // console.log('placeName')
+            // console.log(placeName)
+            // console.log(props.userdata)
+            const filteredPlaces = props.userdata.filter((each) => {
+              return each.name === placeName
+            })
+
+            if (filteredPlaces.length === 0 ) {
+              savePlaceToDatabase(props, targetCity, props.setUser)
+            } else {
+              props.setAlert('Failed to save place. Check if you are signed in and place is not in wishlist already')
+            }
+
+
+
             // function savePlace(data) {
             //   const options = {
             //     method: 'post',

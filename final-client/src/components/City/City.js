@@ -177,6 +177,8 @@ export default function City(props) {
                       user={props.user}
                       setCities={props.setCities}
                       setUser={props.setUser}
+                      setAlert={props.setAlert}
+                      userdata={props.userdata}
                       />
             })}
           </div> : <></>}
