@@ -13,7 +13,6 @@ export default function ImageSearch(props) {
   // console.log(places)
 
   useEffect(() => {
-    // set recommand places
     const queryData = { query: 'places of interest'}
     searchPlaces(queryData).then(function(response) {
       // console.log(props)
@@ -29,7 +28,7 @@ export default function ImageSearch(props) {
 
   },[])
 
-
+  
   return(
     <>
       <div className="search-page-text">

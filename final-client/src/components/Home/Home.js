@@ -40,6 +40,7 @@ export default function Home(props) {
 
   }
 
+
   return(
     <div id="home-page-text">
       <h1><b style={{color: 'white'}}>Find Yourself In...</b></h1>

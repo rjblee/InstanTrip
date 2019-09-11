@@ -107,8 +107,15 @@ export default function App() {
 
       </nav>
       
-      {alert.length ? <div className="alert alert-danger" role="alert">
+      {alert.length ? <div className="alert alert-danger" role="alert" style={{ position: 'relative'}}>
         {alert}
+        <button 
+          className='alert alert-danger'
+          style={{ position: 'absolute', zIndex: '1', top:'-1px', right:'0px'}}
+          onClick={() => {
+            setAlert('')
+          }}
+        >X</button>
       </div> : <></>}
 
         
