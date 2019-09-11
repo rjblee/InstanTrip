@@ -28,12 +28,12 @@
 }
 
 .AllPlaceItem {
-  margin: 15px;
-  margin-bottom: 20px;
+  margin-left: 2px;
+  margin-bottom: 10px;
   padding-bottom: 15px;
   border-bottom: 1px solid gray;
 }
-
+ 
 .schedule-dropdown {
   width: 250px;
   height: 50px;
@@ -42,22 +42,34 @@
   border-radius: 6px;
 
 }
-
-.add-button {
-  background-color: transparent;
-  border: transparent;
-
-  outline: none;
-  /* width:35px;
-  height: 10px; */
+.schedule-drop{
+  width: 170px;
+  height: 40px;
+  
+  margin-right: 40px;
+  background: white;
+  border-radius: 6px;
 }
 
-.delete-button{
+/* .add-button {
+  /* background-color: transparent; */
+  /* border: transparent; */
+
+  /* outline: none; */
+  /* width:35px;
+  height: 10px; */
+/* } */ */
+
+/* .delete-button{
   background-color: transparent;
   outline: none;
   border: transparent;
   width:20px;
-}
+
+
+} */
+
+
 
 .scroll-foundPlace{
   height: 300px;
@@ -65,7 +77,11 @@
 }
 
 .scroll-all{
-  height: 540px;
+  height: 500px;
+  overflow: auto;
+}
+.scroll-result{
+  height: 500px;
   overflow: auto;
 }
 .scroll-schedule{
@@ -115,7 +131,56 @@
 }
 
 .scheduleList {
-  padding-left: 10px
+  padding-left: 10px;
+  
+ 
+
+}
+
+.SchedulePlaceItem{
+  position: 'absolute';
+  height:'100%';
+  width: '100%';
+  border-bottom: 1px solid gray;
+
+
+}
+
+
+.img-all{
+  
+  width: 200px;
+  height: 150px;
+  /* padding: 10px; */
+  border-radius: 15px;
+}
+.name{
+  font-size: 18px;
+}
+.address{
+  font-size: 15px;
+}
+
+.example_g {
+  color: #494949 !important;
+  font-size: 13px;
+  text-transform: uppercase;
+  background: #ffffff;
+  margin-left: 15px;
+  /* padding: 10px; */
+  border: 2px solid #494949 !important;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  font-family: 'Playfair Display SC', serif;
+  margin: 10px;
+}
+
+.example_g:hover {
+  color: #2a7ae2 !important;
+  border-radius: 30px;
+  border-color: #2a7ae2 !important;
+  transition: all 0.3s ease 0s;
 }
 
 .wishlist-tabs {
@@ -130,3 +195,4 @@
   border-right: solid #404040;
   font-size: 20px;
 }
+

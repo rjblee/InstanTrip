@@ -9,14 +9,12 @@ export default function SearchResultList(props) {
   // const [inputvalue, setInputvalue] = useState('')
   // const [searchOption, setSearchOption] = useState('image')
   const [places, setplaces] = useState([])
-  console.log(places)
-
 
   return(
 
   <>
     <SearchBar setplaces={setplaces}/>
-  
+ 
 
     {places.map((place) => {
           return <Place
@@ -27,6 +25,7 @@ export default function SearchResultList(props) {
                   setCities={props.setCities}
                   />
         })}
+
 
   </>
   )

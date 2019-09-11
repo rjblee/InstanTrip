@@ -51,7 +51,7 @@ export default function ScheduleList (props) {
       </nav>
       <div className="tab-content" id="nav-tabContent">
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div className='scroll-all'>
+           <div className='scroll-result'>  
           {props.places.map((place) => {
             return <AllPlaceItem
               key={place.id}
@@ -62,6 +62,9 @@ export default function ScheduleList (props) {
           })}
           </div>
         </div>
+
+
+
         {/* <div className='scroll-schedule'> */}
         {props.schedules.map((schedule) => {
             return <div 
@@ -81,7 +84,7 @@ export default function ScheduleList (props) {
                                 setUser={props.setUser}
                                 />
                       })
-                      }
+                     }
                     </div>
                 
               </div>

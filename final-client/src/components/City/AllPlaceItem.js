@@ -10,12 +10,29 @@ export default function AllPlaceItem(props) {
   // TO access to picture of each 
   // use props.place.picture
   return (
-    <div className="AllPlaceItem">
-      <h3>{props.place.name}</h3>
-      <h5>{props.place.address}</h5>
+
+    <div className="AllPlaceItem row">
+      <div
+      className='col-5'
+      >
+      <img className='img-all' src={props.place.picture} alt=''></img>
+      </div>
+      <div
+      className="col-7"
+      >
+        
+      <p className="name">{props.place.name}</p>
+      <p className='address'>{props.place.address}</p>
+      <div 
+        className="row"
+      >
+        <div
+        className="col-8"
+        >
+
 
       <select
-        className="schedule-dropdown"
+        className="schedule-drop"
         value={targetScheduleId}
         onChange={(event) => {
           setTargetScheduleId(event.target.value)
@@ -26,6 +43,10 @@ export default function AllPlaceItem(props) {
           return <option value={schedule.id}>{schedule.id}</option>
         })}
       </select>
+        </div>
+        <div
+        className='col-4'
+        >
       <AlertButton
         onClick={() => {
           addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
@@ -34,6 +55,10 @@ export default function AllPlaceItem(props) {
         text={"👍 " + props.place.name + " has been added"}
       >
       </AlertButton>
+        </div>
+      </div>
+        
+      </div>
     
 
 
