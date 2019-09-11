@@ -16,7 +16,7 @@ export default function SearchBar (props) {
 
               type="text" 
               className="form-control" 
-              placeholder="Search Place by Using URL"
+              placeholder="Search"
               value={inputvalue}
               onChange={event => {
                 setInputvalue(event.target.value)
@@ -25,21 +25,20 @@ export default function SearchBar (props) {
       </div>
       <div className="form-group col-md-1">
         <select 
-            className="form-control mr-sm-2" 
-            value={searchOption}
-            onChange={(event) => {
-              setSearchOption(event.target.value)
-              console.log(event.target.value)
-            }}
-            >
-            <option defaultValue value='image'>📷</option>
-            <option value="text">📝</option>
-
-          </select>
+          className="form-control mr-sm-2" 
+          value={searchOption}
+          onChange={(event) => {
+            setSearchOption(event.target.value)
+            console.log(event.target.value)
+          }}
+        >
+          <option value='image'>📷</option>
+          <option defaultValue value="text">📝</option>
+        </select>
       </div>
 
       <div className="form-group col-md-2">
-      <button  
+        <button  
           className="example_e"
           onClick={() => {
             //send request based on search option
@@ -63,7 +62,7 @@ export default function SearchBar (props) {
                 if(response.data.length) {
                   setplaces(response.data)
                 } else {
-                  props.setAlert('No places found')
+                  props.setAlert('Search Not Found')
                 }
               })
             }

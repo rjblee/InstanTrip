@@ -76,13 +76,11 @@ export default function City(props) {
   //   lat = foundPlaces[0].lat
   // }
 
-// console.log("XXXXXXXX", props)
-// // console.log("CCCCC",props.city.c_lat)
+  // console.log("XXXXXXXX", props)
+  // // console.log("CCCCC",props.city.c_lat)
 
   return(
     <>
-      {/* <p> here is the city page</p> */}
-
       {/* <button
         onClick={() => {
           console.log(targetMap)
@@ -90,6 +88,7 @@ export default function City(props) {
           targetMap.setZoom(12)
         }}
       >test center</button> */}
+      <div className="city-title"><b>{props.city.city}</b></div>
 
       <div className="combine-two-search-bar">
 
@@ -98,6 +97,7 @@ export default function City(props) {
           city={props.city}
           setMegaSteps={setMegaSteps}
           setSteps={setSteps}
+          defaultValue='text'setKValue
         />
 
         <div className="form-inline">
@@ -105,7 +105,7 @@ export default function City(props) {
             <input 
               type="text" 
               className="form-control" 
-              placeholder={`Days in ${props.city.city}`}
+              placeholder={`Duration in ${props.city.city}`}
               value={kValue}
               onChange={(event) => {
                 setKValue(event.target.value)
@@ -128,32 +128,31 @@ export default function City(props) {
         </div>
       </div>
 
-        <button 
-          type="submit" 
-          className="btn btn-primary mb-2"
-          onClick={() => {
-            // function takes place data, k value to do clustering 
-            // and then  city id to  create row in schedules table
-            // and add schedule id into schedule_id colume of places table
-            // then update data by calling setUser(prev => {return prev})
-            createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
-            setMegaSteps([])
-            setSteps([])
-            setKValue('')
+      {/* <button 
+        type="submit" 
+        className="btn btn-primary mb-2"
+        onClick={() => {
+          // function takes place data, k value to do clustering 
+          // and then  city id to  create row in schedules table
+          // and add schedule id into schedule_id colume of places table
+          // then update data by calling setUser(prev => {return prev})
+          createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
+          setMegaSteps([])
+          setSteps([])
+          setKValue('')
 
-          }}
-        >Make Schedule</button>
-      </div>setKValue
+        }}
+      >Make Schedule</button> */}
+      
 
-
-      <SearchBar 
+      {/* <SearchBar 
         setplaces={setfoundPlaces} 
         city={props.city}
         // setMegaSteps={setMegaSteps}
         // setSteps={setSteps}
         defaultValue='text'setKValue
         setAlert={props.setAlert}
-        />
+      /> */}
       
       <div className="mb-5">
         <div className="row">
@@ -161,57 +160,54 @@ export default function City(props) {
           <div className="col-6">
             <Map
 
-            // places={props.places.filter((places)=>{
-            //   return 
-            //   places.schedule_id === schedule.id
-            // })}
-            // start_location={start_location}
-            // end_location={start_location}
-            // schedule={cuplacesrrentSchedule}
-            //places setSchedule={setCurrentSchedule}
-            places={props.places.filter((place) => {
-              if (currentSchedule.id === "All") {
-                return true
-              } else {
-                return place.schedule_id === currentSchedule.id
-              }
-            })}
-            currentSchedule={currentSchedule}
-            lat={props.city.c_lat}
-            lng={props.city.c_lng}
-            setMegaSteps={setMegaSteps}
-            setSteps={setSteps}
-            setTargetMap = {setTargetMap}
-           />
-
+              // places={props.places.filter((places)=>{
+              //   return 
+              //   places.schedule_id === schedule.id
+              // })}
+              // start_location={start_location}
+              // end_location={start_location}
+              // schedule={cuplacesrrentSchedule}
+              //places setSchedule={setCurrentSchedule}
+              places={props.places.filter((place) => {
+                if (currentSchedule.id === "All") {
+                  return true
+                } else {
+                  return place.schedule_id === currentSchedule.id
+                }
+              })}
+              currentSchedule={currentSchedule}
+              lat={props.city.c_lat}
+              lng={props.city.c_lng}
+              setMegaSteps={setMegaSteps}
+              setSteps={setSteps}
+              setTargetMap = {setTargetMap}
+            />
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
-          {foundPlaces.length ?  
-          <div
-            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
-          >
-            <button
-              onClick={() => {
-                setfoundPlaces([])
-              }}
+            {foundPlaces.length ?  
+            <div
+              style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
             >
-              X
-            </button>
-            {foundPlaces.map((place) => {
-              // to rebuild
-              return <CityPlace
-                      place={place}
-                      key={place.placeId}
-                      city={props.city}
-                      user={props.user}
-                      setCities={props.setCities}
-                      setUser={props.setUser}
-                      setAlert={props.setAlert}
-                      userdata={props.userdata}
-                      setCurrentSchedule={setCurrentSchedule}
-                      />
-            })}
+              <button
+                onClick={() => {setfoundPlaces([])}}
+              >
+                Close
+              </button>
+              {foundPlaces.map((place) => {
+                // to rebuild
+                return <CityPlace
+                        place={place}
+                        key={place.placeId}
+                        city={props.city}
+                        user={props.user}
+                        setCities={props.setCities}
+                        setUser={props.setUser}
+                        setAlert={props.setAlert}
+                        userdata={props.userdata}
+                        setCurrentSchedule={setCurrentSchedule}
+                        />
+              })}
           </div> : <></>}
 
             <ScheduleList
@@ -255,12 +251,10 @@ export default function City(props) {
           <div className="col-1" ></div>
         </div>
       </div>
-      </div>
+    
       : <div></div>
       }
       
-
     </>
-
   )
 }
