@@ -128,6 +128,7 @@ export default function City(props) {
         </div>
       </div>
 
+
       {/* <button 
         type="submit" 
         className="btn btn-primary mb-2"
@@ -140,6 +141,7 @@ export default function City(props) {
           setMegaSteps([])
           setSteps([])
           setKValue('')
+
 
         }}
       >Make Schedule</button> */}
@@ -255,7 +257,7 @@ export default function City(props) {
           <div className="col-1" ></div>
         </div>
       </div>
-    
+
       : <div></div>
       }
       

@@ -1,13 +1,15 @@
 import React, { useState} from 'react';
 import { Steps } from 'antd';
 import 'antd/dist/antd.css';
+import "../../styles/City.css";
+
 
 
 const { Step } = Steps;
 const stepStyle = {
   marginBottom: 60,
   boxShadow: '0px -1px 0 0 #e8e8e8 inset',
-  // background: 'white'
+  background: 'white',
 };
 export default function TravelSteps(props) {
   const [current, setCurrent] = useState(0);
@@ -66,7 +68,7 @@ export default function TravelSteps(props) {
   const lastRoute = wayPoinstWithDuration[wayPoinstWithDuration.length-1]
     return (
  
-      <div>
+      <div className= 'steps'>
         {/* <button
           onClick={() => {
             props.targetMap.setCenter({lat: 49.246292, lng: -123.116226})

@@ -72,12 +72,12 @@
 
 
 .scroll-foundPlace{
-  height: 300px;
+  height: 750px;
   overflow: auto;
 }
 
 .scroll-all{
-  height: 500px;
+  height: 750px;
   overflow: auto;
 }
 .scroll-result{
@@ -85,11 +85,11 @@
   overflow: auto;
 }
 .scroll-schedule{
-  height: 540px;
+  height: 750px;
   overflow: auto;
 }
 .scroll-foundPlace{
-  height: 540px;
+  height: 750px;
   overflow: auto;
 }
 
@@ -184,18 +184,36 @@
   transition: all 0.3s ease 0s;
 }
 
-.wishlist-tabs {
+/* .wishlist-tabs {
   margin: 10px;
   border-bottom: 1px solid #404040
 }
 
 #wishlist-tab {
-  width: 100px;
+  width: 20px;
   border-top: solid #404040;
   border-left: solid #404040;
   border-right: solid #404040;
+  font-size: 10px;
+} */
+
+/* .startingLocation{
+  font-size: 25px;
+    color: black;
+} */
+/* .start-row {
+  font-size: 25px;
+    color: black;
+} */
+.form-control{
   font-size: 20px;
+    color: black;
 }
+.steps{
+  color:black;
+  font-size: 15px;
+}
+
 
 .city-title {
   color: white;
@@ -205,4 +223,5 @@
   display: flex;
   justify-content: center;
 }
+
 
