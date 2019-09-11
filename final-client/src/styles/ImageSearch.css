@@ -1,9 +1,13 @@
-.search-page {
-  color: white !important;
+.search-page-text {
   padding-top: 200px;
   padding-left: 150px;
   font-family: 'Playfair Display SC', serif;
   
+}
+
+.search-for-place {
+  padding-top: 30px;
+  padding-left: 65px;
 }
 
 .form-row {
@@ -26,6 +30,7 @@
   margin-bottom: 10px;
   border-radius: 30px;
 }
+
 .scoll-placeCard{
   height: 350px;
   overflow: scroll;
@@ -33,7 +38,6 @@
 
 .placeImage {
   width: 300px;
-  max-height: 200px;
   padding: 10px;
   border-radius: 30px;
 }
@@ -70,7 +74,7 @@
   transition: all 0.3s ease 0s;
 }
 
-.example_f {
+.example_delete {
   color: #494949 !important;
   font-size: 18px;
   text-transform: uppercase;
@@ -85,7 +89,7 @@
   margin: 10px;
 }
 
-.example_f:hover {
+.example_delete:hover {
   color: red!important;
   border-radius: 50px;
   border-color: red !important;

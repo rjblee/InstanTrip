@@ -42,16 +42,16 @@ export default function Home(props) {
 
 
   return(
-    <div className="home-page">
-      {/* <h1><b>Find Yourself In...</b></h1> */}
-      <h1><b>Your Journey Begins...</b></h1>
+    <div id="home-page-text">
+      <h1><b style={{color: 'white'}}>Find Yourself In...</b></h1>
+      {/* <h1><b>Your Journey Begins...</b></h1> */}
 
       <div className="home-search">
         {/* <div className="form-group mx-sm-3 mb-2"> */}
           <input 
             type="text" 
             className="form-control" 
-            placeholder="Create City"
+            placeholder="Enter City"
             value={inputvalue}
             onChange={event => {
               setInputvalue(event.target.value)

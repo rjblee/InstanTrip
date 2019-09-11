@@ -7,7 +7,7 @@ export default function AlertButton(props) {
   return (
     <div>
       <button
-        className="add-button"
+        className={"add-button " + `add-button-${props.id}`}
         onClick={() => {
           notify();
           props.onClick();
@@ -18,10 +18,10 @@ export default function AlertButton(props) {
 
       <ToastContainer
         position="bottom-right"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
-        closeOnClick
+        closeOnClick={false}
         rtl={false}
         pauseOnVisibilityChange
         draggable
