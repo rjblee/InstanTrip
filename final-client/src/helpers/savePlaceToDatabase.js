@@ -2,7 +2,7 @@ import axios from "axios";
 import qs from 'qs'
 import searchPlaces from '../helpers/searchPlaces'
 
-export default function SavePlaceToDatabase(props, targetCity) {
+export default function SavePlaceToDatabase(props, targetCity, setUser) {
   const savePlace = function(data) {
     const options = {
       method: 'post',
@@ -16,22 +16,30 @@ export default function SavePlaceToDatabase(props, targetCity) {
   }
   
   // check if city is in city list
-
+  console.log('check citys')
+  console.log(targetCity)
+  console.log(props.cities)
   let selectedCity =''
+  console.log(selectedCity.length == false)
+
   if (props.cities) {
-    const selectedCity = props.cities.filter((city) => {
-      return city.city === targetCity
+    selectedCity = props.cities.filter((city) => {
+      return city.city == targetCity
     })
   } else {
     selectedCity = [targetCity]
   }
+  console.log(selectedCity)
   
   if (selectedCity.length) {
     // if yes, send city data with place data directly
+    console.log(selectedCity[0])
     savePlace({place: props.place, city: selectedCity[0], existCity: 'true'}).then((response) => {
       console.log(response)
+      setUser(prev => ({...prev}))
     })
   } else {
+
     // else find the city, create citiy and add place to that city in database
     searchPlaces({ 'query': targetCity}).then((response) => {
       console.log('city from no where')
@@ -49,6 +57,7 @@ export default function SavePlaceToDatabase(props, targetCity) {
           response.data
         ]
         })
+        setUser(prev => ({...prev}))
       
       })
     })

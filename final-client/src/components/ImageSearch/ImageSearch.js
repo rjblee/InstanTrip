@@ -1,14 +1,32 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import Place from './Place'
 import axios from "axios";
 import "../../styles/ImageSearch.css";
 import SearchBar from '../SearchBar/searchBar'
+import searchPlaces from '../../helpers/searchPlaces'
 
 export default function ImageSearch(props) {
   // const [inputvalue, setInputvalue] = useState('')
   // const [searchOption, setSearchOption] = useState('image')
   const [places, setplaces] = useState([])
   console.log(places)
+
+  useEffect(() => {
+    // set recommand places
+    const queryData = { query: 'places of interest'}
+    searchPlaces(queryData).then(function(response) {
+      // console.log(props)
+      props.setAlert('')
+      // console.log('here is places')
+      // console.log(response.data)
+      if(response.data.length) {
+        setplaces(response.data)
+      } else {
+        props.setAlert('No places found')
+      }
+    }).catch((err) => console.log(err))
+
+  },[])
 
 
   return(
@@ -18,7 +36,6 @@ export default function ImageSearch(props) {
 
     <SearchBar 
       setplaces={setplaces}
-      alert={props.alert}
       setAlert={props.setAlert}
       />
     <div className='scoll-placeCard'>
@@ -31,6 +48,7 @@ export default function ImageSearch(props) {
                       cities={props.cities}
                       user={props.user}
                       setCities={props.setCities}
+                      setUser={props.setUser}
                       />
               
               )

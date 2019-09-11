@@ -2,8 +2,12 @@ import React, {useEffect} from 'react';
 import GoogleMapLoader from 'google-maps'
 
 export default function Map(props) {
+
   const lat = parseFloat(props.lat) || 49.246292;
   const lng = parseFloat(props.lng) || -123.116226;
+  console.log('lat, lng')
+  console.log(lat)
+  console.log(lng)
   let map = React.createRef();
   const currentSchedule = props.currentSchedule
   // console.log("EEEEEEE",props)
@@ -18,7 +22,7 @@ export default function Map(props) {
 
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
-        zoom: 8,
+        zoom: 10,
         styles: [
           {
               featureType: "administrative",
@@ -382,7 +386,7 @@ export default function Map(props) {
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
-                            infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
+                            infowindow2.setContent(response.routes[0].legs[0].duration.text);
                             infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
                             infowindow2.open(targetMap);
                             props.setSteps(prev => {
@@ -452,7 +456,7 @@ export default function Map(props) {
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
-                            infowindow2.setContent(response.routes[0].legs[0].distance.text + "<br>" + response.routes[0].legs[0].duration.text + " ");
+                            infowindow2.setContent(response.routes[0].legs[0].duration.text);
                             infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
                             infowindow2.open(targetMap);
                             props.setSteps(prev => {
@@ -486,18 +490,22 @@ export default function Map(props) {
       } else {
         const bounds = new google.maps.LatLngBounds()
 
-        props.places.forEach((place) => {
-          const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
-          bounds.extend(loc)
-          new google.maps.Marker({
-            position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
-            map: targetMap,
-            title: place.name
+        if (props.places.length != 0) {
+
+          props.places.forEach((place) => {
+            const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
+            bounds.extend(loc)
+            new google.maps.Marker({
+              position: {lat: parseFloat(place.lat), lng: parseFloat(place.lng)},
+              map: targetMap,
+              title: place.name
+            })
+            return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
           })
-          return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
-        })
-        targetMap.fitBounds(bounds)
-        targetMap.panToBounds(bounds)
+          targetMap.fitBounds(bounds)
+          targetMap.panToBounds(bounds)
+
+        }
 
         // props.places.map((place) => {
           

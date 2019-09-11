@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
 
-export default function Place(props) {
+export default function CityPlace(props) {
 
   // console.log('citiys----------')
   // console.log(props.cities)
@@ -15,7 +15,7 @@ export default function Place(props) {
 
         <button
           onClick={() => {
-            savePlaceToDatabase(props, props.city)
+            savePlaceToDatabase(props, props.city, props.setUser)
           }}
         >Add Place</button>
         

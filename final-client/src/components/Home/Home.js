@@ -10,10 +10,13 @@ export default function Home(props) {
   // console.log(props.cities)
 
   const handleClick = (event) =>  {
-    event.preventDefault()
     // console.log(inputvalue)
-   let result = '';
+    // if(props.user.id) {
+
+    // }
     Axios.post("/searchPlaces", { query: inputvalue}).then(response => {
+      console.log('after create city maybe???')
+      console.log(response)
       Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
         props.setCities(prev => {return [...prev, response.data]})
       })

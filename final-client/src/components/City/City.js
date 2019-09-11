@@ -31,7 +31,7 @@ export default function City(props) {
   const [foundPlaces, setfoundPlaces] = useState([])
 
   const [kValue, setKValue] = useState('')
-
+ 
   const [currentSchedule, setCurrentSchedule] = useState({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
   const [steps,setSteps] = useState([])
   const [megaSteps, setMegaSteps] = useState([])
@@ -120,9 +120,10 @@ export default function City(props) {
       <SearchBar 
         setplaces={setfoundPlaces} 
         city={props.city}
-        setMegaSteps={setMegaSteps}
-        setSteps={setSteps}
+        // setMegaSteps={setMegaSteps}
+        // setSteps={setSteps}
         defaultValue='text'
+        setAlert={props.setAlert}
         />
       
       
@@ -175,6 +176,7 @@ export default function City(props) {
                       city={props.city}
                       user={props.user}
                       setCities={props.setCities}
+                      setUser={props.setUser}
                       />
             })}
           </div> : <></>}
@@ -224,20 +226,6 @@ export default function City(props) {
       </div>
       : <div></div>
       }
-
-      <div>
-        
-
-      {foundPlaces.map((place) => {
-            return <CityPlace
-                    place={place}
-                    key={place.placeId}
-                    city={props.city}
-                    user={props.user}
-                    setCities={props.setCities}
-                    />
-      })}
-      </div>
       
 
     </>

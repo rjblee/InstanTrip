@@ -118,6 +118,7 @@ export default function App() {
           city={city}
           places={places}
           setUser={setUser}
+          setAlert={setAlert}
         />} />
       })}
       
@@ -130,13 +131,12 @@ export default function App() {
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
-                                                        alert={alert}
+                                                        setUser={setUser}
                                                         setAlert={setAlert}
                                                       />}/>
 
       
       <Route path="/sampleCity" exact render={() => <City
-
                                                       city={{
                                                         c_lat: "49.246292",
                                                         c_lng: "-123.116226",
@@ -151,7 +151,7 @@ export default function App() {
                                                       user={user}
                                                       setCities={setCities}
                                                       places={userdata}
-
+                                                      setAlert={setAlert}
                                                       setUser={setUser}
                                                     />} />
       {/* <Route path="/map" exact component={GoogleMap} /> */}
