@@ -57,8 +57,8 @@ export default function City(props) {
   console.log('mage steps')
   console.log(megaSteps)
 
+
   useEffect( () => { 
-    
     // extract schedules
     if(props.city.id) {
       axios.get(`/city/${props.city.id}/schedules`).then(response => {
@@ -113,16 +113,18 @@ export default function City(props) {
             createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
             setMegaSteps([])
             setSteps([])
+            setKValue('')
+
           }}
         >Make Schedule</button>
-      </div>
+      </div>setKValue
 
       <SearchBar 
         setplaces={setfoundPlaces} 
         city={props.city}
         // setMegaSteps={setMegaSteps}
         // setSteps={setSteps}
-        defaultValue='text'
+        defaultValue='text'setKValue
         setAlert={props.setAlert}
         />
       
@@ -138,8 +140,8 @@ export default function City(props) {
             // })}
             // start_location={start_location}
             // end_location={start_location}
-            // schedule={currentSchedule}
-            // setSchedule={setCurrentSchedule}
+            // schedule={cuplacesrrentSchedule}
+            //places setSchedule={setCurrentSchedule}
             places={props.places.filter((place) => {
               if (currentSchedule.id === "All") {
                 return true
@@ -179,6 +181,7 @@ export default function City(props) {
                       setUser={props.setUser}
                       setAlert={props.setAlert}
                       userdata={props.userdata}
+                      setCurrentSchedule={setCurrentSchedule}
                       />
             })}
           </div> : <></>}

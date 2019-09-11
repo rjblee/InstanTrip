@@ -111,7 +111,7 @@ export default function TravelSteps(props) {
                     description={`Time to next destination: ${wayPoint.duration} Distance: ${wayPoint.distance}`}
                     onClick={() => {
                       props.targetMap.setCenter({lat: wayPoint.start_location.lat(), lng: wayPoint.start_location.lng()})
-                      props.targetMap.setZoom(17)
+                      props.targetMap.setZoom(14)
                     }}
                     />
           })
@@ -122,7 +122,7 @@ export default function TravelSteps(props) {
             description={`Final destination`} 
             onClick={() => {
             props.targetMap.setCenter({lat: lastRoute.end_location.lat(), lng: lastRoute.end_location.lng()})
-            props.targetMap.setZoom(17)
+            props.targetMap.setZoom(14)
           }}/>}
           {/* <Step status="wait" title="Step 2" />
           <Step status="wait" title="Step 3" />
