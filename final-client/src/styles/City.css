@@ -107,8 +107,9 @@
 
 .search-for-place {
   display: flex;
-  width: 1600px;
-  margin-left: 10px;
+  width: 1800px;
+  margin-left: -60px;
+  margin-bottom: 10px;
 }
 
 .cityPlaceCard {
@@ -212,3 +213,15 @@
   color:black;
   font-size: 15px;
 }
+
+
+.city-title {
+  color: white;
+  /* font-family: 'Noto Serif', serif; */
+  font-family: 'Playfair Display SC', serif;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+

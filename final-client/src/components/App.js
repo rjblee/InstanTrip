@@ -64,7 +64,7 @@ export default function App() {
             </li>
             <li className="nav-item">
 
-              <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
+              <div className="nav-link"><Link to="/imageSearch"><b>Image Search</b></Link></div>
             </li>
             <li className="nav-item dropdown">
               {/* <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div> */}
