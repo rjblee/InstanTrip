@@ -64,6 +64,7 @@ export default function SearchBar (props) {
                 }
               })
             }
+            setInputvalue('')
           }}
         >Search</button>
       </div>

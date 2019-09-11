@@ -40,6 +40,7 @@ export default function Home(props) {
 
   }
 
+
   return(
     <div className="home-page">
       {/* <h1><b>Find Yourself In...</b></h1> */}

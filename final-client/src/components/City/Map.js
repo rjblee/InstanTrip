@@ -19,7 +19,6 @@ export default function Map(props) {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
     GoogleMapLoader.load(function(google){
 
-
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
         zoom: 9,
@@ -382,13 +381,14 @@ export default function Map(props) {
                             // targetMap.setCenter({lat: 49.246292, lng: -123.116226})
                             // targetMap.setZoom(12)
                             // });
+                            directionsDisplay.setOptions( { markerOptions: {label:'123'} } );
 
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
-                            infowindow2.setContent(response.routes[0].legs[0].duration.text);
-                            infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
-                            infowindow2.open(targetMap);
+                            // infowindow2.setContent(response.routes[0].legs[0].duration.text);
+                            // infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
+                            // infowindow2.open(targetMap);
                             props.setSteps(prev => {
                               return [...prev, response.routes[0].legs[0]]
                             })
@@ -452,13 +452,14 @@ export default function Map(props) {
                             //   targetMap.setCenter({lat: 49.246292, lng: -123.116226})
                             //   targetMap.setZoom(12)
                             // });
+                            directionsDisplay.setOptions( { markerOptions: {label:''} } );
 
                             directionsDisplay.setDirections(response);
                             var center_point = response.routes[0].overview_path.length/2;
                             const infowindow2 = new google.maps.InfoWindow();
-                            infowindow2.setContent(response.routes[0].legs[0].duration.text);
-                            infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
-                            infowindow2.open(targetMap);
+                            // infowindow2.setContent(response.routes[0].legs[0].duration.text);
+                            // infowindow2.setPosition(response.routes[0].overview_path[center_point|0]);
+                            // infowindow2.open(targetMap);
                             props.setSteps(prev => {
                               return [...prev, response.routes[0].legs[0]]
                             })
