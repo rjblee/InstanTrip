@@ -8,14 +8,24 @@ export default function SchedulePlaceItem(props) {
   // use props.place.picture
   return (
     <div className="SchedulePlaceItem">
-      <h3>{props.place.name}</h3>
-      <h3>{props.place.address}</h3>
-      <button
+      <div className='schedulePlaceitem row'>
+      <div
+      className='col-5'
+      >
+      <img className="placeImage" src={props.place.picture} alt='' ></img>
+      </div>
+      <div
+      className="col-7"
+      >
+      <p className="name">{props.place.name}</p>
+      <p className="address">{props.place.address}</p>
+      <button  className="example_g"
         onClick={() => {
           deleteScheduleFromPlace(props.place.id, props.setUser)
         }}
       >Remove from schedule</button>
-
+      </div>
+    </div>
     </div>
   )
 }

@@ -158,7 +158,7 @@ export default function City(props) {
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
           {foundPlaces.length ?  
-          <div
+          <div className='scroll-all'
             style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
             <button
@@ -168,6 +168,7 @@ export default function City(props) {
             >
               X
             </button>
+            
             {foundPlaces.map((place) => {
               // to rebuild
               return <CityPlace

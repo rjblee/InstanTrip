@@ -8,7 +8,7 @@ export default function Logout(props) {
         <b>Welcome, {props.user.name}</b>
       </span>
       <button 
-      className="example_d btn-outline-white btn-md my-2 my-sm-0 ml-3" 
+      className="example_e btn-outline-white btn-md my-2 my-sm-0 ml-3" 
       type="submit"
       onClick= {() => {
         props.setUser({name:'', password:''})

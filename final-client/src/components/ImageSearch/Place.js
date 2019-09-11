@@ -40,7 +40,7 @@ export default function Place(props) {
          </datalist>
 
         <button
-          className="example_d"
+          className="example_g"
           onClick={() => {
             savePlaceToDatabase(props, targetCity, props.setUser)
             // function savePlace(data) {
