@@ -40,7 +40,7 @@ export default function Place(props) {
          </datalist>
 
         <button
-          className="example_d"
+          className="example_g"
           onClick={() => {
             props.setAlert('')
             // check if place is in database already

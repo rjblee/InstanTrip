@@ -1,13 +1,13 @@
 -- Vancouver
 
-INSERT INTO places (name, address, lat, lng, rating, picture, placeId, city_id) 
-  VALUES ('Canada Place', '999 Canada Pl, Vancouver, BC V6C 3T4, Canada', 49.2888248, -123.1111209, 4, 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjyt-qxgqzkAhWmGDQIHVSzBEkQjRx6BAgBEAQ&url=https%3A%2F%2Fdailyhive.com%2Fvancouver%2Fsurprise-concert-canada-place-september-2016&psig=AOvVaw1adsGU0TBglAO4tWg_jGcU&ust=1567303317348812', 'ChIJIeDiJJ1xhlQRCWHIheB_Bbc', 1);
+-- INSERT INTO places (name, address, lat, lng, rating, picture, placeId, city_id) 
+--   VALUES ('Canada Place', '999 Canada Pl, Vancouver, BC V6C 3T4, Canada', 49.2888248, -123.1111209, 4, 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjyt-qxgqzkAhWmGDQIHVSzBEkQjRx6BAgBEAQ&url=https%3A%2F%2Fdailyhive.com%2Fvancouver%2Fsurprise-concert-canada-place-september-2016&psig=AOvVaw1adsGU0TBglAO4tWg_jGcU&ust=1567303317348812', 'ChIJIeDiJJ1xhlQRCWHIheB_Bbc', 1);
 
-INSERT INTO places (name, address, lat, lng, rating, picture, placeId, city_id) 
-  VALUES ('Gastown', '305 Water St, Vancouver, BC V6B 1B9', 49.2849, -123.1113, 4.2, 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwit4_7mgqzkAhVcCTQIHfNuCqgQjRx6BAgBEAQ&url=https%3A%2F%2Fvictorianhotel.ca%2Fdiscover%2Fneighbourhoods%2F&psig=AOvVaw266-mE9LEXs3oafuQQKD9h&ust=1567303504364328', 'ChIJe_ROYXdxhlQRYYQ3bU2m_tE', 1);
+-- INSERT INTO places (name, address, lat, lng, rating, picture, placeId, city_id) 
+--   VALUES ('Gastown', '305 Water St, Vancouver, BC V6B 1B9', 49.2849, -123.1113, 4.2, 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwit4_7mgqzkAhVcCTQIHfNuCqgQjRx6BAgBEAQ&url=https%3A%2F%2Fvictorianhotel.ca%2Fdiscover%2Fneighbourhoods%2F&psig=AOvVaw266-mE9LEXs3oafuQQKD9h&ust=1567303504364328', 'ChIJe_ROYXdxhlQRYYQ3bU2m_tE', 1);
 
-INSERT INTO places (name, address, lat, lng, rating, picture, placeId, city_id) 
-  VALUES ('Lighthouse Labs', '401 W Georgia St #600, Vancouver, BC V6B 5A1, Canada', '49.2812333', '-123.1149943', 5, 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj7hdKRg6zkAhVYGjQIHeI8DGEQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.lighthouselabs.ca%2F&psig=AOvVaw0YpVS1vZ3SLxfiNHQ8SF72&ust=1567303598102557', 'ChIJVVVFhnlxhlQRVqDISA_7Lc8', 1);
+-- INSERT INTO places (name, address, lat, lng, rating, picture, placeId, city_id) 
+--   VALUES ('Lighthouse Labs', '401 W Georgia St #600, Vancouver, BC V6B 5A1, Canada', '49.2812333', '-123.1149943', 5, 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj7hdKRg6zkAhVYGjQIHeI8DGEQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.lighthouselabs.ca%2F&psig=AOvVaw0YpVS1vZ3SLxfiNHQ8SF72&ust=1567303598102557', 'ChIJVVVFhnlxhlQRVqDISA_7Lc8', 1);
 
 
 -- Los Angeles

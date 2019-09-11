@@ -37,9 +37,12 @@
 }
 
 .placeImage {
-  width: 300px;
+
+  width: 200px;
+  height: 150px;
+
   padding: 10px;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .placeCard:hover {

@@ -185,29 +185,33 @@ export default function City(props) {
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
-            {foundPlaces.length ?  
-            <div
-              style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+          {foundPlaces.length ?  
+          <div className='scroll-all'
+            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+          >
+            <button
+              onClick={() => {
+                setfoundPlaces([])
+              }}
             >
-              <button
-                onClick={() => {setfoundPlaces([])}}
-              >
-                Close
-              </button>
-              {foundPlaces.map((place) => {
-                // to rebuild
-                return <CityPlace
-                        place={place}
-                        key={place.placeId}
-                        city={props.city}
-                        user={props.user}
-                        setCities={props.setCities}
-                        setUser={props.setUser}
-                        setAlert={props.setAlert}
-                        userdata={props.userdata}
-                        setCurrentSchedule={setCurrentSchedule}
-                        />
-              })}
+              Close
+            </button>
+            
+            {foundPlaces.map((place) => {
+              // to rebuild
+              return <CityPlace
+                      place={place}
+                      key={place.placeId}
+                      city={props.city}
+                      user={props.user}
+                      setCities={props.setCities}
+                      setUser={props.setUser}
+                      setAlert={props.setAlert}
+                      userdata={props.userdata}
+                      setCurrentSchedule={setCurrentSchedule}
+                      />
+            })}
+
           </div> : <></>}
 
             <ScheduleList
