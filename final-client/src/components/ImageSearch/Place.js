@@ -14,13 +14,12 @@ export default function Place(props) {
       <div>
         <p>{props.place.name}</p>
         <p>{props.place.address}</p>
-        <p>{props.place.rating}</p>
          <input 
           className="wishlist-dropdown"
           type="text" 
           name="targetCity" 
           list="targetCity"
-          placeholder="Wishlist"
+          placeholder="Add place to City"
           value= {targetCity}
           onChange ={event => {
             setTargetCity(event.target.value)
@@ -43,7 +42,7 @@ export default function Place(props) {
         <button
           className="example_d"
           onClick={() => {
-            savePlaceToDatabase(props, targetCity)
+            savePlaceToDatabase(props, targetCity, props.setUser)
             // function savePlace(data) {
             //   const options = {
             //     method: 'post',
@@ -82,7 +81,7 @@ export default function Place(props) {
             // }
 
         }}
-        >Add to Wishlist</button>
+        >Add to City</button>
         
       </div>
     </div>

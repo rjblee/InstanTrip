@@ -131,6 +131,7 @@ export default function App() {
                                                         cities={cities}
                                                         user={user}
                                                         setCities={setCities}
+                                                        setUser={setUser}
                                                         setAlert={setAlert}
                                                       />}/>
 

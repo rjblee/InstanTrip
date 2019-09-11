@@ -52,6 +52,7 @@ module.exports = () => {
                 `, [place.lat, place.lng, place.rating, place.picture, place.placeId, req.body.city.id, place.name, place.address])
                 .then(() => {
                   console.log('maybe im in')
+                  res.send('success')
                 }).catch((err) => { console.log(err)})
     } else {
       city = req.body.city

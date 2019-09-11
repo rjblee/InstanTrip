@@ -31,7 +31,7 @@ export default function City(props) {
   const [foundPlaces, setfoundPlaces] = useState([])
 
   const [kValue, setKValue] = useState('')
-
+ 
   const [currentSchedule, setCurrentSchedule] = useState({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
   const [steps,setSteps] = useState([])
   const [megaSteps, setMegaSteps] = useState([])
@@ -176,6 +176,7 @@ export default function City(props) {
                       city={props.city}
                       user={props.user}
                       setCities={props.setCities}
+                      setUser={props.setUser}
                       />
             })}
           </div> : <></>}

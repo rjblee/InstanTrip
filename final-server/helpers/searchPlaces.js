@@ -23,24 +23,27 @@ module.exports = function searchPlaces (dataForSearch, res) {
         }
         if (placeArray[0] && placeArray[0].photos[0] ) {
           Promise.all(placeArray.map(place => {
-            return request(
-              'POST',
-              'https://maps.googleapis.com/maps/api/place/photo',
-              {
-                qs : {
-                  maxwidth: 200,
-                  photoreference: place.photos[0].photo_reference,
-                  key: "AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"
+            if (place.photos) {
+              return request(
+                'POST',
+                'https://maps.googleapis.com/maps/api/place/photo',
+                {
+                  qs : {
+                    maxwidth: 200,
+                    photoreference: place.photos[0].photo_reference,
+                    key: "AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"
+                  }
                 }
-              }
-              )
+                )
+            }
+
           })).then((all) => {
             const pictures = all.map(each => each.url)
             for (let i = 0; i < resultPlaces.length; i ++) {
               resultPlaces[i].picture = pictures[i]
             }
             res.send(resultPlaces)
-          })
+          }).catch(err => console.log(err))
         } else {
           res.send(resultPlaces)
         }
