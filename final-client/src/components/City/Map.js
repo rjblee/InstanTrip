@@ -22,7 +22,7 @@ export default function Map(props) {
 
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
-        zoom: 10,
+        zoom: 9,
         styles: [
           {
               featureType: "administrative",

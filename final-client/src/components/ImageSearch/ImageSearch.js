@@ -41,14 +41,15 @@ export default function ImageSearch(props) {
     <div className='scoll-placeCard'>
         {places.map((place) => {
               return(
-                
                 <Place
+                      userdata={props.userdata}
                       place={place}
                       key={place.placeId}
                       cities={props.cities}
                       user={props.user}
                       setCities={props.setCities}
                       setUser={props.setUser}
+                      setAlert={props.setAlert}
                       />
               
               )

@@ -119,6 +119,7 @@ export default function App() {
           places={places}
           setUser={setUser}
           setAlert={setAlert}
+          userdata={userdata}
         />} />
       })}
       
@@ -126,6 +127,7 @@ export default function App() {
                                             user={user}
                                             cities={cities}
                                             setCities={setCities}
+                                            setAlert={setAlert}
                                           />} />
       <Route path="/imageSearch" exact render={() => <ImageSearch
                                                         cities={cities}
@@ -133,6 +135,7 @@ export default function App() {
                                                         setCities={setCities}
                                                         setUser={setUser}
                                                         setAlert={setAlert}
+                                                        userdata={userdata}
                                                       />}/>
 
       
