@@ -75,7 +75,7 @@ export default function App() {
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 {cities.map((city) => {
-                  return <div className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
+                  return <div key={city.id} className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
                 })}
              
 {/* 
@@ -123,7 +123,8 @@ export default function App() {
         const places = userdata.filter((place) => {
           return place.city === city.city
         })
-        return <Route path={"/" + city.city} exact render={() => <City
+        return <Route key={city.id} path={"/" + city.city} exact render={() => <City
+          key={city.id}
           city={city}
           places={places}
           setUser={setUser}

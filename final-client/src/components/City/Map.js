@@ -201,6 +201,8 @@ export default function Map(props) {
   //     }
   // })
 
+
+  // export add marker function to be used outside of <Map>
     props.setAddMarker([function(lat, lng, name) {
       new google.maps.Marker({
         position: {lat: parseFloat(lat), lng: parseFloat(lng)},

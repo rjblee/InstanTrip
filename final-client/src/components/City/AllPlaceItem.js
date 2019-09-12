@@ -40,7 +40,7 @@ export default function AllPlaceItem(props) {
         >
         <option defaultValue>Schedule</option>
         {props.schedules.map((schedule) => {
-          return <option value={schedule.id}>{schedule.id}</option>
+          return <option key={schedule.id} value={schedule.id}>{schedule.id}</option>
         })}
       </select>
         </div>
