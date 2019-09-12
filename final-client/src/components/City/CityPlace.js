@@ -28,7 +28,14 @@ export default function CityPlace(props) {
               return each.name === placeName
             })
             if (filteredPlaces.length === 0 ) {
+              // add markers to map 
+              console.log('add marks')
+              console.log(props.addMarker)
+              props.addMarker(props.place.lat, props.place.lng, props.place.name)
+
+              // add place to database
               savePlaceToDatabase(props, props.city, props.setUser)
+
             } else {
               props.setAlert('Failed to save place. Check if you are signed in and place is not in wishlist already')
             }

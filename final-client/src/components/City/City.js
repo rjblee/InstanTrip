@@ -26,7 +26,7 @@ import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
 export default function City(props) {
   //access
   //props.city 
-  //props.places 
+  //props.places
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
 
@@ -36,7 +36,12 @@ export default function City(props) {
   const [steps,setSteps] = useState([])
   const [megaSteps, setMegaSteps] = useState([])
   const [targetMap, setTargetMap] = useState({})
+ 
+  const [addMarker, setAddMarker] = useState({})
 
+
+  console.log('check addmarker')
+  console.log(addMarker)
   // console.log('mega----steps ')
   // console.log(steps.map((each) => {
   //   return [each.start_location.lat(), each.start_location.lng()]
@@ -44,18 +49,20 @@ export default function City(props) {
   // console.log(megaSteps.map((each) => {
   //   return [each.start_location.lat(), each.start_location.lng()]
   // }))
-  // console.log(`here is the place data for ${props.city.city}`)
-  // console.log(props.places)
+  console.log(`here is the place data for ${props.city.city}`)
+  console.log(props.places)
   // console.log('schedules')
   // console.log(schedules)
   // console.log('setcurrent schedule')
   // console.log(currentSchedule)
+
   console.log('currentSchedule')
   console.log(currentSchedule)
   console.log('steps')
   console.log(steps)
   console.log('mage steps')
   console.log(megaSteps)
+
 
 
   useEffect( () => { 
@@ -67,6 +74,11 @@ export default function City(props) {
       })
     }
   },[])
+
+  // useEffect(() => {
+  //   console.log('loadMap is update')
+  //   setLoadMap( prev => {return prev + 1})
+  // }, [props.user])
 
   // let lng;
   // let lat;
@@ -98,6 +110,8 @@ export default function City(props) {
           city={props.city}
           setMegaSteps={setMegaSteps}
           setSteps={setSteps}
+          setAlert={props.setAlert}
+          defaultValue='text'
         />
 
         <div className="form-inline">
@@ -123,12 +137,13 @@ export default function City(props) {
               createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
               setMegaSteps([])
               setSteps([])
+              setKValue('')
             }}
           >Make Schedule</button>
         </div>
       </div>
 
-        <button 
+        {/* <button 
           type="submit" 
           className="btn btn-primary mb-2"
           onClick={() => {
@@ -143,8 +158,8 @@ export default function City(props) {
 
           }}
         >Make Schedule</button>
-      </div>setKValue
-
+      </div>setKValue */}
+{/* 
 
       <SearchBar 
         setplaces={setfoundPlaces} 
@@ -153,7 +168,7 @@ export default function City(props) {
         // setSteps={setSteps}
         defaultValue='text'setKValue
         setAlert={props.setAlert}
-        />
+        /> */}
       
       <div className="mb-5">
         <div className="row">
@@ -182,13 +197,15 @@ export default function City(props) {
             setMegaSteps={setMegaSteps}
             setSteps={setSteps}
             setTargetMap = {setTargetMap}
+            // loadmap={loadmap}
+            setAddMarker={setAddMarker}
            />
 
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
           {foundPlaces.length ?  
-          <div
+          <div className="scroll-all"
             style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
             <button
@@ -210,6 +227,7 @@ export default function City(props) {
                       setAlert={props.setAlert}
                       userdata={props.userdata}
                       setCurrentSchedule={setCurrentSchedule}
+                      addMarker={addMarker}
                       />
             })}
           </div> : <></>}
@@ -254,7 +272,6 @@ export default function City(props) {
         <div className='scroll-foundPlace'>
           <div className="col-1" ></div>
         </div>
-      </div>
       </div>
       : <div></div>
       }

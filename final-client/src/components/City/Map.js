@@ -14,10 +14,12 @@ export default function Map(props) {
 
   console.log('places in map')
   console.log(props.places)
-
   useEffect(() => {
     GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
     GoogleMapLoader.load(function(google){
+      console.log('places in map')
+      console.log(props.places)
+
 
       const targetMap = new google.maps.Map(map.current, {
         center: {lat: lat, lng: lng},
@@ -156,9 +158,10 @@ export default function Map(props) {
 
       ]})
 
+
       //pass map object out of <Map>
       props.setTargetMap(targetMap)
-    
+
       // map.mapTypes.set('styled map', styledMapType);
       // map.setMapTypeId('styled map');
 
@@ -175,6 +178,37 @@ export default function Map(props) {
 
       // return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
     })
+
+    // const addMarker = function(lat, lng, name) {
+    //   new google.maps.Marker({
+    //     position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+    //     map: targetMap,
+    //     title: name
+    //   })
+    // }
+    // console.log('marker in map')
+    // console.log(addMarker)
+
+
+
+    // props.setAddMarker({addMarker: function(lat, lng, name) {
+    //   new google.maps.Marker({
+    //     position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+    //     map: targetMap,
+    //     title: name
+    //   })
+    // }})
+
+
+
+    // props.setAddMarker(() => { return function(lat, lng, name) {
+    //   new google.maps.Marker({
+    //     position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+    //     map: targetMap,
+    //     title: name
+    //   })
+    // } })
+
 
 
 
@@ -523,7 +557,6 @@ export default function Map(props) {
 
       }
     })
-
   }, [props.currentSchedule])
 
   //<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"></script>
