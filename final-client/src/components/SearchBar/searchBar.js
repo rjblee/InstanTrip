@@ -1,7 +1,7 @@
+
 import React, { useState} from 'react';
 import searchPlaces from '../../helpers/searchPlaces';
 import imageSearch from '../../helpers/imageSearch'
-
 export default function SearchBar (props) {
   const [inputvalue, setInputvalue] = useState('')
   const [searchOption, setSearchOption] = useState( props.defaultValue || 'image')
@@ -10,10 +10,8 @@ export default function SearchBar (props) {
     <div className="left-half-city-search">
     <div className="search-for-place">
       <div className='col-md-1'></div>
-
       <div className="city-page-search-bar col-md-4">
         <input 
-
               type="text" 
               className="form-control" 
               placeholder="Search"
@@ -36,7 +34,6 @@ export default function SearchBar (props) {
           <option defaultValue value="text">📝</option>
         </select>
       </div>
-
       <div className="form-group col-md-2">
         <button  
           className="example_e"
@@ -72,6 +69,5 @@ export default function SearchBar (props) {
       </div>
     </div>
   </div>
-
   )
 }
