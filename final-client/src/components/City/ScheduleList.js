@@ -102,11 +102,11 @@ export default function ScheduleList (props) {
           
         <nav className='scheduleList'>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
-            <a className="nav-item nav-link active" 
+            <a className="nav-item nav-link active wishlist-tab" 
               id="nav-home-tab" 
               data-toggle="tab" 
               href="#nav-home" 
-              role="tab" 
+              role="tab"
               aria-controls="nav-home" 
               aria-selected="true"
               style={{ color: 'black'}}
@@ -120,7 +120,7 @@ export default function ScheduleList (props) {
             {props.schedules.map((schedule) => {
             return <a
               key={schedule.id}
-              className="nav-item nav-link"
+              className="nav-item nav-link wishlist-tab"
               id={`nav-schedule-tab-${schedule.id}`} 
               data-toggle="tab" 
               href={`#nav-schedule-${schedule.id}`} 
