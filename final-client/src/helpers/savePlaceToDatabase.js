@@ -39,7 +39,6 @@ export default function SavePlaceToDatabase(props, targetCity, setUser) {
       setUser(prev => ({...prev}))
     })
   } else {
-
     // else find the city, create citiy and add place to that city in database
     searchPlaces({ 'query': targetCity}).then((response) => {
       console.log('city from no where')
@@ -58,7 +57,7 @@ export default function SavePlaceToDatabase(props, targetCity, setUser) {
         ]
         })
         setUser(prev => ({...prev}))
-      
+
       })
     })
   }
