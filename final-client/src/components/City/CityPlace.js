@@ -31,7 +31,7 @@ export default function CityPlace(props) {
               // add markers to map 
               console.log('add marks')
               console.log(props.addMarker)
-              props.addMarker(props.place.lat, props.place.lng, props.place.name)
+              props.addMarker[0](props.place.lat, props.place.lng, props.place.name)
 
               // add place to database
               savePlaceToDatabase(props, props.city, props.setUser)

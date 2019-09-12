@@ -37,11 +37,13 @@ export default function City(props) {
   const [megaSteps, setMegaSteps] = useState([])
   const [targetMap, setTargetMap] = useState({})
  
-  const [addMarker, setAddMarker] = useState({})
+  const [addMarker, setAddMarker] = useState([])
 
 
   console.log('check addmarker')
   console.log(addMarker)
+
+
   // console.log('mega----steps ')
   // console.log(steps.map((each) => {
   //   return [each.start_location.lat(), each.start_location.lng()]
@@ -154,7 +156,7 @@ export default function City(props) {
           <div className="col-1" ></div>
           <div className="col-6">
             <Map
-=
+
             // places={props.places.filter((places)=>{
             //   return 
             //   places.schedule_id === schedule.id
