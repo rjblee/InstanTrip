@@ -65,7 +65,7 @@ export default function ScheduleList (props) {
 
 
 
-        {/* <div className='scroll-schedule'> */}
+        
         {props.schedules.map((schedule) => {
             return <div 
                       key={schedule.id}
