@@ -24,26 +24,35 @@
   /* margin-top: 100px; */
   background: white;
   opacity: 0.9;
-  width: 60%;
+  width: 50%;
   font-size: 1.4rem;
-  margin-left: 11%;
+  margin-left: 10%;
   margin-bottom: 10px;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .scoll-placeCard{
-  height: 350px;
+ 
+  height: 340px;
   overflow: scroll;
 }
 
-.placeImage {
+/* .placeImage {
 
   width: 100%;
   height: 150px;
 
   padding: 10px;
   border-radius: 15px;
+} */
+.placeImage {
+
+  width:100%;
+  height: 160px;
+  padding: 10px;
+  border-radius: 15px;
 }
+
 
 .placeCard:hover {
   /* Clip-path spanning the entire box so it's no longer hiding the full-width border. */
@@ -97,4 +106,11 @@
   border-radius: 50px;
   border-color: red !important;
   transition: all 0.3s ease 0s;
+}
+.name{
+  font-size: 20px;
+  color:black;
+}
+.address{
+  font-size: 15px;
 }

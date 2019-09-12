@@ -179,7 +179,7 @@ export default function City(props) {
             // loadmap={loadmap}
             setAddMarker={setAddMarker}
            />
-=
+
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
@@ -187,7 +187,7 @@ export default function City(props) {
 
           <div className="scroll-all"
 
-            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+            // style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
             <button
               onClick={() => {

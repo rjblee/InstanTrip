@@ -12,7 +12,7 @@ export default function Place(props) {
     <div className="placeCard d-flex">
       <img className="placeImage" src={props.place.picture} alt=''></img>
       <div>
-        <p>{props.place.name}</p>
+        <p><b>{props.place.name}</b></p>
         <p>{props.place.address}</p>
          <input 
           className="wishlist-dropdown"

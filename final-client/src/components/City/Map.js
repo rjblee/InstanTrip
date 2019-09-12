@@ -565,7 +565,7 @@ export default function Map(props) {
     <div
       style={{
 
-        height: '700px',
+        height: '600px',
         width: '100%',
         border:'12px solid white',
         borderRadius: '10px'

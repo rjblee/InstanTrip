@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
+import "../../styles/City.css";
 
 export default function CityPlace(props) {
 
@@ -12,11 +13,16 @@ export default function CityPlace(props) {
   // props.setAlert
   // props.userdata
   return (
-    <div className="cityPlaceCard d-flex">
+    <div className="cityPlaceCard row">
+      
+      <div
+        className='col-5'
+      >
       <img className="placeImage" src={props.place.picture} alt=''></img>
-      <div>
-        <p>{props.place.name}</p>
-        <p>{props.place.address}</p>
+      </div>
+      <div className='col-7'>
+        <p className='name'><b>{props.place.name}</b></p>
+        <p className='address'>{props.place.address}</p>
         {/* <p>{props.place.rating}</p> */}
 
         <button className='example_g'
@@ -44,5 +50,6 @@ export default function CityPlace(props) {
         
       </div>
     </div>
+    
   )
 }
