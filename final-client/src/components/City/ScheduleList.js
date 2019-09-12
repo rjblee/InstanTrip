@@ -68,6 +68,7 @@ export default function ScheduleList (props) {
         </div>
 
 
+
         {props.schedules.map((schedule) => {
             return <div 
                       key={schedule.id}
