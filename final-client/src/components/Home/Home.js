@@ -76,7 +76,7 @@ export default function Home(props) {
       <div >
         <div className="city-cards">
           {props.cities.map((city) => {
-            return (<CityCard city={city}/>)
+            return (<CityCard key={city.id} city={city}/>)
           })}
         </div>
       </div>

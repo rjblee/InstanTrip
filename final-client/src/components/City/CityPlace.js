@@ -1,6 +1,9 @@
 import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
-import "../../styles/City.css";
+
+
+import AlertButton from './Alert';
+
 
 export default function CityPlace(props) {
 
@@ -25,7 +28,8 @@ export default function CityPlace(props) {
         <p className='address'>{props.place.address}</p>
         {/* <p>{props.place.rating}</p> */}
 
-        <button className='example_g'
+        <AlertButton
+          // <button className='example_g'
           onClick={() => {
             props.setAlert('')
             // check if place is in database already
@@ -37,7 +41,7 @@ export default function CityPlace(props) {
               // add markers to map 
               console.log('add marks')
               console.log(props.addMarker)
-              props.addMarker(props.place.lat, props.place.lng, props.place.name)
+              props.addMarker[0](props.place.lat, props.place.lng, props.place.name)
 
               // add place to database
               savePlaceToDatabase(props, props.city, props.setUser)
@@ -46,8 +50,10 @@ export default function CityPlace(props) {
               props.setAlert('Failed to save place. Check if you are signed in and place is not in wishlist already')
             }
           }}
-        >Add Place</button>
-        
+          text={"👍 " + props.place.name + " has been added"}
+          // >Add Place</button>
+        ></AlertButton>
+
       </div>
     </div>
     

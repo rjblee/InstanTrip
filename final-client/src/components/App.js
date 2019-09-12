@@ -9,6 +9,7 @@ import Logout from './Navbar/Logout'
 import getUserData from '../helpers/getUserData'
 import getCities from '../helpers/getCities'
 import City from './City/City'
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
 
@@ -52,6 +53,19 @@ export default function App() {
 
   return (
     <Router className="App">
+
+       <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
+
       <nav className="navbar navbar-expand-lg">
         <span className="navbar-logo" ><Link to="/"><b>Instantrip</b></Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +89,7 @@ export default function App() {
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
                 {cities.map((city) => {
-                  return <div className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
+                  return <div key={city.id} className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
                 })}
              
 {/* 
@@ -123,7 +137,8 @@ export default function App() {
         const places = userdata.filter((place) => {
           return place.city === city.city
         })
-        return <Route path={"/" + city.city} exact render={() => <City
+        return <Route key={city.id} path={"/" + city.city} exact render={() => <City
+          key={city.id}
           city={city}
           places={places}
           setUser={setUser}

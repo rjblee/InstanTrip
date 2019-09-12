@@ -37,11 +37,13 @@ export default function City(props) {
   const [megaSteps, setMegaSteps] = useState([])
   const [targetMap, setTargetMap] = useState({})
  
-  const [addMarker, setAddMarker] = useState({})
+  const [addMarker, setAddMarker] = useState([])
 
 
   console.log('check addmarker')
   console.log(addMarker)
+
+
   // console.log('mega----steps ')
   // console.log(steps.map((each) => {
   //   return [each.start_location.lat(), each.start_location.lng()]
@@ -185,35 +187,44 @@ export default function City(props) {
           
           {foundPlaces.length ?  
 
+
           <div className="scroll-all"
 
             // style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
-            <button
-              onClick={() => {
-                setfoundPlaces([])
-              }}
-            >
-              Close
-            </button>
-            
-            {foundPlaces.map((place) => {
-              // to rebuild
-              return <CityPlace
-                      place={place}
-                      key={place.placeId}
-                      city={props.city}
-                      user={props.user}
-                      setCities={props.setCities}
-                      setUser={props.setUser}
-                      setAlert={props.setAlert}
-                      userdata={props.userdata}
-                      setCurrentSchedule={setCurrentSchedule}
-                      addMarker={addMarker}
-                      />
-            })}
+              <button
+                className="btn btn-danger"
+                style={{ position: 'absolute', zIndex: '1', top:'5px', left: '5px', borderRadius:'15px'}}
+                onClick={() => {
+                  setfoundPlaces([])
+                }}
+              >
+                X
+              </button>
 
-          </div> : <></>}
+            <div className="scroll-all"
+
+              // style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+            >
+              {foundPlaces.map((place) => {
+                // to rebuild
+                return <CityPlace
+                        place={place}
+                        key={place.placeId}
+                        city={props.city}
+                        user={props.user}
+                        setCities={props.setCities}
+                        setUser={props.setUser}
+                        setAlert={props.setAlert}
+                        userdata={props.userdata}
+                        setCurrentSchedule={setCurrentSchedule}
+                        addMarker={addMarker}
+                        />
+              })}
+
+            </div> 
+          </div>
+          : <></>}
 
             <ScheduleList
               places={props.places}
