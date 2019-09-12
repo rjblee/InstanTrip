@@ -117,7 +117,7 @@ export default function TravelSteps(props) {
             return <Step 
                     status="finish" 
                     title={wayPoint.startName} 
-                    description={`Time to next destination: ${wayPoint.duration} Distance: ${wayPoint.distance}`}
+                    description={`Travel Time: ${wayPoint.duration} Distance: ${wayPoint.distance}`}
                     onClick={() => {
                       props.targetMap.setCenter({lat: wayPoint.start_location.lat(), lng: wayPoint.start_location.lng()})
                       props.targetMap.setZoom(15)
