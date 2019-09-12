@@ -5,14 +5,14 @@ axios.defaults.baseURL = process.env.SERVER_URL || "http://localhost:8080"
 axios.defaults.headers.common = {
   "Content-Type": "application/x-www-form-urlencoded"
 }
-export default function getUserData(data) {
+export default function getUserData(id) {
 
 
   const options = {
-    method: 'post',
+    method: 'get',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(data),
-    url: '/Userdata'
+    // data: qs.stringify(data),
+    url: `/User/${id}/places`
   }
   return (
     axios(options)

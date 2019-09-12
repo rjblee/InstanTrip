@@ -8,18 +8,35 @@ db.connect();
 
 module.exports = () => {
 
-  router.post("/userdata", (req,res) => {
+  // router.post("/userdata", (req,res) => {
+  //   // console.log(req.body)
+  //   db.query(`SELECT * 
+  //             FROM users JOIN cities ON users.id = cities.user_id
+  //             JOIN places ON cities.id = places.city_id
+  //             Where users.name = $1`, [req.body.name])
+  //             .then((response) => {
+  //               res.send(response.rows)
+  //             }).catch((err) => {
+  //               console.log(err)
+  //             })
+  // })
+
+  router.get("/user/:id/places", (req,res) => {
     // console.log(req.body)
     db.query(`SELECT * 
               FROM users JOIN cities ON users.id = cities.user_id
               JOIN places ON cities.id = places.city_id
-              Where users.name = $1`, [req.body.name])
+              Where users.id = $1`, [req.params.id])
               .then((response) => {
                 res.send(response.rows)
               }).catch((err) => {
                 console.log(err)
               })
   })
+
+
+
+
 
   router.post("/user", (req,res) => {
     db.query(`SELECT * FROM users WHERE name=$1 AND password=$2`,[req.body.name,req.body.password])
@@ -30,9 +47,11 @@ module.exports = () => {
       })
   })
 
-  router.post('/cities', (req, res) => {
+
+  //get cities based on user 
+  router.get('/user/:id/cities', (req, res) => {
     db.query(`SELECT * 
-              FROM cities WHERE user_id = $1`, [req.body.id]).then((response) => {
+              FROM cities WHERE user_id = $1`, [req.params.id]).then((response) => {
                 res.send(response.rows)
               }).catch((err) => {
                 console.log(err)
@@ -40,7 +59,8 @@ module.exports = () => {
   })
 
 
-  router.post('/savePlace', (req, res) => {
+
+  router.post('/places', (req, res) => {
 
     // console.log('-----get datatttt')
     // console.log(req.body)
@@ -75,9 +95,9 @@ module.exports = () => {
                 }).catch((err) => { console.log(err)})
     }
   })
+ 
 
-
-  router.post('/createCity', (req, res) => {
+  router.post('/cities', (req, res) => {
     // console.log(req.body)
     const city = req.body.city
     const user = req.body.user
@@ -91,7 +111,7 @@ module.exports = () => {
 
 
 
-  router.post('/saveSchedules', (req, res) => {
+  router.post('/schedules', (req, res) => {
     // console.log('check schedule body')
     // console.log(req.body)
 

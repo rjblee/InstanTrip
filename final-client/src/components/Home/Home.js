@@ -29,7 +29,7 @@ export default function Home(props) {
       console.log(exitCity)
       if (exitCity.length === 0) {
 
-        Axios.post('/createCity',{city: response.data[0], user: props.user}).then((response) => {
+        Axios.post('/cities',{city: response.data[0], user: props.user}).then((response) => {
           props.setCities(prev => {return [...prev, response.data]})
         })
 

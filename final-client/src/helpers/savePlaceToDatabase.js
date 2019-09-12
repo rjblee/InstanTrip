@@ -8,7 +8,7 @@ export default function SavePlaceToDatabase(props, targetCity, setUser) {
       method: 'post',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       data: qs.stringify(data),
-      url: '/savePlace'
+      url: '/places'
     }
     return (
       axios(options)

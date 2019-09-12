@@ -8,10 +8,10 @@ axios.defaults.headers.common = {
 export default function getCities(data) {
 
   const options = {
-    method: 'post',
+    method: 'get',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    data: qs.stringify(data),
-    url: '/cities'
+    // data: qs.stringify(data),
+    url: `user/${data.id}/cities`
   }
   return (
     axios(options)
