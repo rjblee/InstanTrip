@@ -17,9 +17,9 @@ export default function CityPlace(props) {
       <div>
         <p>{props.place.name}</p>
         <p>{props.place.address}</p>
-        <p>{props.place.rating}</p>
+        {/* <p>{props.place.rating}</p> */}
 
-        <button
+        <button className='example_g'
           onClick={() => {
             props.setAlert('')
             // check if place is in database already

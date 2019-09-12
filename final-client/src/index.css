@@ -8,7 +8,7 @@ body {
   /* background-image: url("https://files.slack.com/files-pri/T2G8TE2E5-FMZH8KQHW/bg9.jpg"); */
 
   /* Australia Beach */
-  /* background-image: url("https://stmed.net/sites/default/files/the-twelve-apostles-wallpapers-28071-6824020.jpg"); */
+  background-image: url("https://stmed.net/sites/default/files/the-twelve-apostles-wallpapers-28071-6824020.jpg");
 
   /* Lake */
   /* background-image: url("http://inn.spb.ru/images/400/DSC100408361.jpg"); */
@@ -21,7 +21,7 @@ body {
   /* background-image: url("https://c.wallhere.com/photos/01/84/1600x977_px_bench_landscape_mountain-695404.jpg!d"); */
 
   /* Autumn */
-  background-image: url("https://cdn.pixabay.com/photo/2017/10/03/20/38/lake-2814075_960_720.jpg");
+  /* background-image: url("https://cdn.pixabay.com/photo/2017/10/03/20/38/lake-2814075_960_720.jpg"); */
   /* background-image: url("http://eskipaper.com/images/fall-backgrounds-8.jpg"); */
 
 
@@ -33,7 +33,7 @@ body {
 body::after {
   content: "";
   background: black;
-  opacity: 0.3;
+  opacity: 0.1;
   top: 0;
   left: 0;
   bottom: 0;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import updateSchedule from '../..//helpers/updateSchedule'
+import "../../styles/City.css";
 
 export default function StartEndTransitForm (props) {
   const [start, setStart] = useState(props.currentSchedule.start_place || 'Starting Location...')
@@ -22,7 +23,10 @@ export default function StartEndTransitForm (props) {
             setStart(event.target.value)
           }}
           >
-            <option>Starting Location...</option>
+            
+              <option>Starting Location...</option>
+           
+            
             {places.map((place) => {
               return <option value={place.name}>{place.name}</option>
             })}
@@ -80,7 +84,7 @@ export default function StartEndTransitForm (props) {
           }
 
           }
-          >START YOUR JOURNEY</button>
+          >START JOURNEY</button>
       </div>
       <div className="col-1"></div>
     </div>

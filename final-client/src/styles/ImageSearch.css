@@ -7,7 +7,7 @@
 
 .search-for-place {
   padding-top: 30px;
-  padding-left: 65px;
+  padding-left: 110px;
 }
 
 .form-row {
@@ -37,9 +37,12 @@
 }
 
 .placeImage {
-  width: 300px;
+
+  width: 200px;
+  height: 150px;
+
   padding: 10px;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 .placeCard:hover {

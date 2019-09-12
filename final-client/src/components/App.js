@@ -53,7 +53,7 @@ export default function App() {
   return (
     <Router className="App">
       <nav className="navbar navbar-expand-lg">
-        <span className="navbar-logo" ><Link to="/"><b>WeTravel</b></Link></span>
+        <span className="navbar-logo" ><Link to="/"><b>Instantrip</b></Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -64,7 +64,7 @@ export default function App() {
             </li>
             <li className="nav-item">
 
-              <div className="nav-link"><Link to="/imageSearch">Image Search</Link></div>
+              <div className="nav-link"><Link to="/imageSearch"><b>Image Search</b></Link></div>
             </li>
             <li className="nav-item dropdown">
               {/* <div className="nav-link"><Link to="/sampleCity">Wishlist</Link></div> */}

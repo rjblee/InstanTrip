@@ -88,13 +88,11 @@ export default function City(props) {
   //   lat = foundPlaces[0].lat
   // }
 
-// console.log("XXXXXXXX", props)
-// // console.log("CCCCC",props.city.c_lat)
+  // console.log("XXXXXXXX", props)
+  // // console.log("CCCCC",props.city.c_lat)
 
   return(
     <>
-      {/* <p> here is the city page</p> */}
-
       {/* <button
         onClick={() => {
           console.log(targetMap)
@@ -102,80 +100,61 @@ export default function City(props) {
           targetMap.setZoom(12)
         }}
       >test center</button> */}
+      <div className="city-title"><b>{props.city.city}</b></div>
 
       <div className="combine-two-search-bar">
-
-        <SearchBar 
-          setplaces={setfoundPlaces} 
-          city={props.city}
-          setMegaSteps={setMegaSteps}
-          setSteps={setSteps}
-          setAlert={props.setAlert}
+       <SearchBar
+         setplaces={setfoundPlaces}
+         city={props.city}
+         setMegaSteps={setMegaSteps}
+         setSteps={setSteps}
+         setAlert={props.setAlert}
           defaultValue='text'
-        />
-
-        <div className="form-inline">
-          <div className="form-group mx-sm-3 mb-2">
-            <input 
-              type="text" 
-              className="form-control" 
-              placeholder={`Days in ${props.city.city}`}
-              value={kValue}
-              onChange={(event) => {
-                setKValue(event.target.value)
-              }}
-            />
-          </div>
-          <button 
-            type="submit" 
-            className="example_e btn-primary mb-2"
-            onClick={() => {
-              // function takes place data, k value to do clustering 
-              // and then  city id to  create row in schedules table
-              // and add schedule id into schedule_id colume of places table
-              // then update data by calling setUser(prev => {return prev})
-              createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
-              setMegaSteps([])
-              setSteps([])
-              setKValue('')
-            }}
-          >Make Schedule</button>
-        </div>
-      </div>
-
-        {/* <button 
-          type="submit" 
-          className="btn btn-primary mb-2"
-          onClick={() => {
-            // function takes place data, k value to do clustering 
-            // and then  city id to  create row in schedules table
-            // and add schedule id into schedule_id colume of places table
-            // then update data by calling setUser(prev => {return prev})
-            createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
-            setMegaSteps([])
-            setSteps([])
-            setKValue('')
-
-          }}
-        >Make Schedule</button>
-      </div>setKValue */}
-{/* 
-
-      <SearchBar 
+       />
+       <div className="form-inline">
+         <div className="form-group mx-sm-3 mb-2">
+           <input
+             type="text"
+             className="form-control"
+             placeholder={`Days in ${props.city.city}`}
+             value={kValue}
+             onChange={(event) => {
+               setKValue(event.target.value)
+             }}
+           />
+         </div>
+         <button
+           type="submit"
+           className="example_e btn-primary mb-2"
+           onClick={() => {
+             // function takes place data, k value to do clustering
+             // and then  city id to  create row in schedules table
+             // and add schedule id into schedule_id colume of places table
+             // then update data by calling setUser(prev => {return prev})
+             createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
+             setMegaSteps([])
+             setSteps([])
+             setKValue('')
+           }}
+         >Make Schedule</button>
+       </div>
+     </div>
+      {/* <SearchBar 
         setplaces={setfoundPlaces} 
         city={props.city}
         // setMegaSteps={setMegaSteps}
         // setSteps={setSteps}
         defaultValue='text'setKValue
         setAlert={props.setAlert}
+
         /> */}
-      
+
       <div className="mb-5">
         <div className="row">
           <div className="col-1" ></div>
           <div className="col-6">
             <Map
-
+=
             // places={props.places.filter((places)=>{
             //   return 
             //   places.schedule_id === schedule.id
@@ -200,12 +179,14 @@ export default function City(props) {
             // loadmap={loadmap}
             setAddMarker={setAddMarker}
            />
-
+=
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
           {foundPlaces.length ?  
+
           <div className="scroll-all"
+
             style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
             <button
@@ -213,8 +194,9 @@ export default function City(props) {
                 setfoundPlaces([])
               }}
             >
-              X
+              Close
             </button>
+            
             {foundPlaces.map((place) => {
               // to rebuild
               return <CityPlace
@@ -230,6 +212,7 @@ export default function City(props) {
                       addMarker={addMarker}
                       />
             })}
+
           </div> : <></>}
 
             <ScheduleList
@@ -273,11 +256,10 @@ export default function City(props) {
           <div className="col-1" ></div>
         </div>
       </div>
+
       : <div></div>
       }
       
-
     </>
-
   )
 }
