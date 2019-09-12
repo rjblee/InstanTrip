@@ -26,7 +26,7 @@ import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
 export default function City(props) {
   //access
   //props.city 
-  //props.places 
+  //props.places
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
 
@@ -36,7 +36,12 @@ export default function City(props) {
   const [steps,setSteps] = useState([])
   const [megaSteps, setMegaSteps] = useState([])
   const [targetMap, setTargetMap] = useState({})
+ 
+  const [addMarker, setAddMarker] = useState({})
 
+
+  console.log('check addmarker')
+  console.log(addMarker)
   // console.log('mega----steps ')
   // console.log(steps.map((each) => {
   //   return [each.start_location.lat(), each.start_location.lng()]
@@ -44,18 +49,20 @@ export default function City(props) {
   // console.log(megaSteps.map((each) => {
   //   return [each.start_location.lat(), each.start_location.lng()]
   // }))
-  // console.log(`here is the place data for ${props.city.city}`)
-  // console.log(props.places)
+  console.log(`here is the place data for ${props.city.city}`)
+  console.log(props.places)
   // console.log('schedules')
   // console.log(schedules)
   // console.log('setcurrent schedule')
   // console.log(currentSchedule)
+
   console.log('currentSchedule')
   console.log(currentSchedule)
   console.log('steps')
   console.log(steps)
   console.log('mage steps')
   console.log(megaSteps)
+
 
 
   useEffect( () => { 
@@ -67,6 +74,11 @@ export default function City(props) {
       })
     }
   },[])
+
+  // useEffect(() => {
+  //   console.log('loadMap is update')
+  //   setLoadMap( prev => {return prev + 1})
+  // }, [props.user])
 
   // let lng;
   // let lat;
@@ -97,6 +109,7 @@ export default function City(props) {
          setMegaSteps={setMegaSteps}
          setSteps={setSteps}
          setAlert={props.setAlert}
+          defaultValue='text'
        />
        <div className="form-inline">
          <div className="form-group mx-sm-3 mb-2">
@@ -126,26 +139,6 @@ export default function City(props) {
          >Make Schedule</button>
        </div>
      </div>
-
-
-      {/* <button 
-        type="submit" 
-        className="btn btn-primary mb-2"
-        onClick={() => {
-          // function takes place data, k value to do clustering 
-          // and then  city id to  create row in schedules table
-          // and add schedule id into schedule_id colume of places table
-          // then update data by calling setUser(prev => {return prev})
-          createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
-          setMegaSteps([])
-          setSteps([])
-          setKValue('')
-
-
-        }}
-      >Make Schedule</button> */}
-      
-
       {/* <SearchBar 
         setplaces={setfoundPlaces} 
         city={props.city}
@@ -153,41 +146,47 @@ export default function City(props) {
         // setSteps={setSteps}
         defaultValue='text'setKValue
         setAlert={props.setAlert}
-      /> */}
-      
+
+        /> */}
+
       <div className="mb-5">
         <div className="row">
           <div className="col-1" ></div>
           <div className="col-6">
             <Map
-
-              // places={props.places.filter((places)=>{
-              //   return 
-              //   places.schedule_id === schedule.id
-              // })}
-              // start_location={start_location}
-              // end_location={start_location}
-              // schedule={cuplacesrrentSchedule}
-              //places setSchedule={setCurrentSchedule}
-              places={props.places.filter((place) => {
-                if (currentSchedule.id === "All") {
-                  return true
-                } else {
-                  return place.schedule_id === currentSchedule.id
-                }
-              })}
-              currentSchedule={currentSchedule}
-              lat={props.city.c_lat}
-              lng={props.city.c_lng}
-              setMegaSteps={setMegaSteps}
-              setSteps={setSteps}
-              setTargetMap = {setTargetMap}
-            />
+=
+            // places={props.places.filter((places)=>{
+            //   return 
+            //   places.schedule_id === schedule.id
+            // })}
+            // start_location={start_location}
+            // end_location={start_location}
+            // schedule={cuplacesrrentSchedule}
+            //places setSchedule={setCurrentSchedule}
+            places={props.places.filter((place) => {
+              if (currentSchedule.id === "All") {
+                return true
+              } else {
+                return place.schedule_id === currentSchedule.id
+              }
+            })}
+            currentSchedule={currentSchedule}
+            lat={props.city.c_lat}
+            lng={props.city.c_lng}
+            setMegaSteps={setMegaSteps}
+            setSteps={setSteps}
+            setTargetMap = {setTargetMap}
+            // loadmap={loadmap}
+            setAddMarker={setAddMarker}
+           />
+=
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
           {foundPlaces.length ?  
-          <div className='scroll-all'
+
+          <div className="scroll-all"
+
             style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
             <button
@@ -210,6 +209,7 @@ export default function City(props) {
                       setAlert={props.setAlert}
                       userdata={props.userdata}
                       setCurrentSchedule={setCurrentSchedule}
+                      addMarker={addMarker}
                       />
             })}
 

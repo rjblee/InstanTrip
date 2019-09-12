@@ -12,14 +12,17 @@ export default function ScheduleList (props) {
   return (
     <>
 
-      <nav className='scheduleList'>
-        <div className="wishlist-tabs nav-tabs" id="nav-tab" role="tablist">
+      {/* <nav className='scheduleList'>
+        <div className="nav-tabs" id="nav-tab" role="tablist">
           <a 
-            className="wishlist-tab nav-link active"
-            id="wishlist-tab" data-toggle="tab" 
-            href="#nav-home" role="tab" 
+            className="nav-item nav-link active"
+            id="nav-home-tab" 
+            data-toggle="tab" 
+            href="#nav-home" 
+            role="tab" 
             aria-controls="nav-home" 
             aria-selected="true"
+            
             style={{ color: 'black'}}
             onClick={() => {
               props.setMegaSteps([])
@@ -50,6 +53,7 @@ export default function ScheduleList (props) {
         </div>
       </nav>
       <div className="tab-content" id="nav-tabContent">
+
         <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
            <div className='scroll-result'>  
           {props.places.map((place) => {
@@ -64,8 +68,6 @@ export default function ScheduleList (props) {
         </div>
 
 
-
-        {/* <div className='scroll-schedule'> */}
         {props.schedules.map((schedule) => {
             return <div 
                       key={schedule.id}
@@ -73,29 +75,108 @@ export default function ScheduleList (props) {
                       id={`nav-schedule-${schedule.id}`} 
                       role="tabpanel" 
                       aria-labelledby="nav-schedule-tab">
-                    <div className='scroll-all'>
-                      {props.places.filter((place) => {
-                        return place.schedule_id == schedule.id
-                      })
-                      .map((place) => {
-                        return <SchedulePlaceItem
-                                key={place.id}
-                                place={place}
-                                setUser={props.setUser}
-                                />
-                      })
-                     }
-                    </div>
+
+                      <div className='scroll-all'>
+                        {props.places.filter((place) => {
+                          return place.schedule_id == schedule.id
+                        })
+                        .map((place) => {
+                          return <SchedulePlaceItem
+                                  key={place.id}
+                                  place={place}
+                                  setUser={props.setUser}
+                                  />
+                        })
+                        }
+                      </div>
+
                 
-              </div>
+                    </div>
+
+        
+        
+   
           })}
-        {/* </div> */}
+          </div> */}
           
+        <nav className='scheduleList'>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" 
+              id="nav-home-tab" 
+              data-toggle="tab" 
+              href="#nav-home" 
+              role="tab" 
+              aria-controls="nav-home" 
+              aria-selected="true"
+              style={{ color: 'black'}}
+              onClick={() => {
+                props.setMegaSteps([])
+                props.setSteps([])
+                props.setCurrentSchedule({id: 'All', city_id: '', start_place: null, end_place: null, transit: null})
+              }}
+              >All</a>
 
+            {props.schedules.map((schedule) => {
+            return <a
+              key={schedule.id}
+              className="nav-item nav-link"
+              id={`nav-schedule-tab-${schedule.id}`} 
+              data-toggle="tab" 
+              href={`#nav-schedule-${schedule.id}`} 
+              role="tab"
+              style={{ color: 'black'}}
+              aria-controls={`nav-schedule-${schedule.id}`} 
+              aria-selected="false"
+              onClick={() => {
+                props.setMegaSteps([])
+                props.setSteps([])
+                props.setCurrentSchedule(schedule)
+              }}
+              >schedule {schedule.id}</a>
+          })}
 
-        
-        
-      </div>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div className='scroll-all'>
+            {props.places.map((place) => {
+              return <AllPlaceItem
+                key={place.id}
+                place={place}
+                schedules={props.schedules}
+                setUser={props.setUser}
+              />
+            })}
+            </div>
+          </div>
+
+          {props.schedules.map((schedule) => {
+            return <div 
+                      key={schedule.id}
+                      className="tab-pane fade" 
+                      id={`nav-schedule-${schedule.id}`} 
+                      role="tabpanel" 
+                      aria-labelledby={`nav-schedule-tab-${schedule.id}`}>
+                      <div className='scroll-all'>
+                        {props.places.filter((place) => {
+                          return place.schedule_id == schedule.id
+                        })
+                        .map((place) => {
+                          return <SchedulePlaceItem
+                                  key={place.id}
+                                  place={place}
+                                  setUser={props.setUser}
+                                  />
+                        })
+                        }
+                      </div>
+                    </div>   
+          })}
+
+        </div>
+
     </>
   )
 }

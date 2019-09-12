@@ -129,6 +129,7 @@ export default function App() {
           setUser={setUser}
           setAlert={setAlert}
           userdata={userdata}
+          user={user}
         />} />
       })}
       

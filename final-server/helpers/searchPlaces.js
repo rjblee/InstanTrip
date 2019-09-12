@@ -10,7 +10,6 @@ module.exports = function searchPlaces (dataForSearch, res) {
       ).getBody('utf8').done((response) => {
         const placeArray = JSON.parse(response).results
         const resultPlaces = []
-        let pictureCount = 0;
         for (let place of placeArray) {
           let targetPlace = {}
           targetPlace.name = place.name
@@ -22,7 +21,10 @@ module.exports = function searchPlaces (dataForSearch, res) {
           resultPlaces.push(targetPlace)
         }
         if (placeArray[0] && placeArray[0].photos[0] ) {
-          Promise.all(placeArray.map(place => {
+          console.log('going to filter places')
+          Promise.all(
+            // filter out places to those that only has pictures
+            placeArray.map(place => {
             if (place.photos) {
               return request(
                 'POST',
@@ -36,8 +38,9 @@ module.exports = function searchPlaces (dataForSearch, res) {
                 }
                 )
             }
-
-          })).then((all) => {
+          }).filter((each) => each)
+          ).then((all) => {
+            console.log(all)
             const pictures = all.map(each => each.url)
             for (let i = 0; i < resultPlaces.length; i ++) {
               resultPlaces[i].picture = pictures[i]
