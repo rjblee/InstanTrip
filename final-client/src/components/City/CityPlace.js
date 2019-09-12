@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
+import AlertButton from './Alert';
 
 export default function CityPlace(props) {
 
@@ -19,7 +20,8 @@ export default function CityPlace(props) {
         <p>{props.place.address}</p>
         {/* <p>{props.place.rating}</p> */}
 
-        <button className='example_g'
+        <AlertButton
+          // <button className='example_g'
           onClick={() => {
             props.setAlert('')
             // check if place is in database already
@@ -33,8 +35,10 @@ export default function CityPlace(props) {
               props.setAlert('Failed to save place. Check if you are signed in and place is not in wishlist already')
             }
           }}
-        >Add Place</button>
-        
+          text={"👍 " + props.place.name + " has been added"}
+          // >Add Place</button>
+        ></AlertButton>
+
       </div>
     </div>
   )
