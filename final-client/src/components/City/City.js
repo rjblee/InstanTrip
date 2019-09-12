@@ -181,13 +181,16 @@ export default function City(props) {
             // loadmap={loadmap}
             setAddMarker={setAddMarker}
            />
-=
+
           </div>
           <div className="col-4 scheduleListParent" style={{ position: 'relative'}}>
           
           {foundPlaces.length ?  
-          <div
-            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+
+
+          <div className="scroll-all"
+
+            // style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
               <button
                 className="btn btn-danger"
