@@ -190,7 +190,7 @@ export default function City(props) {
 
           <div className="scroll-all"
 
-            // style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
+            style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
           >
               <button
                 className="btn btn-danger"
