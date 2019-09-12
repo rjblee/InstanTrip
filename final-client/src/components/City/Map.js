@@ -191,13 +191,23 @@ export default function Map(props) {
 
 
 
-    // props.setAddMarker({addMarker: function(lat, lng, name) {
-    //   new google.maps.Marker({
-    //     position: {lat: parseFloat(lat), lng: parseFloat(lng)},
-    //     map: targetMap,
-    //     title: name
-    //   })
-    // }})
+  //   props.setAddMarker({addMarker: 
+  //     function(lat, lng, name) {
+  //       new google.maps.Marker({
+  //         position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+  //         map: targetMap,
+  //         title: name
+  //       })
+  //     }
+  // })
+
+    props.setAddMarker([function(lat, lng, name) {
+      new google.maps.Marker({
+        position: {lat: parseFloat(lat), lng: parseFloat(lng)},
+        map: targetMap,
+        title: name
+      })
+    }])
 
 
 
