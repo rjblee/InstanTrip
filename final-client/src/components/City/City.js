@@ -154,7 +154,7 @@ export default function City(props) {
           <div className="col-1" ></div>
           <div className="col-6">
             <Map
-=
+
             // places={props.places.filter((places)=>{
             //   return 
             //   places.schedule_id === schedule.id

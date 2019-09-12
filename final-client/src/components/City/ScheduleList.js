@@ -141,7 +141,7 @@ export default function ScheduleList (props) {
 
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div className='scroll-all'>
+            <div className='scroll-all pt-3'>
             {props.places.map((place) => {
               return <AllPlaceItem
                 key={place.id}

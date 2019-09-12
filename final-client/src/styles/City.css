@@ -72,24 +72,25 @@
 
 
 .scroll-foundPlace{
-  height: 600px;
+  height: 640px;
   overflow: auto;
+  /* border-bottom: 1px solid gray; */
 }
 
 .scroll-all{
-  height: 550px;
+  height: 640px;
   overflow: auto;
 }
 .scroll-result{
-  height: 550px;
+  height: 640px;
   overflow: auto;
 }
 .scroll-schedule{
-  height: 550px;
+  height: 640px;
   overflow: auto;
 }
 .scroll-foundPlace{
-  height: 550px;
+  height: 640px;
   overflow: auto;
 }
 
@@ -129,13 +130,12 @@
  
 .scheduleListParent {
   padding-left: 0px !important;
+  height:700px;
 }
 
 .scheduleList {
   padding-left: 10px;
-  
- 
-
+  border-bottom: 1px solid gray;
 }
 
 .SchedulePlaceItem{
@@ -149,11 +149,11 @@
 
 
 .img-all{
-  
-  width: 200px;
-  height: 150px;
+  /* padding-top:2px; */
+  width: 100%;
+  height: 130px;
   /* padding: 10px; */
-  border-radius: 15px;
+  border-radius: 5px;
 }
 .name{
   font-size: 20px;
