@@ -46,8 +46,8 @@ export default function TravelSteps(props) {
         return false
       }
     })[0]
-    wayPoint['distance'] = targetStep.distance.text
-    wayPoint['duration'] = targetStep.duration.text
+    wayPoint['distance'] = targetStep ? targetStep.distance.text : null
+    wayPoint['duration'] = targetStep ? targetStep.duration.text : null
     return wayPoint
   })
 
