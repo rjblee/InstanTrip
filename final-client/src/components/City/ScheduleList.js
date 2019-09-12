@@ -100,8 +100,8 @@ export default function ScheduleList (props) {
           </div> */}
           
         <nav className='scheduleList'>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" 
+          <div className="nav nav-tabs" id="nav-tab" role="tablist">
+            <a className="nav-item nav-link active" 
               id="nav-home-tab" 
               data-toggle="tab" 
               href="#nav-home" 
@@ -138,8 +138,8 @@ export default function ScheduleList (props) {
           </div>
         </nav>
 
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div className="tab-content" id="nav-tabContent">
+          <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div className='scroll-all'>
             {props.places.map((place) => {
               return <AllPlaceItem
