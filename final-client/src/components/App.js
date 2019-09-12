@@ -67,7 +67,7 @@ export default function App() {
       />
 
       <nav className="navbar navbar-expand-lg">
-        <span className="navbar-logo" ><Link to="/"><b>Instantrip</b></Link></span>
+        <span className="navbar-logo" ><Link to="/"><b>InstanTrip</b></Link></span>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

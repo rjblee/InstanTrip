@@ -11,36 +11,49 @@ export default function Place(props) {
   return (
     
     <div className="placeCard d-flex">
-      <img className="placeImage" src={props.place.picture} alt=''></img>
-      <div>
-        <p><b>{props.place.name}</b></p>
-        <p>{props.place.address}</p>
-        <input 
-          className="wishlist-dropdown"
-          type="text" 
-          name="targetCity" 
-          list="targetCity"
-          placeholder="Add place to City"
-          value= {targetCity}
-          onChange ={event => {
-            setTargetCity(event.target.value)
-          }}
-        />
-        <datalist 
-          id="targetCity"
-          value={targetCity}
-          onChange={event => {
-            setTargetCity(event.target.value)
-          }}
-        >
-          {props.cities.map( (item) => {
-            return <option
-                      key={item.id}
-                   >{item.city}</option>
-          })}
-        </datalist>
+      <div className='Place row'>
+      <div className='col-5'>
 
-        <AlertButton
+
+      <img className="placeImage" src={props.place.picture} alt=''></img>
+      </div>
+      <div
+      className="col-7"
+      >
+      
+        <p className='name'><b>{props.place.name}</b></p>
+        <p className="address">{props.place.address}</p>
+        <div className='inputAdd row'>
+          <div className="col-8">
+            <input 
+                className="wishlist-dropdown"
+                type="text" 
+                name="targetCity" 
+                list="targetCity"
+                style={{width:'100%'}}
+                placeholder="Add place to City"
+                value= {targetCity}
+                onChange ={event => {
+                  setTargetCity(event.target.value)
+                }}
+              />
+           <datalist 
+              id="targetCity"
+              value={targetCity}
+              onChange={event => {
+                setTargetCity(event.target.value)
+              }}
+            >
+              {props.cities.map( (item) => {
+                return <option
+                          key={item.id}
+                      >{item.city}</option>
+              })}
+            </datalist>
+        </div>
+        <div className="col-1"></div>
+      <div className="col-3">
+          <AlertButton
         // <button
         //   className="example_g"
           onClick={() => {
@@ -100,7 +113,10 @@ export default function Place(props) {
           }}
         text={"👍 " + props.place.name + " has been added"}
         // >Add to City</button>
-        ></AlertButton>
+         ></AlertButton>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
    

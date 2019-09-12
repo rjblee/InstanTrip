@@ -23,7 +23,7 @@ export default function SchedulePlaceItem(props) {
         onClick={() => {
           deleteScheduleFromPlace(props.place.id, props.setUser)
         }}
-      >Remove from schedule</button>
+      >Remove</button>
       </div>
     </div>
     </div>

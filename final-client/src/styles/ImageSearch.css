@@ -34,7 +34,7 @@
 .scoll-placeCard{
  
   height: 340px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /* .placeImage {
