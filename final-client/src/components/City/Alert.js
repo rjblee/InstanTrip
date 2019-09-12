@@ -18,17 +18,7 @@ export default function AlertButton(props) {
       >Add
       </button>
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
-      />
+     
     </div>
   );
 }
