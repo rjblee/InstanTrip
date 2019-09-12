@@ -31,7 +31,7 @@ export default function App() {
   useEffect(() => {
     if (user.name) {
       // get all user data from database 
-      getUserData(user).then((response) => {
+      getUserData(user.id).then((response) => {
         // //get cities 
         // const getUniqueCities = function (city, index, self) {
         //   return self.indexOf(city) === index

@@ -33,7 +33,7 @@ export default function createAndSaveSchecules (places, kValue, city, setSchedul
       })
 
       // send axios request with cityId and cityclusters
-      axios.post('/saveSchedules', {placesClusters: placesClusters, cityId: city.id}).then((response) => {
+      axios.post('/schedules', {placesClusters: placesClusters, cityId: city.id}).then((response) => {
         // use setUser to trigger data relode
         // setUser(prev => {return prev})
         console.log('this is ran')
