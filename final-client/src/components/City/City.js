@@ -102,7 +102,7 @@ export default function City(props) {
           targetMap.setZoom(12)
         }}
       >test center</button> */}
-      <div className="city-title"><b>{props.city.city}</b></div>
+      {/* <div className="city-title"><b>{props.city.city}</b></div> */}
 
       <div className="combine-two-search-bar">
        <SearchBar
@@ -263,9 +263,9 @@ export default function City(props) {
           />
         </div>
 
-        <div className='scroll-foundPlace'>
+
           <div className="col-1" ></div>
-        </div>
+   
       </div>
 
       : <div></div>
