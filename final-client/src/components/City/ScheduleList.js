@@ -117,7 +117,7 @@ export default function ScheduleList (props) {
               }}
               >All</a>
 
-            {props.schedules.map((schedule) => {
+            {props.schedules.map((schedule, index) => {
             return <a
               key={schedule.id}
               className="nav-item nav-link wishlist-tab"
@@ -133,7 +133,7 @@ export default function ScheduleList (props) {
                 props.setSteps([])
                 props.setCurrentSchedule(schedule)
               }}
-              >schedule {schedule.id}</a>
+              >schedule {index + 1}</a>
           })}
 
           </div>
