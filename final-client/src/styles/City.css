@@ -72,24 +72,24 @@
 
 
 .scroll-foundPlace{
-  height: 750px;
+  height: 600px;
   overflow: auto;
 }
 
 .scroll-all{
-  height: 750px;
+  height: 550px;
   overflow: auto;
 }
 .scroll-result{
-  height: 500px;
+  height: 550px;
   overflow: auto;
 }
 .scroll-schedule{
-  height: 750px;
+  height: 550px;
   overflow: auto;
 }
 .scroll-foundPlace{
-  height: 750px;
+  height: 550px;
   overflow: auto;
 }
 
@@ -107,7 +107,7 @@
 
 .search-for-place {
   display: flex;
-  width: 1800px;
+  width: 1600px;
   margin-left: -60px;
   margin-bottom: 10px;
 }
@@ -156,7 +156,8 @@
   border-radius: 15px;
 }
 .name{
-  font-size: 18px;
+  font-size: 10px;
+  color:black;
 }
 .address{
   font-size: 15px;

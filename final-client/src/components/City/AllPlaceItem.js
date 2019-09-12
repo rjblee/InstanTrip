@@ -21,7 +21,7 @@ export default function AllPlaceItem(props) {
       className="col-7"
       >
         
-      <p className="name">{props.place.name}</p>
+      <p className="name"><b>{props.place.name}</b></p>
       <p className='address'>{props.place.address}</p>
       <div 
         className="row"

@@ -532,7 +532,7 @@ export default function Map(props) {
     <div
       style={{
 
-        height: '880px',
+        height: '700px',
         width: '100%',
         border:'12px solid white',
         borderRadius: '10px'

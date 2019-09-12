@@ -84,7 +84,7 @@ export default function StartEndTransitForm (props) {
           }
 
           }
-          >START YOUR JOURNEY</button>
+          >START JOURNEY</button>
       </div>
       <div className="col-1"></div>
     </div>
