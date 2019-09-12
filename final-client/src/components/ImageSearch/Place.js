@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import savePlaceToDatabase from '../../helpers/savePlaceToDatabase'
 import "../../styles/ImageSearch.css";
+import AlertButton from '../City/Alert';
 
 export default function Place(props) {
   const [targetCity, setTargetCity] = useState('')
@@ -14,7 +15,7 @@ export default function Place(props) {
       <div>
         <p>{props.place.name}</p>
         <p>{props.place.address}</p>
-         <input 
+        <input 
           className="wishlist-dropdown"
           type="text" 
           name="targetCity" 
@@ -24,23 +25,24 @@ export default function Place(props) {
           onChange ={event => {
             setTargetCity(event.target.value)
           }}
-          />
-         <datalist 
+        />
+        <datalist 
           id="targetCity"
           value={targetCity}
           onChange={event => {
             setTargetCity(event.target.value)
           }}
-         >
-           {props.cities.map( (item) => {
+        >
+          {props.cities.map( (item) => {
             return <option
-                    key={item.id}
-                    >{item.city}</option>
+                      key={item.id}
+                   >{item.city}</option>
           })}
-         </datalist>
+        </datalist>
 
-        <button
-          className="example_g"
+        <AlertButton
+        // <button
+        //   className="example_g"
           onClick={() => {
             props.setAlert('')
             // check if place is in database already
@@ -57,8 +59,6 @@ export default function Place(props) {
             } else {
               props.setAlert('Failed to save place. Check if you are signed in and place is not in wishlist already')
             }
-
-
 
             // function savePlace(data) {
             //   const options = {
@@ -97,9 +97,10 @@ export default function Place(props) {
             //   })
             // }
 
-        }}
-        >Add to City</button>
-        
+          }}
+        text={"👍 " + props.place.name + " has been added"}
+        // >Add to City</button>
+        ></AlertButton>
       </div>
     </div>
    
