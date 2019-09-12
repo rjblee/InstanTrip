@@ -125,12 +125,12 @@ module.exports = () => {
              `, [cityId]).then( () => {
                // then re-create schedule instance in schedules table
                Promise.all(
-                 placesClusters.map((placesCluster, index) => {
-                   return db.query(`INSERT INTO schedules (city_id, id)
-                                     values ($1, $2)
+                 placesClusters.map((placesCluster) => {
+                   return db.query(`INSERT INTO schedules (city_id)
+                                     values ($1)
                                      RETURNING *
                                      `, 
-                                     [cityId, index + 1]
+                                     [cityId]
                                    )
                  })
                ).then(all => {
