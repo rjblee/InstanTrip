@@ -35,7 +35,10 @@
  
   height: 340px;
   overflow: auto;
+  
 }
+
+.scoll-placeCard::-webkit-scrollbar { width: 0 !important }
 
 /* .placeImage {
 
