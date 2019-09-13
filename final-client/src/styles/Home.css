@@ -64,8 +64,6 @@
 
 .city-card:hover {
   text-shadow: 0px 0px 6px white;
-  /* -webkit-box-shadow: 20px 20px 20px 0px rgba(233, 222, 222, 0.794);
-  -moz-box-shadow: 0px 40px 40px -10px rgb(255, 255, 255); */
 
   -webkit-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.794);
   -moz-box-shadow: 0px 40px 40px -10px rgb(255, 255, 255);

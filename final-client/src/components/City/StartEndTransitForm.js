@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import updateSchedule from '../..//helpers/updateSchedule'
+import updateSchedule from '../../helpers/updateSchedule'
 import "../../styles/City.css";
 
 export default function StartEndTransitForm (props) {
@@ -69,10 +69,7 @@ export default function StartEndTransitForm (props) {
             props.setTargetMap([])
             updateSchedule(props.currentSchedule.id, start, end, transit, props.setSchedules).then(response => {
               const newSchedule = response.data
-              console.log(newSchedule)
               props.setSchedules(prev => {
-                console.log('prev')
-                console.log(prev)
                 const otherSchedules = prev.filter(each => {
                   return each.id !== newSchedule.id
                 })

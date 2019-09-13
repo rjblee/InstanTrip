@@ -7,14 +7,6 @@ import AlertButton from './Alert';
 
 export default function CityPlace(props) {
 
-  // console.log('citiys----------')
-  // console.log(props.cities)
-
-        //              setAlert={props.setAlert}
-  //
-
-  // props.setAlert
-  // props.userdata
   return (
     <div className="cityPlaceCard row">
       
@@ -26,10 +18,8 @@ export default function CityPlace(props) {
       <div className='col-7'>
         <p className='name'><b>{props.place.name}</b></p>
         <p className='address'>{props.place.address}</p>
-        {/* <p>{props.place.rating}</p> */}
 
         <AlertButton
-          // <button className='example_g'
           onClick={() => {
             props.setAlert('')
             // check if place is in database already
@@ -39,8 +29,6 @@ export default function CityPlace(props) {
             })
             if (filteredPlaces.length === 0 ) {
               // add markers to map 
-              console.log('add marks')
-              console.log(props.addMarker)
               props.addMarker[0](props.place.lat, props.place.lng, props.place.name)
 
               // add place to database
@@ -51,7 +39,6 @@ export default function CityPlace(props) {
             }
           }}
           text={"👍 " + props.place.name + " has been added"}
-          // >Add Place</button>
         ></AlertButton>
 
       </div>

@@ -11,7 +11,6 @@ export default function getUserData(id) {
   const options = {
     method: 'get',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    // data: qs.stringify(data),
     url: `/User/${id}/places`
   }
   return (

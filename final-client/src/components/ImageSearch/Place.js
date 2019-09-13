@@ -5,9 +5,6 @@ import AlertButton from '../City/Alert';
 
 export default function Place(props) {
   const [targetCity, setTargetCity] = useState('')
-  // console.log(targetCity)
-  // console.log('citiys----------')
-  // console.log(props.cities)
   return (
     
     <div className="placeCard d-flex">
@@ -54,15 +51,10 @@ export default function Place(props) {
         <div className="col-1"></div>
       <div className="col-3">
           <AlertButton
-        // <button
-        //   className="example_g"
           onClick={() => {
             props.setAlert('')
             // check if place is in database already
             const placeName = props.place.name
-            // console.log('placeName')
-            // console.log(placeName)
-            // console.log(props.userdata)
             const filteredPlaces = props.userdata.filter((each) => {
               return each.name === placeName
             })
@@ -73,46 +65,9 @@ export default function Place(props) {
               props.setAlert('Failed to save place. Check if you are signed in and place is not in wishlist already')
             }
 
-            // function savePlace(data) {
-            //   const options = {
-            //     method: 'post',
-            //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-            //     data: qs.stringify(data),
-            //     url: '/savePlace'
-            //   }
-            //   return (
-            //     axios(options)
-            //   ) 
-            // }
-
-            // // check if city is in city list
-            // const selectedCity = props.cities.filter((city) => {
-            //   return city.city == targetCity
-            // })
-
-            // if (selectedCity.length) {
-            //   // if yes, send city data with place data directly
-            //   savePlace({place: props.place, city: selectedCity[0], existCity: 'true'}).then((response) => {
-            //     console.log(response)
-            //   })
-            // } else {
-            //   // else find the city, create citiy and add place to that city in database
-            //   searchPlace({ 'query': targetCity}).then((response) => {
-            //     console.log('city from no where')
-            //     console.log(response.data)
-            //     console.log(props.user)
-            //     // let data = {user: props.user, place: props.place, city: response.data[0], existCity: 'false'}
-            //     // console.log('data')
-            //     // console.log(data)
-            //     savePlace({user: props.user, place: props.place, city: response.data[0], existCity: 'false'}).then((response) => {
-            //       console.log(response)
-            //     })
-            //   })
-            // }
 
           }}
         text={"👍 " + props.place.name + " has been added"}
-        // >Add to City</button>
          ></AlertButton>
           </div>
           </div>

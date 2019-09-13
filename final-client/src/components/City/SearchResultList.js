@@ -6,8 +6,6 @@ import Place from '../ImageSearch/Place';
 import SearchBar from '../SearchBar/searchBar';
 
 export default function SearchResultList(props) {
-  // const [inputvalue, setInputvalue] = useState('')
-  // const [searchOption, setSearchOption] = useState('image')
   const [places, setplaces] = useState([])
 
   return(

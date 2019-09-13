@@ -4,8 +4,6 @@ import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
 
 export default function SchedulePlaceItem(props) {
   
-  // TO access to picture of each 
-  // use props.place.picture
   return (
     <div className="SchedulePlaceItem">
       <div className='schedulePlaceitem row'>

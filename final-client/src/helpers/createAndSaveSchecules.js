@@ -11,10 +11,8 @@ export default function createAndSaveSchecules (places, kValue, city, setSchedul
   let convertedKValue = parseInt(kValue) || 1
   convertedKValue = cityVector.length > convertedKValue ? convertedKValue: cityVector.length
 
-  console.log('check convertedKValue value')
-  console.log(convertedKValue)
-  // pass K-mean model with processed city data and k value
 
+  // pass K-mean model with processed city data and k value
   kmeans.clusterize(cityVector, {k: convertedKValue}, (err,res) => {
     if (err) {
       //output error if any
@@ -24,25 +22,13 @@ export default function createAndSaveSchecules (places, kValue, city, setSchedul
       const clusters = res.map((cluster) => {
         return cluster.clusterInd
       })
-      // console.log('clusters123123123')
-      // console.log(clusters)
-
-      // transfer array of city index value into real city data
       const placesClusters = clusters.map(cluster => {
         return cluster.map(each => { return  places[each]})
       })
 
       // send axios request with cityId and cityclusters
       axios.post('/schedules', {placesClusters: placesClusters, cityId: city.id}).then((response) => {
-        // use setUser to trigger data relode
-        // setUser(prev => {return prev})
-        console.log('this is ran')
-        console.log(response)
-        // extract schedules
-        // setUser(prev => {return prev})
         axios.get(`/city/${city.id}/schedules`).then(response => {
-          console.log('maybe we have it')
-          console.log(response)
           setSchedules(response.data)
           setUser(prev => ({...prev}))
         })

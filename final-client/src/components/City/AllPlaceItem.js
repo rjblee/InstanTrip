@@ -7,8 +7,6 @@ import AlertButton from './Alert';
 export default function AllPlaceItem(props) {
   const [targetScheduleId, setTargetScheduleId] = useState('Schedule ID')
   
-  // TO access to picture of each 
-  // use props.place.picture
   return (
 
     <div className="AllPlaceItem row">
@@ -59,16 +57,8 @@ export default function AllPlaceItem(props) {
       </div>
         
       </div>
-    
+  
 
-
-      {/* <button
-        // className="example_f"
-        onClick={() => {
-          // addScheduleIdToPlace(props.place.id, targetScheduleId, props.setUser)
-          // setTargetScheduleId('Schedule ID')
-        }}
-      >Delete</button> */}
     </div>
 
   )
