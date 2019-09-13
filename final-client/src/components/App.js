@@ -3,7 +3,6 @@ import '../styles/App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './Home/Home';
 import ImageSearch from './ImageSearch/ImageSearch';
-// import GoogleMap from './GoogleMap';
 import Login from './Navbar/Login'
 import Logout from './Navbar/Logout'
 import getUserData from '../helpers/getUserData'
@@ -13,36 +12,17 @@ import { ToastContainer } from "react-toastify";
 
 export default function App() {
 
-  //state for user login
   const [name, setName] =useState('')
   const [password, setPassword] =useState('')
   const [user,setUser] = useState({id:'', name:'' , password:''})
-  // const [userdata, setUserData] = useState([])
   const [userdata, setUserData] = useState([])
   const [cities, setCities] = useState([])
   const [alert, setAlert] = useState('')
 
-  ////////////////////////////////////
-  console.log('----here')
-  // console.log(cities) 
-  console.log(userdata)
-  // console.log(user)
-  ////////////////////////////////////
   useEffect(() => {
     if (user.name) {
-      // get all user data from database 
       getUserData(user.id).then((response) => {
-        // //get cities 
-        // const getUniqueCities = function (city, index, self) {
-        //   return self.indexOf(city) === index
-        // }
-
-        // const citiesFromDate = response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}})
-        // const citiesname
-        // setCities(response.data.map((place) => { return {city:place.city, lat:place.c_lat, lng:place.c_lng}}).filter(getUniqueCities))
-        //store user data
         setUserData(response.data)
-        // console.log(response.data)
       } 
       )
       getCities(user).then((response) => {
@@ -92,9 +72,6 @@ export default function App() {
                   return <div key={city.id} className="nav-link"><Link to={"/" + city.city} className="nav-dropdown">{city.city}</Link></div>
                 })}
              
-{/* 
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a> */}
               </div>
             </li>
           </ul>
@@ -182,7 +159,6 @@ export default function App() {
                                                       setAlert={setAlert}
                                                       setUser={setUser}
                                                     />} />
-      {/* <Route path="/map" exact component={GoogleMap} /> */}
       
     </Router>
   );

@@ -1,28 +1,13 @@
 const express = require('express');
 const router  = express.Router();
 const { Pool } = require('pg');
-// config database
 const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
 module.exports = () => {
 
-  // router.post("/userdata", (req,res) => {
-  //   // console.log(req.body)
-  //   db.query(`SELECT * 
-  //             FROM users JOIN cities ON users.id = cities.user_id
-  //             JOIN places ON cities.id = places.city_id
-  //             Where users.name = $1`, [req.body.name])
-  //             .then((response) => {
-  //               res.send(response.rows)
-  //             }).catch((err) => {
-  //               console.log(err)
-  //             })
-  // })
-
   router.get("/user/:id/places", (req,res) => {
-    // console.log(req.body)
     db.query(`SELECT * 
               FROM users JOIN cities ON users.id = cities.user_id
               JOIN places ON cities.id = places.city_id
@@ -62,8 +47,6 @@ module.exports = () => {
 
   router.post('/places', (req, res) => {
 
-    // console.log('-----get datatttt')
-    // console.log(req.body)
     const place = req.body.place
     if (req.body.existCity === 'true') {
       // add place to city if city is in database 
@@ -71,7 +54,6 @@ module.exports = () => {
                 values ($1, $2, $3, $4, $5, $6, $7, $8)
                 `, [place.lat, place.lng, place.rating, place.picture, place.placeId, req.body.city.id, place.name, place.address])
                 .then(() => {
-                  console.log('maybe im in')
                   res.send('success')
                 }).catch((err) => { console.log(err)})
     } else {
@@ -98,7 +80,6 @@ module.exports = () => {
  
 
   router.post('/cities', (req, res) => {
-    // console.log(req.body)
     const city = req.body.city
     const user = req.body.user
     db.query(`INSERT INTO cities (city, c_lat, c_lng, user_id, c_picture)
@@ -112,8 +93,6 @@ module.exports = () => {
 
 
   router.post('/schedules', (req, res) => {
-    // console.log('check schedule body')
-    // console.log(req.body)
 
     const placesClusters = req.body.placesClusters;
     const cityId = req.body.cityId;
@@ -137,8 +116,6 @@ module.exports = () => {
                  scheduleIds = all.map(each => {
                    return each.rows[0].id
                  })
-                 console.log('scheduleIds')
-                 console.log(scheduleIds)
                  
                  //prepare for Promise all
                  // combine place data with schedule id
@@ -149,10 +126,6 @@ module.exports = () => {
                      dbQuerysPrep.push({place: place, scheduleId: scheduleId})
                    }
                  }
-           
-                 console.log('dbQuerysPrepafter')
-                 console.log(dbQuerysPrep)
-           
                  // resolve all dbquerys 
                  Promise.all(
                    dbQuerysPrep.map((each) => {
@@ -175,7 +148,6 @@ module.exports = () => {
 
 
   router.get(`/city/:id/schedules`, (req, res) => {
-    console.log("here is restful schedule")
     const cityId = req.params.id
     db.query(`SELECT * FROM schedules
               WHERE city_id = $1
@@ -189,10 +161,6 @@ module.exports = () => {
   router.put(`/places/:id/schedule`, (req, res) => {
     const scheduleId = req.body.scheduleId
     const placeId = req.params.id
-    
-    console.log('check: put---- /places/:id/schedule')
-    console.log('scheduleId = ')
-    console.log(scheduleId)
 
     db.query(`UPDATE places 
               SET schedule_id = $1
@@ -206,9 +174,6 @@ module.exports = () => {
   router.delete(`/places/:id/schedule`, (req, res) => {
     const placeId = req.params.id
 
-    console.log('check: delete---- /places/:id/schedule')
-    console.log('placeId = ')
-    console.log(placeId)
 
     db.query(`UPDATE places
               SET schedule_id = $1
@@ -226,9 +191,6 @@ module.exports = () => {
     const transit = req.body.transit || null;
     const scheduleId = req.params.id
 
-    console.log('--start_loc' + start_place)
-    console.log('--end_loc' + end_place)
-    console.log('--transit' + transit)
 
     db.query(`UPDATE schedules
               SET start_place = $1, end_place = $2, transit = $3

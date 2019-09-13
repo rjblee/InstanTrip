@@ -27,7 +27,6 @@ export default function SearchBar (props) {
           value={searchOption}
           onChange={(event) => {
             setSearchOption(event.target.value)
-            console.log(event.target.value)
           }}
         >
           <option value='image'>📷</option>
@@ -47,15 +46,8 @@ export default function SearchBar (props) {
               if (props.city) {
                 queryData['location'] = {lat: props.city.c_lat, lng: props.city.c_lng}
               }
-              // console.log('query data ----')
-              // console.log(queryData)
-              console.log(inputvalue)
-              // searchPlaces({ 'query': inputvalue}).then(function(response) {
               searchPlaces(queryData).then(function(response) {
-                console.log(props)
                 props.setAlert('')
-                console.log('here is places')
-                console.log(response.data)
                 if(response.data.length) {
                   setplaces(response.data)
                 } else {

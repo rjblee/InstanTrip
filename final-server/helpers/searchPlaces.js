@@ -21,7 +21,6 @@ module.exports = function searchPlaces (dataForSearch, res) {
           resultPlaces.push(targetPlace)
         }
         if (placeArray[0] && placeArray[0].photos[0] ) {
-          console.log('going to filter places')
           Promise.all(
             // filter out places to those that only has pictures
             placeArray.map(place => {
@@ -40,7 +39,6 @@ module.exports = function searchPlaces (dataForSearch, res) {
             }
           }).filter((each) => each)
           ).then((all) => {
-            console.log(all)
             const pictures = all.map(each => each.url)
             for (let i = 0; i < resultPlaces.length; i ++) {
               resultPlaces[i].picture = pictures[i]

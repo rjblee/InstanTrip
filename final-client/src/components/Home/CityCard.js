@@ -7,14 +7,7 @@ export default function CityCard(props) {
 
     const style = {
       backgroundImage: `url(${props.city.c_picture})`,
-      // width: '300px',
-      // height: '300px',
-      // backgroundSize: 'cover', 
-      // backgroundPosition: 'center center',
-      // backgroundRepeat: 'no-repeat',
     }
-    console.log('citycard')
-    console.log(props.city)
   return (
     <div className="city-card" style = {style}>
       <div>

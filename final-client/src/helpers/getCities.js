@@ -10,7 +10,6 @@ export default function getCities(data) {
   const options = {
     method: 'get',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-    // data: qs.stringify(data),
     url: `user/${data.id}/cities`
   }
   return (

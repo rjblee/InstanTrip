@@ -8,25 +8,17 @@ import SearchBar from '../SearchBar/searchBar'
 import createAndSaveSchecules from '../../helpers/createAndSaveSchecules'
 import StartEndTransitForm from './StartEndTransitForm'
 import TravelSteps from './TravelSteps'
-// import SearchResultList from './SearchResultList'
 import CityPlace from './CityPlace'
 import WishlistItem from './WishlistItem';
 import ScheduleList from './ScheduleList'
 
 
 import addScheduleIdToPlace from '../../helpers/addScheduleIdToPlace'
-//example: 
-// addScheduleIdToPlace(1, '1234', props.setUser)
 
 import deleteScheduleFromPlace from '../../helpers/deleteScheduleFromPlace'
-//example:
-//deleteScheduleFromPlace(1, props.setUser)
 
 
 export default function City(props) {
-  //access
-  //props.city 
-  //props.places
   const [schedules, setSchedules] = useState([])
   const [foundPlaces, setfoundPlaces] = useState([])
 
@@ -40,69 +32,19 @@ export default function City(props) {
   const [addMarker, setAddMarker] = useState([])
 
 
-  console.log('check addmarker')
-  console.log(addMarker)
-
-
-  // console.log('mega----steps ')
-  // console.log(steps.map((each) => {
-  //   return [each.start_location.lat(), each.start_location.lng()]
-  // }))
-  // console.log(megaSteps.map((each) => {
-  //   return [each.start_location.lat(), each.start_location.lng()]
-  // }))
-  console.log(`here is the place data for ${props.city.city}`)
-  console.log(props.places)
-  // console.log('schedules')
-  // console.log(schedules)
-  // console.log('setcurrent schedule')
-  // console.log(currentSchedule)
-
-  console.log('currentSchedule')
-  console.log(currentSchedule)
-  console.log('steps')
-  console.log(steps)
-  console.log('mage steps')
-  console.log(megaSteps)
-
 
 
   useEffect( () => { 
-    // extract schedules
     if(props.city.id) {
       axios.get(`/city/${props.city.id}/schedules`).then(response => {
-        // console.log('maybe we have it')
         setSchedules(response.data)
       })
     }
   },[])
 
-  // useEffect(() => {
-  //   console.log('loadMap is update')
-  //   setLoadMap( prev => {return prev + 1})
-  // }, [props.user])
-
-  // let lng;
-  // let lat;
-
-  // if (foundPlaces.length > 0) {
-  //   lng = foundPlaces[0].lng
-  //   lat = foundPlaces[0].lat
-  // }
-
-  // console.log("XXXXXXXX", props)
-  // // console.log("CCCCC",props.city.c_lat)
 
   return(
     <>
-      {/* <button
-        onClick={() => {
-          console.log(targetMap)
-          targetMap.setCenter({lat: 49.246292, lng: -123.116226})
-          targetMap.setZoom(12)
-        }}
-      >test center</button> */}
-      {/* <div className="city-title"><b>{props.city.city}</b></div> */}
 
       <div className="combine-two-search-bar">
        <SearchBar
@@ -129,10 +71,6 @@ export default function City(props) {
            type="submit"
            className="example_e btn-primary mb-2"
            onClick={() => {
-             // function takes place data, k value to do clustering
-             // and then  city id to  create row in schedules table
-             // and add schedule id into schedule_id colume of places table
-             // then update data by calling setUser(prev => {return prev})
              createAndSaveSchecules(props.places, kValue, props.city, setSchedules, props.setUser)
              setMegaSteps([])
              setSteps([])
@@ -141,30 +79,12 @@ export default function City(props) {
          >Make Schedule</button>
        </div>
      </div>
-      {/* <SearchBar 
-        setplaces={setfoundPlaces} 
-        city={props.city}
-        // setMegaSteps={setMegaSteps}
-        // setSteps={setSteps}
-        defaultValue='text'setKValue
-        setAlert={props.setAlert}
-
-        /> */}
 
       <div className="mb-5">
         <div className="row">
           <div className="col-1" ></div>
           <div className="col-6">
             <Map
-
-            // places={props.places.filter((places)=>{
-            //   return 
-            //   places.schedule_id === schedule.id
-            // })}
-            // start_location={start_location}
-            // end_location={start_location}
-            // schedule={cuplacesrrentSchedule}
-            //places setSchedule={setCurrentSchedule}
             places={props.places.filter((place) => {
               if (currentSchedule.id === "All") {
                 return true
@@ -178,7 +98,6 @@ export default function City(props) {
             setMegaSteps={setMegaSteps}
             setSteps={setSteps}
             setTargetMap = {setTargetMap}
-            // loadmap={loadmap}
             setAddMarker={setAddMarker}
            />
 
@@ -204,10 +123,8 @@ export default function City(props) {
 
             <div className="scroll-all"
 
-              // style={{ position: 'absolute', zIndex: '1', height:'100%', width: '100%', backgroundColor: "rgb(245,245,245)"}}
             >
               {foundPlaces.map((place) => {
-                // to rebuild
                 return <CityPlace
                         place={place}
                         key={place.placeId}

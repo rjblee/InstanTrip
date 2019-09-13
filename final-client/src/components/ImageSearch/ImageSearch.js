@@ -6,19 +6,13 @@ import SearchBar from '../SearchBar/searchBar'
 import searchPlaces from '../../helpers/searchPlaces'
 
 export default function ImageSearch(props) {
-  // const [inputvalue, setInputvalue] = useState('')
-  // const [searchOption, setSearchOption] = useState('image')
   const [places, setplaces] = useState([])
 
-  // console.log(places)
 
   useEffect(() => {
     const queryData = { query: 'places of interest'}
     searchPlaces(queryData).then(function(response) {
-      // console.log(props)
       props.setAlert('')
-      // console.log('here is places')
-      // console.log(response.data)
       if(response.data.length) {
         setplaces(response.data)
       } else {

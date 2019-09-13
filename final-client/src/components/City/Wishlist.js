@@ -3,7 +3,6 @@ import WishlistItem from './WishlistItem';
 import "../../styles/City.css";
 
 export default function Wishlist(props) {
-  // console.log("VVVVVVV", props)
   const [state, setState] = useState('');
 
   return (
@@ -13,7 +12,6 @@ export default function Wishlist(props) {
       <WishlistItem
               name={place.name}
               picture={place.picture}
-              // rating={place.rating}
               address={place.address}
             >
             </WishlistItem>

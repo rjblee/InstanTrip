@@ -6,11 +6,6 @@ axios.defaults.headers.common = {
   "Content-Type": "application/x-www-form-urlencoded"
 }
 export default function userAuthentication(user) {
-  // format example for data
-  // { 
-  //   'query': inputvalue, 
-  //   location: {lat:'49.246292', lng: '-123.116226'} --- this is optional
-  // }
 
   const options = {
     method: 'POST',
@@ -21,10 +16,6 @@ export default function userAuthentication(user) {
   return (
     axios(options)
   )
-
-  // axios(options).then(function(response) {
-  //   console.log(response.data)
-  // });
 
 
 }

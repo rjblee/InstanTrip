@@ -29,8 +29,6 @@ export default function Login(props) {
         type="submit"
         onClick= {() => {
           userAuthentication({name:props.name, password:props.password}).then((response) => {
-            console.log('---get user from database')
-            console.log(response)
             if (response.data.length) {
               props.setUser(response.data[0])
               props.setAlert('')
