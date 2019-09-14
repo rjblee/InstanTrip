@@ -20,7 +20,7 @@ export default function SavePlaceToDatabase(props, targetCity, setUser) {
 
   if (props.cities) {
     selectedCity = props.cities.filter((city) => {
-      return city.city == targetCity
+      return city.city === targetCity
     })
   } else {
     selectedCity = [targetCity]

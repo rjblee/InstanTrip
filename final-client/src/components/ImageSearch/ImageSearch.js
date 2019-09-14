@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import Place from './Place'
-import axios from "axios";
 import "../../styles/ImageSearch.css";
 import SearchBar from '../SearchBar/searchBar'
 import searchPlaces from '../../helpers/searchPlaces'
@@ -19,7 +18,7 @@ export default function ImageSearch(props) {
         props.setAlert('No places found')
       }
     }).catch((err) => console.log(err))
-
+// eslint-disable-next-line
   },[])
 
   

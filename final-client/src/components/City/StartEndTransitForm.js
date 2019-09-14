@@ -8,7 +8,7 @@ export default function StartEndTransitForm (props) {
   const [transit, setTransit] = useState(props.currentSchedule.transit || 'Travel method..')
 
   const places = props.places.filter((place) => {
-    return place.schedule_id == props.currentSchedule.id
+    return place.schedule_id === props.currentSchedule.id
   })
 
   return (
@@ -24,9 +24,7 @@ export default function StartEndTransitForm (props) {
           }}
           >
             
-              <option>Starting Location...</option>
-           
-            
+            <option>Starting Location...</option>
             {places.map((place) => {
               return <option value={place.name}>{place.name}</option>
             })}

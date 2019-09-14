@@ -2,7 +2,6 @@ import React from 'react';
 import AllPlaceItem from './AllPlaceItem';
 import SchedulePlaceItem from './SchedulePlaceItem';
 import "../../styles/City.css";
-import CityPlace from './CityPlace'
 
 export default function ScheduleList (props) {
   return (
@@ -72,7 +71,7 @@ export default function ScheduleList (props) {
                       aria-labelledby={`nav-schedule-tab-${schedule.id}`}>
                       <div className='scroll-all'>
                         {props.places.filter((place) => {
-                          return place.schedule_id == schedule.id
+                          return place.schedule_id === schedule.id
                         })
                         .map((place) => {
                           return <SchedulePlaceItem
