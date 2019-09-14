@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 import Place from './Place'
-import axios from "axios";
 import "../../styles/ImageSearch.css";
 import SearchBar from '../SearchBar/searchBar'
 import searchPlaces from '../../helpers/searchPlaces'

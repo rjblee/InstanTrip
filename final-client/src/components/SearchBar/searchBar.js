@@ -1,7 +1,8 @@
-
 import React, { useState} from 'react';
 import searchPlaces from '../../helpers/searchPlaces';
 import imageSearch from '../../helpers/imageSearch'
+
+
 export default function SearchBar (props) {
   const [inputvalue, setInputvalue] = useState('')
   const [searchOption, setSearchOption] = useState( props.defaultValue || 'image')

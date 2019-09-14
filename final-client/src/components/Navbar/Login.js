@@ -3,7 +3,6 @@ import userAuthentication from '../../helpers/userAuthentication'
 
 
 export default function Login(props) {
-
   return (
     <div className="form-inline my-2 my-lg-0 ml-auto">
       <input 
@@ -28,6 +27,7 @@ export default function Login(props) {
         className="example_e btn-outline-white btn-md my-2 my-sm-0 ml-3" 
         type="submit"
         onClick= {() => {
+          console.log(props)
           userAuthentication({name:props.name, password:props.password}).then((response) => {
             if (response.data.length) {
               props.setUser(response.data[0])

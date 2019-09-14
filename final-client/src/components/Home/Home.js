@@ -1,4 +1,4 @@
-import React, { useState,Fragment } from 'react';
+import React, { useState } from 'react';
 import "../../styles/Home.css";
 import Axios from 'axios';
 import CityCard from './CityCard';
@@ -11,7 +11,7 @@ export default function Home(props) {
       const cityName = response.data[0].name
 
       const exitCity = props.cities.filter((city) => {
-        return city.city == cityName
+        return city.city === cityName
       })
       props.setAlert('')
 

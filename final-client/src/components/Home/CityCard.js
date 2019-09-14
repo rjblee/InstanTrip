@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import City from '../City/City'
 import "../../styles/Home.css";
 
 export default function CityCard(props) {

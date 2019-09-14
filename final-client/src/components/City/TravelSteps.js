@@ -15,11 +15,11 @@ export default function TravelSteps(props) {
   const [current, setCurrent] = useState(0);
   const wayPoints = props.megaSteps.map((step) => {
     const startName = props.places.filter((places) => {
-      return places.address.substring(0, 10) == step.start_address.substring(0, 10)
+      return places.address.substring(0, 10) === step.start_address.substring(0, 10)
     })[0]
 
     const endName = props.places.filter((places) => {
-      return places.address.substring(0, 10) == step.end_address.substring(0, 10)
+      return places.address.substring(0, 10) === step.end_address.substring(0, 10)
     })[0]
 
     // some address might not have match address
@@ -31,7 +31,7 @@ export default function TravelSteps(props) {
 
   const wayPoinstWithDuration = wayPoints.map((wayPoint) => {
     const targetStep = props.steps.filter((step) => {
-      if (wayPoint.start_address.substring(0, 10) == step.start_address.substring(0, 10)) {
+      if (wayPoint.start_address.substring(0, 10) === step.start_address.substring(0, 10)) {
         return true
       } else {
         return false

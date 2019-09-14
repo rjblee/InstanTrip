@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React from "react";
+import { toast } from "react-toastify";
 import "../../styles/City.css";
 
 export default function AlertButton(props) {
@@ -8,9 +8,7 @@ export default function AlertButton(props) {
   return (
     <div>
       <button
-
         className="example_g"
-
         onClick={() => {
           notify();
           props.onClick();

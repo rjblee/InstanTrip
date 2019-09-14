@@ -150,9 +150,7 @@ export default function Map(props) {
 
       ]})
 
-
-      props.setTargetMap(targetMap)
-
+    props.setTargetMap(targetMap)
 
     const bounds = new google.maps.LatLngBounds()
 
@@ -164,9 +162,7 @@ export default function Map(props) {
         map: targetMap,
         title: place.name
       })
-
     })
-
 
     props.setAddMarker([function(lat, lng, name) {
       new google.maps.Marker({
@@ -176,19 +172,7 @@ export default function Map(props) {
       })
     }])
 
-
-
-
-
-
       if (currentSchedule.start_place && currentSchedule.end_place && currentSchedule.transit) {
-
-        const markerPositions = props.places.map((place) => {
-      
-          return {lat: parseFloat(place.lat), lng: parseFloat(place.lng)}
-    
-        })
-
 
         const start_place = props.places.filter((place) => {
           return place.name === currentSchedule.start_place
@@ -201,8 +185,6 @@ export default function Map(props) {
         }).map((place) => {
           return place.address
         })[0]
-
-
 
         const waypoints = props.places.filter((place) => {
           if (place.name !== currentSchedule.start_place && place.name !== currentSchedule.end_place) {
@@ -217,125 +199,103 @@ export default function Map(props) {
           }
         })
 
-            var directionsDisplay = new google.maps.DirectionsRenderer;
-            var directionsService = new google.maps.DirectionsService;
-            directionsDisplay.setMap(targetMap);
-            
-            calculateAndDisplayRoute(directionsService, directionsDisplay);
+        let directionsService = new google.maps.DirectionsService(); //
+        calculateAndDisplayRoute(directionsService);
   
-              function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        function calculateAndDisplayRoute(directionsService) {
 
-                directionsService.route({
-                  origin: start_place, 
-                  destination: end_place, 
-                  waypoints: waypoints, 
-                  optimizeWaypoints: true,
-                  travelMode: 'DRIVING'
-                }, function(response, status) {
-                  const megaSteps = response.routes[0].legs;
-                  props.setMegaSteps(megaSteps)
+          directionsService.route({
+            origin: start_place, 
+            destination: end_place, 
+            waypoints: waypoints, 
+            optimizeWaypoints: true,
+            travelMode: 'DRIVING'
+          }, function(response, status) {
+            const megaSteps = response.routes[0].legs;
+            props.setMegaSteps(megaSteps)
 
-                  if (status == 'OK') {
-                    if (currentSchedule.transit === "car") {
-                      const steps = response.routes[0].legs
+            if (status === 'OK') {
+              if (currentSchedule.transit === "car") {
+                const steps = response.routes[0].legs
+                props.setSteps(prev => {
+                  return []
+                })
+                steps.forEach (step => {
+                  const start_address = step.start_address
+                  const end_address = step.end_address
+                  directionsService.route({
+                    origin: start_address, 
+                    destination: end_address, 
+                    travelMode: 'DRIVING'
+                  }, function (response, status) {
+                    if (status === 'OK') {
+                      const directionsDisplay = new google.maps.DirectionsRenderer(); //
+
+                      directionsDisplay.setMap(targetMap);
+                      directionsDisplay.setOptions( { suppressMarkers: true } );
+                      directionsDisplay.setDirections(response);
                       props.setSteps(prev => {
-                        return []
-                      })
-                      steps.forEach (step => {
-                        const start_address = step.start_address
-                        const end_address = step.end_address
-                        directionsService.route({
-                          origin: start_address, 
-                          destination: end_address, 
-                          travelMode: 'DRIVING'
-                        }, function (response, status) {
-                          if (status == 'OK') {
-                            const start_location =  response.routes[0].legs[0].start_location
-                            const end_location =  response.routes[0].legs[0].end_location
-                            const directionsDisplay = new google.maps.DirectionsRenderer;
-
-                            
-                            directionsDisplay.setMap(targetMap);
-                            
-                            directionsDisplay.setOptions( { suppressMarkers: true } );
-                            directionsDisplay.setDirections(response);
-                            var center_point = response.routes[0].overview_path.length/2;
-                            const infowindow2 = new google.maps.InfoWindow();
-                            props.setSteps(prev => {
-                              return [...prev, response.routes[0].legs[0]]
-                            })
-
-                          } else {
-                          }
-                        })
-  
+                        return [...prev, response.routes[0].legs[0]]
                       })
 
-                      setTimeout(function(){                           
-                        targetMap.fitBounds(bounds)
-                        targetMap.panToBounds(bounds) 
-                      }, 1000);
-                      
                     } else {
-                      const steps = response.routes[0].legs
-                      props.setSteps(prev => {
-                        return []
-                      })
-                      steps.forEach (step => {
-                        const start_address = step.start_address
-                        const end_address = step.end_address
-                        directionsService.route({
-                          origin: start_address, 
-                          destination: end_address, 
-                          travelMode: 'TRANSIT',
-                          transitOptions: {
-                            departureTime: new Date(Date.now() + 100000),
-                            modes: ['BUS'],
-                            routingPreference: 'FEWER_TRANSFERS'
-                          }
-                        }, function (response, status) {
-                          
-                          if (status == 'OK') {
-                            const start_location =  response.routes[0].legs[0].start_location
-                            const end_location =  response.routes[0].legs[0].end_location
-                            const directionsDisplay = new google.maps.DirectionsRenderer;
- 
-                            
-                            
-                            
-                            directionsDisplay.setMap(targetMap);
-                            
-                            directionsDisplay.setOptions( { suppressMarkers: true } );
-                            directionsDisplay.setDirections(response);
-                            var center_point = response.routes[0].overview_path.length/2;
-                            const infowindow2 = new google.maps.InfoWindow();
-                            props.setSteps(prev => {
-                              return [...prev, response.routes[0].legs[0]]
-                            })
-                          } else {
-                          }
-                          targetMap.fitBounds(bounds)
-                          targetMap.panToBounds(bounds)
-                        })
-                      })
-                      setTimeout(function(){                           
-                        targetMap.fitBounds(bounds)
-                        targetMap.panToBounds(bounds) 
-                      }, 1000);
-
-
                     }
-                  } else {
-                    window.alert('Directions request failed due to ' + status);
-                  }
-                });
-  
+                  })
+                })
+
+                setTimeout(function(){                           
+                  targetMap.fitBounds(bounds)
+                  targetMap.panToBounds(bounds) 
+                }, 1000);
+                
+              } else {
+                const steps = response.routes[0].legs
+                props.setSteps(prev => {
+                  return []
+                })
+                steps.forEach (step => {
+                  const start_address = step.start_address
+                  const end_address = step.end_address
+                  directionsService.route({
+                    origin: start_address, 
+                    destination: end_address, 
+                    travelMode: 'TRANSIT',
+                    transitOptions: {
+                      departureTime: new Date(Date.now() + 100000),
+                      modes: ['BUS'],
+                      routingPreference: 'FEWER_TRANSFERS'
+                    }
+                  }, function (response, status) {
+                    
+                    if (status === 'OK') {
+                      const directionsDisplay = new google.maps.DirectionsRenderer(); //
+
+                      directionsDisplay.setMap(targetMap);
+                      directionsDisplay.setOptions( { suppressMarkers: true } );
+                      directionsDisplay.setDirections(response);
+                      props.setSteps(prev => {
+                        return [...prev, response.routes[0].legs[0]]
+                      })
+                    } else {
+                    }
+                    targetMap.fitBounds(bounds)
+                    targetMap.panToBounds(bounds)
+                  })
+                })
+                setTimeout(function(){                           
+                  targetMap.fitBounds(bounds)
+                  targetMap.panToBounds(bounds) 
+                }, 1000);
               }
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        }
       } else {
         const bounds = new google.maps.LatLngBounds()
 
-        if (props.places.length != 0) {
-
+        if (props.places.length !== 0) {
           props.places.forEach((place) => {
             const loc = new google.maps.LatLng(parseFloat(place.lat), parseFloat(place.lng))
             bounds.extend(loc)
@@ -348,30 +308,23 @@ export default function Map(props) {
           })
           targetMap.fitBounds(bounds)
           targetMap.panToBounds(bounds)
-          
         }
-
-
       }
     })
   }, [props.currentSchedule])
 
   return (
     <>
-    <div
-      style={{
-
-        height: '600px',
-        width: '100%',
-        border:'12px solid white',
-        borderRadius: '10px'
-
-      }}
-      className='bg-dark'
-      ref={map}
-    
-
-    ></div>
+      <div
+        style={{
+          height: '600px',
+          width: '100%',
+          border:'12px solid white',
+          borderRadius: '10px'
+        }}
+        className='bg-dark'
+        ref={map}
+      ></div>
     </>
   )
 }
