@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from './Login'
 import Logout from './Logout'
@@ -24,7 +25,9 @@ export default function Navbar(props) {
           <div className="nav-link"><Link to="/imageSearch"><b>Image Search</b></Link></div>
         </li>
         <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {
+            // eslint-disable-next-line
+          }<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <b>City</b>
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">

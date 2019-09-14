@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/App.css';
+// eslint-disable-next-line
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './Home/Home';
 import ImageSearch from './ImageSearch/ImageSearch';

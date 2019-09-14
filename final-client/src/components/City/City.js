@@ -24,6 +24,7 @@ export default function City(props) {
         setSchedules(response.data)
       })
     }
+  // eslint-disable-next-line
   },[])
 
   return(

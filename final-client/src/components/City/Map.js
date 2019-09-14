@@ -311,6 +311,7 @@ export default function Map(props) {
         }
       }
     })
+  // eslint-disable-next-line
   }, [props.currentSchedule])
 
   return (

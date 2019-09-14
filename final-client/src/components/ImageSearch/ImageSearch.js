@@ -18,7 +18,7 @@ export default function ImageSearch(props) {
         props.setAlert('No places found')
       }
     }).catch((err) => console.log(err))
-
+// eslint-disable-next-line
   },[])
 
   

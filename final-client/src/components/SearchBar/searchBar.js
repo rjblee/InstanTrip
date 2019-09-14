@@ -30,8 +30,12 @@ export default function SearchBar (props) {
             setSearchOption(event.target.value)
           }}
         >
-          <option value='image'>📷</option>
-          <option defaultValue value="text">📝</option>
+          {
+            // eslint-disable-next-line
+          }<option value='image'>📷</option>
+          {
+            // eslint-disable-next-line
+          }<option defaultValue value="text">📝</option>
         </select>
       </div>
       <div className="form-group col-md-2">
