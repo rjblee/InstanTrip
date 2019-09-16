@@ -4,7 +4,6 @@ import "../../styles/City.css";
 
 export default function AlertButton(props) {
   const notify = () => toast.info(props.text || "Wow how easy");
-
   return (
     <div>
       <button

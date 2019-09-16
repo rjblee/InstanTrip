@@ -26,7 +26,7 @@ export default function StartEndTransitForm (props) {
             
             <option>Starting Location...</option>
             {places.map((place) => {
-              return <option value={place.name}>{place.name}</option>
+              return <option key={place.id} value={place.name}>{place.name}</option>
             })}
         </select>
       </div>
@@ -41,7 +41,7 @@ export default function StartEndTransitForm (props) {
           >
           <option>End Location...</option>
           {places.map((place) => {
-              return <option value={place.name}>{place.name}</option>
+              return <option key={place.id} value={place.name}>{place.name}</option>
           })}
         </select>
       </div>

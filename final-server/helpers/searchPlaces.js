@@ -1,3 +1,8 @@
+// load .env data into process.env
+require('dotenv').config();
+
+const APIKey = process.env.GoogleAPIKey
+
 const request = require('then-request');
 
 module.exports = function searchPlaces (dataForSearch, res) {
@@ -32,7 +37,7 @@ module.exports = function searchPlaces (dataForSearch, res) {
                   qs : {
                     maxwidth: 200,
                     photoreference: place.photos[0].photo_reference,
-                    key: "AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U"
+                    key: APIKey
                   }
                 }
                 )

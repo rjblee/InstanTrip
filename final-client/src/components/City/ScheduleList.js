@@ -10,11 +10,11 @@ export default function ScheduleList (props) {
         <nav className='scheduleList'>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             <a className="nav-item nav-link active wishlist-tab" 
-              id="nav-home-tab" 
+              id="nav-home-tab"
               data-toggle="tab" 
               href="#nav-home" 
               role="tab"
-              aria-controls="nav-home" 
+              aria-controls="nav-home"
               aria-selected="true"
               style={{ color: 'black'}}
               onClick={() => {
@@ -47,8 +47,8 @@ export default function ScheduleList (props) {
         </nav>
 
 
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div className="tab-content" id="nav-tabContent">
+          <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div className='scroll-all pt-3'>
 
             {props.places.map((place) => {
