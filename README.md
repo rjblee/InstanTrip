@@ -1,9 +1,9 @@
 # InstanTrip
-InstanTrip is a app that can make travel plans for users. User can save places they want to visit into the wishlist of target destination. 
+InstanTrip is an app that can make travel plans for users. User can save places they want to visit into the wishlist of the target destination.
 
-By entering the amount of day they prefer to stay, The app automatically seperate places in the wishlist into day schedules based on the distances between them using a K-mean clustering model. Then, after choosing starting location and end location of each day schedule, the app will find the most optimized routes that direct use through all places in that day schedule.
+By entering the amount of day they prefer to stay, The app automatically separate places in the wishlist into day schedules based on the distances between them using a K-mean clustering model. Then, after choosing the starting location and end location of each day schedule, the app will find the most optimized routes that direct use through all places in that daily schedule.
 
-Also, user can search place informations by image url and then add found places into corresponding wishlist for future visit.
+Also, users can search place information by image URL and then add found places into the corresponding wishlist for a future visit.
 
 ## Contributors
 * [Sean Lin](https://github.com/Sean-HL-Lin)
@@ -35,3 +35,10 @@ Back-end
 * Google Place photo Search API
 
 ## Examples
+
+[Create city card](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/createCityCard.png)
+[Image search function](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/imageSearch.png)
+[All places in wishlist](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/allPlaces.png)
+[Autoplanned schedule 1](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/autoPlanedSchedule1.png)
+[Autoplanned schedule 2](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/autoPlanedSchedule2.png)
+[Optimized route](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/optimizedRoute.png)
