@@ -1,8 +1,12 @@
 import axios from "axios";
 import searchPlaces from '../helpers/searchPlaces'
+// load .env data into process.env
+
+const APIKey = process.env.REACT_APP_GoogleAPIKey
+
 //imaga search option
 export default function imageSearch(inputvalue,setInputvalue,setplaces, setAlert) {
-  return axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U',
+  return axios.post(`https://vision.googleapis.com/v1/images:annotate?key=${APIKey}`,
   {
     "requests": [
         {

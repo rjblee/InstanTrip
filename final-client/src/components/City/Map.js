@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import GoogleMapLoader from 'google-maps'
 
+// load .env data into process.env
+const APIKey = process.env.REACT_APP_GoogleAPIKey
 export default function Map(props) {
 
   const lat = parseFloat(props.lat) || 49.246292;
@@ -9,7 +11,7 @@ export default function Map(props) {
   const currentSchedule = props.currentSchedule
 
   useEffect(() => {
-    GoogleMapLoader.KEY = 'AIzaSyDtGZmEeW3QEK20irH8SpIpdKQjPoKuW5U';
+    GoogleMapLoader.KEY = APIKey;
     GoogleMapLoader.load(function(google){
 
 
