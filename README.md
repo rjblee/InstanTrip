@@ -34,4 +34,4 @@ Back-end
 * Google Place Text Search API
 * Google Place photo Search API
 
-## examples
+## Examples
