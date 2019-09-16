@@ -35,10 +35,20 @@ Back-end
 * Google Place photo Search API
 
 ## Examples
+Create city card
+!['Create city card'](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/createCityCard.png)
 
-[Create city card](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/createCityCard.png)
-[Image search function](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/imageSearch.png)
-[All places in wishlist](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/allPlaces.png)
-[Autoplanned schedule 1](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/autoPlanedSchedule1.png)
-[Autoplanned schedule 2](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/autoPlanedSchedule2.png)
-[Optimized route](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/optimizedRoute.png)
+Image search function
+!['Image search function'](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/imageSearch.png)
+
+All places in wishlist
+!['All places in wishlist](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/allPlaces.png)
+
+Autoplanned schedule 1
+!['Autoplanned schedule 1'](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/autoPlanedSchedule1.png)
+
+Autoplanned schedule 2
+!['Autoplanned schedule 2'](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/autoPlanedSchedule2.png)
+
+Optimized route
+!['Optimized route'](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/optimizedRoute.png)
