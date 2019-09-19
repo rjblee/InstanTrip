@@ -1,7 +1,7 @@
 # InstanTrip
 InstanTrip is an app that can make travel plans for users. User can save places they want to visit into the wishlist of the target destination.
 
-By entering the amount of day they prefer to stay, The app automatically separate places in the wishlist into day schedules based on the distances between them using a K-mean clustering model. Then, after choosing the starting location and end location of each day schedule, the app will find the most optimized routes that direct use through all places in that daily schedule.
+By entering the amount of day they prefer to stay, The app automatically separate places in the wishlist into day schedules based on the distances between them using a K-mean clustering model. Then, after choosing the starting location and end location of each day schedule, the app will find the most optimized routes that direct user through all places in that daily schedule.
 
 Also, users can search place information by image URL and then add found places into the corresponding wishlist for a future visit.
 
@@ -9,6 +9,9 @@ Also, users can search place information by image URL and then add found places 
 * [Sean Lin](https://github.com/Sean-HL-Lin)
 * [Jiadan Wang](https://github.com/jiadanw)
 * [Ralph Lee](https://github.com/rjblee)
+
+## Awards
+Best project of Lighthouse Lab's Sept 2019 Demo Day
 
 ## Setup
 1. Clone this repositories
