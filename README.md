@@ -11,33 +11,34 @@ Also, users can search place information by image URL and then add found places 
 * [Ralph Lee](https://github.com/rjblee)
 
 ## Awards
-Best project of Lighthouse Lab's Sept 2019 Demo Day
+Best Final Project of Lighthouse Lab's Sept 2019 Demo Day
 
 ## Setup
-1. Clone this repositories
+1. Clone this repository
 2. [Client side setup](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/final-client/README.md)
 3. [Server side setup](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/final-server/README.md)
 
 ## Tech stack
 
 Front-end
-* React
+* React.js
 * Google Map API
 * Google Direction API 
-* Ant design
+* Ant Design
 * Bootstrap
-* Axio
+* Axios
 * K-mean Clustering
 
 Back-end
-* NodeJS
-* Express
-* PostgresSQL
+* Node.js
+* Express.js
+* PostgreSQL
 * Cloud Vision API 
 * Google Place Text Search API
-* Google Place photo Search API
+* Google Place Photo Search API
 
 ## Examples
+
 Create city card
 !['Create city card'](https://github.com/Sean-HL-Lin/InstanTrip/blob/master/Doc/createCityCard.png)
 
